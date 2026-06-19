@@ -1,0 +1,6 @@
+{
+  "name": "Zarif Bar",
+  "description": "Corporate website for Zarif Bar, focusing on home moving and logistics, with a CMS-enabled blog, request system, and dynamic service landing pages.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

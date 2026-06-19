@@ -1,0 +1,73 @@
+@import "tailwindcss";
+@variant dark (&:where(.dark, .dark *));
+
+@import url('https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/vazirmatn-font-face.css');
+
+@font-face {
+  font-family: "Dana";
+  src: url("https://rokhdp.ir/wp-content/themes/rokh/assets/fonts/Dana-Medium.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Dana";
+  src: url("https://rokhdp.ir/wp-content/themes/rokh/assets/fonts/Dana-Bold.woff2") format("woff2");
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Dana";
+  src: url("https://rokhdp.ir/wp-content/themes/rokh/assets/fonts/Dana-Regular.woff2") format("woff2");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@theme {
+  --font-sans: "Dana", "Vazirmatn", "Inter", ui-sans-serif, system-ui, sans-serif;
+}
+
+html, body {
+  direction: rtl;
+  text-align: right;
+  font-family: "Dana", "Vazirmatn", system-ui, -apple-system, sans-serif !important;
+  scroll-behavior: smooth;
+  background-color: #fcfcfd;
+  color: #1e293b;
+  overflow-x: hidden;
+  transition: background-color 300ms ease, color 300ms ease;
+}
+
+html.dark body {
+  background-color: #020617;
+  color: #f8fafc;
+}
+
+/* Custom gorgeous animations */
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+.animate-float {
+  animation: float 4s ease-in-out infinite;
+}
+
+/* Beautiful custom glassy card style */
+.glass-panel {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(226, 232, 240, 0.8);
+}
+
+.gradient-bg {
+  background: linear-gradient(135deg, #1e3a8a 0%, #0f172a 100%);
+}
+
+.primary-gradient-text {
+  background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
