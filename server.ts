@@ -4,7 +4,6 @@ import path from "path";
 import fs from "fs";
 import multer from "multer";
 import { createServer as createViteServer } from "vite";
-import { fileURLToPath } from 'url';
 import { initDB, getDB } from './server/db.js';
 import {
   AuthRequest,
@@ -19,8 +18,6 @@ import {
   hashPassword,
 } from './server/auth.js';
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
 const uploadDir = path.join(process.cwd(), 'uploads');
 if (!fs.existsSync(uploadDir)){
   fs.mkdirSync(uploadDir);
