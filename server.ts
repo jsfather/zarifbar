@@ -620,9 +620,16 @@ async function startServer() {
     }
   });
 
-  if (process.env.NODE_ENV !== "production") {
+  const isProduction =
+    process.env.NODE_ENV === 'production' ||
+    fs.existsSync(path.join(process.cwd(), 'dist', 'index.html'));
+
+  if (!isProduction) {
     const vite = await createViteServer({
-      server: { middlewareMode: true },
+      server: {
+        middlewareMode: true,
+        allowedHosts: ['zarrifbar.com', 'www.zarrifbar.com', 'localhost'],
+      },
       appType: "spa",
     });
     app.use(vite.middlewares);
