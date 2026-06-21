@@ -1,7 +1,6 @@
+@import url('https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/vazirmatn-font-face.css');
 @import "tailwindcss";
 @variant dark (&:where(.dark, .dark *));
-
-@import url('https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/vazirmatn-font-face.css');
 
 @font-face {
   font-family: "Dana";
