@@ -39,8 +39,8 @@ export default function App() {
   const [settings, setSettings] = useState<Settings>({
     site_title: 'اسپاب چی - اتوبار و حمل اثاثیه منزل مدرن',
     site_description: 'برخط‌ترین سامانه حمل اثاثیه منزل، کارگران با تجربه و زبده، کارتن‌های ۵ لایه مسقف در غرب و شرق تهران.',
-    phone: '1500',
-    phone_alt: '021-22222222',
+    phone: '02144177827',
+    phone_alt: '02126117092',
     email: 'info@zarifbar.ir',
     address: 'تهران، میدان ونک، خیابان ملاصدرا، پلاک ۱۱۰',
     seo_keywords: 'اسباب کشی, اسپاب چی, اتوبار تهران',
@@ -878,7 +878,7 @@ export default function App() {
   };
 
   const getCallPhone = () => {
-    return settings.float_call_phone || settings.phone || '1500';
+    return settings.float_call_phone || settings.phone || '02144177827';
   };
 
   const isPlainAdminView = path === '/admin';
