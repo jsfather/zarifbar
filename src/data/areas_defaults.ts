@@ -27,7 +27,7 @@ export interface AreasData {
 }
 
 export const DEFAULT_AREAS_DATA: AreasData = {
-  title: اسپاب چی"مناطق تحت پوشش خدمات اتوبار ر",
+  title:  "مناطق تحت پوشش خدمات اسپاپ چی",
   subtitle: "سرویس‌دهی سریع و شبانه‌روزی در تمام محله‌های شمال، غرب، شرق تهران و استان البرز (کرج)",
   regions: {
     north: {
