@@ -18,9 +18,10 @@ import {
   hashPassword,
 } from './server/auth.js';
 
-const uploadDir = path.join(process.cwd(), 'uploads');
+const dataDir = path.resolve(process.env.DATA_DIR || process.cwd());
+const uploadDir = path.join(dataDir, 'uploads');
 if (!fs.existsSync(uploadDir)){
-  fs.mkdirSync(uploadDir);
+  fs.mkdirSync(uploadDir, { recursive: true });
 }
 
 const ALLOWED_UPLOAD_TYPES = new Set([
@@ -52,17 +53,26 @@ const upload = multer({
 });
 
 async function startServer() {
-  try {
-    await initDB();
-    console.log("Database initialized successfully!");
-  } catch (err) {
-    console.error("Database initialization failed:", err);
-  }
+  await initDB();
+  console.log("Database initialized successfully!");
 
   const app = express();
   const PORT = Number(process.env.PORT) || 3000;
 
+  if (process.env.NODE_ENV === 'production') {
+    app.set('trust proxy', 1);
+  }
+
   app.use(express.json({ limit: '1mb' }));
+
+  app.get('/health', async (_req, res) => {
+    try {
+      await getDB().get('SELECT 1');
+      res.status(200).json({ status: 'ok' });
+    } catch {
+      res.status(503).json({ status: 'unhealthy' });
+    }
+  });
 
   app.use('/uploads', express.static(uploadDir));
 
@@ -646,4 +656,7 @@ async function startServer() {
   });
 }
 
-startServer();
+startServer().catch((err) => {
+  console.error('Server startup failed:', err);
+  process.exit(1);
+});

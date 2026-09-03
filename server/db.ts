@@ -1,13 +1,17 @@
 import { open, Database } from 'sqlite';
 import sqlite3 from 'sqlite3';
 import path from 'path';
-import { hashPassword, isPasswordHashed } from './auth.js';
+import fs from 'fs';
+import { hashPassword, isPasswordHashed, verifyPassword } from './auth.js';
 
 let dbInstance: Database | null = null;
 
 export async function initDB() {
+  const dataDir = path.resolve(process.env.DATA_DIR || process.cwd());
+  fs.mkdirSync(dataDir, { recursive: true });
+
   dbInstance = await open({
-    filename: path.resolve(process.cwd(), 'zarifbar.db'),
+    filename: path.join(dataDir, 'zarifbar.db'),
     driver: sqlite3.Database
   });
 
@@ -115,11 +119,12 @@ export async function initDB() {
   `);
 
   await migratePlaintextPasswords(dbInstance);
+  await rotateKnownDefaultPasswords(dbInstance);
 
   const userCount = (await dbInstance.get("SELECT COUNT(*) as count FROM users")) as { count: number };
   if (userCount.count === 0) {
-    const adminPassword = process.env.ADMIN_DEFAULT_PASSWORD || 'admin123';
-    const writerPassword = process.env.WRITER_DEFAULT_PASSWORD || 'writerpassword';
+    const adminPassword = getInitialPassword('ADMIN_DEFAULT_PASSWORD', 'admin123');
+    const writerPassword = getInitialPassword('WRITER_DEFAULT_PASSWORD', 'writerpassword');
     const adminHash = await hashPassword(adminPassword);
     const writerHash = await hashPassword(writerPassword);
     await dbInstance.run(`
@@ -330,5 +335,59 @@ async function migratePlaintextPasswords(db: Database) {
       const hashed = await hashPassword(user.password);
       await db.run("UPDATE users SET password = ? WHERE id = ?", [hashed, user.id]);
     }
+  }
+}
+
+function getInitialPassword(envName: 'ADMIN_DEFAULT_PASSWORD' | 'WRITER_DEFAULT_PASSWORD', developmentDefault: string) {
+  const configured = process.env[envName];
+  if (!configured && process.env.NODE_ENV === 'production') {
+    throw new Error(`${envName} is required when creating the initial production users.`);
+  }
+  if (configured && configured.length < 12) {
+    throw new Error(`${envName} must contain at least 12 characters.`);
+  }
+  return configured || developmentDefault;
+}
+
+async function rotateKnownDefaultPasswords(db: Database) {
+  const accounts = [
+    {
+      username: 'admin',
+      knownDefault: 'admin123',
+      replacement: process.env.ADMIN_DEFAULT_PASSWORD,
+      envName: 'ADMIN_DEFAULT_PASSWORD',
+    },
+    {
+      username: 'writer',
+      knownDefault: 'writerpassword',
+      replacement: process.env.WRITER_DEFAULT_PASSWORD,
+      envName: 'WRITER_DEFAULT_PASSWORD',
+    },
+  ];
+
+  for (const account of accounts) {
+    const user = await db.get(
+      'SELECT id, password FROM users WHERE username = ?',
+      [account.username]
+    ) as { id: number; password: string } | undefined;
+
+    if (!user || !(await verifyPassword(account.knownDefault, user.password))) continue;
+
+    if (!account.replacement) {
+      if (process.env.NODE_ENV === 'production') {
+        throw new Error(`${account.envName} is required while the ${account.username} account uses its development password.`);
+      }
+      continue;
+    }
+
+    if (account.replacement.length < 12) {
+      throw new Error(`${account.envName} must contain at least 12 characters.`);
+    }
+
+    await db.run(
+      'UPDATE users SET password = ? WHERE id = ?',
+      [await hashPassword(account.replacement), user.id]
+    );
+    console.log(`[security] Rotated the known default password for ${account.username}.`);
   }
 }

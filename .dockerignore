@@ -1,0 +1,14 @@
+.git
+.idea
+.env
+.env.*
+!.env.example
+node_modules
+dist
+build
+coverage
+npm-debug.log*
+Dockerfile*
+docker-compose*.yml
+README.md
+
