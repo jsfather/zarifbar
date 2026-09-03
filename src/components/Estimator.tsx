@@ -1,5 +1,6 @@
 ﻿import React, { useState, useEffect } from 'react';
 import { Sparkles, Calculator, Calendar, ArrowLeft, ArrowRight, CheckCircle2, Phone, Building, User, Info, Check, MessageSquare } from 'lucide-react';
+import { gregorianToJalali, jalaliToGregorian } from '../utils/dateUtils';
 
 export interface Option {
   value: string;
@@ -357,6 +358,13 @@ export default function Estimator({ baseTruck, perWorker, packService, onSuccess
   const stepAlert = config.notifications.step_alert;
   const alertStep = config.notifications.step_alert_step || 1;
 
+  // Helper function to format Jalali date for display
+  const formatJalaliDisplay = (jalaliDate: string): string => {
+    if (!jalaliDate) return '';
+    // Convert YYYY-MM-DD to YYYY/MM/DD for display
+    return jalaliDate.replace(/-/g, '/');
+  };
+
   return (
     <div className="bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 rounded-3xl shadow-xl overflow-hidden transition-colors duration-300" id="cost-estimator">
       {/* Header bar and indicators */}
@@ -550,13 +558,27 @@ export default function Estimator({ baseTruck, perWorker, packService, onSuccess
                         )}
 
                         {f.type === 'date' && (
-                          <input 
-                            type="date" 
-                            required={f.required}
-                            value={getFieldValue(f.name)}
-                            onChange={(e) => updateField(f.name, e.target.value)}
-                            className="w-full bg-gray-50 dark:bg-slate-850 border border-gray-200 dark:border-slate-700 rounded-2xl py-3 px-4 text-xs font-semibold focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-slate-800 dark:text-slate-100"
-                          />
+                          <div className="space-y-1">
+                            <input 
+                              type="text" 
+                              placeholder="YYYY/MM/DD (شمسی)"
+                              required={f.required}
+                              value={getFieldValue(f.name) ? formatJalaliDisplay(getFieldValue(f.name)) : ''}
+                              onChange={(e) => {
+                                const val = e.target.value;
+                                // Store as Jalali format (YYYY-MM-DD)
+                                if (val.match(/^\d{4}\/\d{2}\/\d{2}$/)) {
+                                  updateField(f.name, val.replace(/\//g, '-'));
+                                } else if (val === '') {
+                                  updateField(f.name, '');
+                                }
+                              }}
+                              maxLength={10}
+                              className="w-full bg-gray-50 dark:bg-slate-850 border border-gray-200 dark:border-slate-700 rounded-2xl py-3 px-4 text-xs font-semibold focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-slate-800 dark:text-slate-100 text-center"
+                              dir="ltr"
+                            />
+                            <p className="text-[10px] text-gray-500 dark:text-slate-400 text-center">تاریخ شمسی (میلادی) را وارد کنید</p>
+                          </div>
                         )}
 
                       </div>
@@ -617,7 +639,7 @@ export default function Estimator({ baseTruck, perWorker, packService, onSuccess
                 <button
                   type="submit"
                   disabled={loading}
-                  className="flex items-center gap-2 bg-green-605 hover:bg-green-700 text-white px-7 py-3.5 rounded-2xl font-bold text-xs md:text-sm transition-all shadow-md cursor-pointer"
+                  className="flex items-center gap-2 bg-green-600 hover:bg-green-700 text-white px-7 py-3.5 rounded-2xl font-bold text-xs md:text-sm transition-all shadow-md cursor-pointer disabled:opacity-60"
                 >
                   {loading ? 'در حال ارسال...' : 'ثبت قطعی و ارسال'}
                   <CheckCircle2 className="w-5 h-5" />

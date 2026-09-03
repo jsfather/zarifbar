@@ -7,6 +7,7 @@ import ImageUploader from './ImageUploader';
 import VideoUploader from './VideoUploader';
 import PageEditor from './PageEditor';
 import UserManagement from './UserManagement';
+import { gregorianToJalali, jalaliToGregorian } from '../utils/dateUtils';
 import { 
   Lock, KeyRound, LayoutDashboard, FileText, ClipboardList, Settings as SettingsIcon, 
   Layers, PhoneCall, HelpCircle, LogOut, CheckCircle2, RotateCw, Trash2, Edit2, 
@@ -1211,7 +1212,7 @@ export default function AdminPanel({ onLogout, phone }: AdminPanelProps) {
                       <tr>
                         <th className="py-3 px-4">مشتری / تلفن</th>
                         <th className="py-3 px-4">مسیر جابجایی</th>
-                        <th className="py-3 px-4">تاریخ اعزام</th>
+                        <th className="py-3 px-4">تاریخ اعزام (شمسی)</th>
                         <th className="py-3 px-4">جزئیات ملک</th>
                         <th className="py-3 px-4">هزینه محاسباتی</th>
                         <th className="py-3 px-4">وضعیت</th>
@@ -1229,7 +1230,7 @@ export default function AdminPanel({ onLogout, phone }: AdminPanelProps) {
                             {q.origin_city} ⬅️ {q.dest_city}
                             <span className="block text-[10px] text-slate-400 font-medium">نوع سرویس: {q.service_type}</span>
                           </td>
-                          <td className="py-4 px-4 font-sans">{q.moving_date}</td>
+                          <td className="py-4 px-4 font-sans">{q.moving_date ? q.moving_date.replace(/-/g, '/') : '-'}</td>
                           <td className="py-4 px-4">
                             <span>طبقه {q.floors}</span>
                             <span className="block text-[10px] text-slate-400 font-medium">

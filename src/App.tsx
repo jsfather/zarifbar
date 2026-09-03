@@ -639,7 +639,7 @@ export default function App() {
                       }}
                       className="text-[11px] font-black text-purple-600 hover:text-blue-800 dark:text-purple-400 flex items-center gap-1 cursor-pointer"
                     >
-                      مطالعه مقاله کامل H1
+                      مطالعه مقاله کامل
                       <ArrowUpRight className="w-3.5 h-3.5" />
                     </button>
                   </div>

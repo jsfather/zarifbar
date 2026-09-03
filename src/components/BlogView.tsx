@@ -150,15 +150,6 @@ export default function BlogView({ onNavigate, selectedPostSlug, onSelectPost }:
             {singlePost.content}
           </div>
         </article>
-
-        {/* SEO Note for client awareness */}
-        {singlePost.seo_title && (
-          <div className="mt-8 p-4 bg-slate-50 rounded-2xl border border-gray-100 text-xs text-slate-500 font-semibold space-y-1">
-            <p>ℹ️ مشخصات سئو این صفحه:</p>
-            <p>عنوان سئو: <span className="text-slate-700 font-bold">{singlePost.seo_title}</span></p>
-            <p>توضیحات سئو: <span className="text-slate-700 font-medium">{singlePost.seo_description}</span></p>
-          </div>
-        )}
       </div>
     );
   }
