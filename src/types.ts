@@ -86,6 +86,7 @@ export interface Settings {
   transport_data?: string;
   workers_data?: string;
   logo_url?: string;
+  tagline?: string;
   float_contact_enabled?: string;
   float_whatsapp_phone?: string;
   float_call_phone?: string;

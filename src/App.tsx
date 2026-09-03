@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+﻿import React, { useState, useEffect } from 'react';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import Estimator from './components/Estimator';
@@ -37,13 +37,13 @@ export default function App() {
 
   // Load state for settings
   const [settings, setSettings] = useState<Settings>({
-    site_title: 'ظریف بار - اتوبار و حمل اثاثیه منزل مدرن',
+    site_title: 'اسپاب چی - اتوبار و حمل اثاثیه منزل مدرن',
     site_description: 'برخط‌ترین سامانه حمل اثاثیه منزل، کارگران با تجربه و زبده، کارتن‌های ۵ لایه مسقف در غرب و شرق تهران.',
     phone: '1500',
     phone_alt: '021-22222222',
     email: 'info@zarifbar.ir',
     address: 'تهران، میدان ونک، خیابان ملاصدرا، پلاک ۱۱۰',
-    seo_keywords: 'اسباب کشی, ظریف بار, اتوبار تهران',
+    seo_keywords: 'اسباب کشی, اسپاب چی, اتوبار تهران',
     working_hours: '۷ روز هفته، ۲۴ ساعته شبانه‌روزی',
     pricing_base_truck: '1800000',
     pricing_per_worker: '450000',
@@ -168,12 +168,12 @@ export default function App() {
       }
     }
     return {
-      title: pages.about?.title || 'درباره اتوبار و ترابری ظریف بار',
+      title: pages.about?.title || 'درباره اتوبار و ترابری اسپاب چی',
       image_url: pages.about?.image_url || 'https://images.unsplash.com/photo-1549401378-02484c349d21?auto=format&fit=crop&q=80&w=800',
       subtitle: parsed.subtitle || 'پنج دهه همراهی صادقانه و خدمت‌رسانی هوشمندانه به مردم شریف تهران',
       heading: parsed.heading || 'آرمان ما کیفیت عالی و جلب اعتماد اسباب‌کشی لوکس است',
-      paragraph_1: parsed.paragraph_1 || 'شرکت بزرگ ظریف بار از اوایل دهه ۷۰ شمسی فعالیت رسمی خود را در تهران بزرگ در حوزه ترابری درون‌شهری آغاز کرد. در طی نیم قرن این شرکت همواره در مسیر توسعه فناوری قدم برداشته و توانسته با ایجاد کلینیک کادری مجرب متشکل از ۱۰۰ راننده دوره دیده و ۲۰۰ کارگر ورزیده بسته‌بندی، بیش از چهل و پنج هزار خانوار تهرانی را بدون حتی یک خسارت فیزیکی یا رفتاری جابجا نماید.',
-      paragraph_2: parsed.paragraph_2 || 'تضاد اصلی کار ما با باربری‌های خرده‌پا در تعهد کامل مدنی و صدور سند پیش فاکتور قطعی نهفته است. در ظریف بار هیچ راننده‌ای حق چانه‌زنی بعد از اتمام باربری را ندارد، تعهد تا تحویل کامل گلدان‌ها و بلورجات به پای تیم مجزای ناظر کادر فنی ثبت گردیده است.',
+      paragraph_1: parsed.paragraph_1 || 'شرکت بزرگ اسپاب چی از اوایل دهه ۷۰ شمسی فعالیت رسمی خود را در تهران بزرگ در حوزه ترابری درون‌شهری آغاز کرد. در طی نیم قرن این شرکت همواره در مسیر توسعه فناوری قدم برداشته و توانسته با ایجاد کلینیک کادری مجرب متشکل از ۱۰۰ راننده دوره دیده و ۲۰۰ کارگر ورزیده بسته‌بندی، بیش از چهل و پنج هزار خانوار تهرانی را بدون حتی یک خسارت فیزیکی یا رفتاری جابجا نماید.',
+      paragraph_2: parsed.paragraph_2 || 'تضاد اصلی کار ما با باربری‌های خرده‌پا در تعهد کامل مدنی و صدور سند پیش فاکتور قطعی نهفته است. در اسپاب چی هیچ راننده‌ای حق چانه‌زنی بعد از اتمام باربری را ندارد، تعهد تا تحویل کامل گلدان‌ها و بلورجات به پای تیم مجزای ناظر کادر فنی ثبت گردیده است.',
       video_url: parsed.video_url || ''
     };
   };
@@ -188,7 +188,7 @@ export default function App() {
       }
     }
     return {
-      title: pages.contact?.title || 'تماس با اتوبار ظریف بار',
+      title: pages.contact?.title || 'تماس با اتوبار اسپاب چی',
       subtitle: parsed.subtitle || 'پاسخگویی شبانه‌روزی و بدون تعطیلی جهت رفاه حال همشهریان محترم'
     };
   };
@@ -203,18 +203,18 @@ export default function App() {
       }
     }
     return {
-      title: pages.privacy?.title || "ضوابط، مقررات و حریم خصوصی ظریف بار",
+      title: pages.privacy?.title || "ضوابط، مقررات و حریم خصوصی اسپاب چی",
       subtitle: parsed.subtitle || "آخرین بروزرسانی مقررات مدنی اسباب‌کشی: خرداد ماه ۱۴۰۵",
-      intro: parsed.intro || "کاربر گرامی، ورود به وب‌سایت ظریف بار و استفاده از خدمات مشاوره، محاسبه‌گر هوشمند آنلاین، و رزرو نوبت تلفنی یا اینترنتی به معنای آگاهی کامل و پذیرش بی قید و شرط قوانین درج شده در این صفحه می‌باشد. هدف ما آسودگی خاطر کامل شما در طول اسباب‌کشی و حفظ امانت به مطمئن‌ترین شکل ممکن است.",
+      intro: parsed.intro || "کاربر گرامی، ورود به وب‌سایت اسپاب چی و استفاده از خدمات مشاوره، محاسبه‌گر هوشمند آنلاین، و رزرو نوبت تلفنی یا اینترنتی به معنای آگاهی کامل و پذیرش بی قید و شرط قوانین درج شده در این صفحه می‌باشد. هدف ما آسودگی خاطر کامل شما در طول اسباب‌کشی و حفظ امانت به مطمئن‌ترین شکل ممکن است.",
       rules_heading: parsed.rules_heading || "قوانین عمومی حمل‌ونقل و صدور فاکتور",
       rule_1: parsed.rule_1 || "قیمت‌های نهایی صادر شده: مبالغی که کارشناسان پشتیبانی پس از ثبت استعلام محاسبه‌گر هوشمند به صورت فاکتور کتبی یا پیامکی تایید می‌کنند، قطعی بوده و رانندگان به هیچ عنوان مجاز به دریافت مبالغ اضافه تحت عناوین انعام، سختی راه پله، پیاده‌روی طولانی نخواهند بود مگر با هماهنگی مدیریت.",
-      rule_2: parsed.rule_2 || "لغو نوبت رزرو شده: مشتریان محترم در صورت نیاز به تغییر زمان اسباب‌کشی یا لغو نوبت، موظف هستند حداقل ۲۴ ساعت قبل از اعزام کادر جابجایی موضوع را به کارشناسان ظریف بار اطلاع دهند.",
+      rule_2: parsed.rule_2 || "لغو نوبت رزرو شده: مشتریان محترم در صورت نیاز به تغییر زمان اسباب‌کشی یا لغو نوبت، موظف هستند حداقل ۲۴ ساعت قبل از اعزام کادر جابجایی موضوع را به کارشناسان اسپاب چی اطلاع دهند.",
       rule_3: parsed.rule_3 || "کالاهای گران‌قیمت خاص: جابجایی اقلام بسیار گران‌قیمت اعم از وجوه نقد، جواهرات، اسناد ملکی گاوصندوق، لپ‌تاپ‌های شخصی و طلاجات باید توسط خود کارفرما انجام گیرد. کادر فنی به هیچ عنوان مسئولیت انتقال موارد شخصی درون کیف‌های مسافرتی را برعهده نمی‌گیرد.",
       insurance_heading: parsed.insurance_heading || "بیمه نامه و تضمین خسارت",
-      insurance_text: parsed.insurance_text || "تمامی اثاثیه‌های حمل شده توسط ناوگان کامیونت‌های مسقف ظریف بار، تحت پوشش بیمه نامه معتبر البرز یا ایران تا سقف مشخص شده در فاکتور قرار می‌گیرند. در صورت بروز هرگونه آسیب به وسایلی که بسته‌بندی آنها توسط تیم حرفه‌ای و با تایید ناظر کادر ظریف بار انجام شده باشد، شرکت موظف به پرداخت غرامت معادل قیمت روز کالا یا تعمیر تخصصی آن خواهد بود.",
+      insurance_text: parsed.insurance_text || "تمامی اثاثیه‌های حمل شده توسط ناوگان کامیونت‌های مسقف اسپاب چی، تحت پوشش بیمه نامه معتبر البرز یا ایران تا سقف مشخص شده در فاکتور قرار می‌گیرند. در صورت بروز هرگونه آسیب به وسایلی که بسته‌بندی آنها توسط تیم حرفه‌ای و با تایید ناظر کادر اسپاب چی انجام شده باشد، شرکت موظف به پرداخت غرامت معادل قیمت روز کالا یا تعمیر تخصصی آن خواهد بود.",
       privacy_heading: parsed.privacy_heading || "سیاست حفظ حریم خصوصی کاربران",
-      privacy_text: parsed.privacy_text || "مجموعه ظریف بار نسبت به حفظ اطلاعات خصوصی مشتریان خود (مانند نام خانوادگی، شماره‌های همراه، آدرس‌های مبدا و مقصد) کاملاً متعهد است. تمامی اطلاعات وارد شده در وب‌سایت ظریف بار در سرورهای امن نگهداری شده و فقط برای فرآیند اعزام خودرو، صدور بیمه نامه حمل بار و بهبود کیفیت خدمات مورد استفاده قرار می‌گیرند. ما هرگز داده‌های شما را در اختیار اشخاص ثالثِ تبلیغاتی قرار نخواههم داد.",
-      box_alert: parsed.box_alert || "در صورت بروز هرگونه تعارض نامتعارف با پرسنل صحنه جابجایی قبل از هرگونه پرداخت وجه با شماره بازرسی مرکزی ظریف بار تماس حاصل فرمایید تا کارشناس شعبه فوراً مداخله کند."
+      privacy_text: parsed.privacy_text || "مجموعه اسپاب چی نسبت به حفظ اطلاعات خصوصی مشتریان خود (مانند نام خانوادگی، شماره‌های همراه، آدرس‌های مبدا و مقصد) کاملاً متعهد است. تمامی اطلاعات وارد شده در وب‌سایت اسپاب چی در سرورهای امن نگهداری شده و فقط برای فرآیند اعزام خودرو، صدور بیمه نامه حمل بار و بهبود کیفیت خدمات مورد استفاده قرار می‌گیرند. ما هرگز داده‌های شما را در اختیار اشخاص ثالثِ تبلیغاتی قرار نخواههم داد.",
+      box_alert: parsed.box_alert || "در صورت بروز هرگونه تعارض نامتعارف با پرسنل صحنه جابجایی قبل از هرگونه پرداخت وجه با شماره بازرسی مرکزی اسپاب چی تماس حاصل فرمایید تا کارشناس شعبه فوراً مداخله کند."
     };
   };
 
@@ -251,14 +251,14 @@ export default function App() {
           <section className="max-w-7xl mx-auto px-4 md:px-8 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center pt-2 md:pt-4">
           
           <div className="lg:col-span-6 space-y-6 text-right">
-            <span className="inline-flex items-center gap-2 bg-blue-50 dark:bg-blue-950/30 text-blue-700 dark:text-blue-300 font-extrabold text-xs px-4 py-2 rounded-full border border-blue-105 dark:border-blue-900/40 shadow-sm">
+            <span className="inline-flex items-center gap-2 bg-purple-50 dark:bg-blue-950/30 text-blue-700 dark:text-blue-300 font-extrabold text-xs px-4 py-2 rounded-full border border-blue-105 dark:border-blue-900/40 shadow-sm">
               <Award className="w-4 h-4" />
               {homeContent.badge}
             </span>
 
             <h1 className="text-3xl md:text-5xl lg:text-6xl font-black text-slate-900 dark:text-white leading-[1.2] tracking-tight">
               {homeContent.title} <br />
-              <span className="text-blue-600">{homeContent.blue_title}</span>
+              <span className="text-purple-600">{homeContent.blue_title}</span>
             </h1>
 
             <p className="text-sm md:text-base text-gray-500 dark:text-slate-400 font-medium leading-relaxed text-justify max-w-xl">
@@ -271,7 +271,7 @@ export default function App() {
                   const el = document.getElementById('price-calc-anchor');
                   if (el) el.scrollIntoView({ behavior: 'smooth' });
                 }}
-                className="bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-extrabold rounded-2xl px-8 py-4 shadow-xl shadow-blue-500/20 hover:opacity-95 transition-all text-sm flex items-center justify-center gap-2 cursor-pointer"
+                className="bg-gradient-to-r from-purple-600 to-purple-600 text-white font-extrabold rounded-2xl px-8 py-4 shadow-xl shadow-purple-500/20 hover:opacity-95 transition-all text-sm flex items-center justify-center gap-2 cursor-pointer"
               >
                 محاسبه آنلاین هزینه اسباب‌کشی
                 <ArrowLeft className="w-4 h-4" />
@@ -348,7 +348,7 @@ export default function App() {
               ) : (
                 <img 
                   src={homeContent.hero_image}
-                  alt="وانت نیسان اسباب کشی ظریف بار" 
+                  alt="وانت نیسان اسباب کشی اسپاب چی" 
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                   referrerPolicy="no-referrer"
                 />
@@ -397,7 +397,7 @@ export default function App() {
               چرا هشدارهای اسباب‌کشی را جدی بگیریم؟
             </span>
             <h2 className="text-2xl md:text-3xl font-black text-slate-900 dark:text-white leading-snug">
-              ۴ خدمت تخصصی باربری و بسته‌بندی ظریف بار
+              ۴ خدمت تخصصی باربری و بسته‌بندی اسپاب چی
             </h2>
             <p className="text-xs md:text-sm text-gray-500 dark:text-slate-400 font-medium">
               هر کدام از بخش‌های زیر با لندینگ اطلاعاتی حرفه‌‌ای و امکان تعیین هزینه با زبانه اختصاصی متناوب پیوند داده شده‌اند.
@@ -409,7 +409,7 @@ export default function App() {
             {/* Service 1: Packing */}
             <div className="bg-white dark:bg-slate-900 rounded-3xl border border-gray-100 dark:border-slate-800 p-6 shadow-sm hover:shadow-md transition-shadow flex flex-col justify-between space-y-6">
               <div className="space-y-4">
-                <div className="w-12 h-12 rounded-2xl bg-blue-50 dark:bg-blue-950/40 text-blue-600 dark:text-blue-400 flex items-center justify-center">
+                <div className="w-12 h-12 rounded-2xl bg-purple-50 dark:bg-blue-950/40 text-purple-600 dark:text-purple-400 flex items-center justify-center">
                   <Package className="w-6 h-6" />
                 </div>
                 <div className="space-y-1">
@@ -422,7 +422,7 @@ export default function App() {
               </div>
               <button 
                 onClick={() => navigate('/services/packing')}
-                className="w-full py-2.5 bg-slate-50 dark:bg-slate-800 text-slate-700 dark:text-slate-200 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-blue-50/50 dark:hover:bg-slate-700 rounded-xl text-xs font-black transition-colors"
+                className="w-full py-2.5 bg-slate-50 dark:bg-slate-800 text-slate-700 dark:text-slate-200 hover:text-purple-600 dark:hover:text-purple-400 hover:bg-purple-50/50 dark:hover:bg-slate-700 rounded-xl text-xs font-black transition-colors"
               >
                 توضیحات و نمونه کارها کتبی
               </button>
@@ -444,7 +444,7 @@ export default function App() {
               </div>
               <button 
                 onClick={() => navigate('/services/workers')}
-                className="w-full py-2.5 bg-slate-50 dark:bg-slate-800 text-slate-700 dark:text-slate-200 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-blue-50/50 dark:hover:bg-slate-700 rounded-xl text-xs font-black transition-colors"
+                className="w-full py-2.5 bg-slate-50 dark:bg-slate-800 text-slate-700 dark:text-slate-200 hover:text-purple-600 dark:hover:text-purple-400 hover:bg-purple-50/50 dark:hover:bg-slate-700 rounded-xl text-xs font-black transition-colors"
               >
                 کسب اطلاعات بیشتر
               </button>
@@ -466,7 +466,7 @@ export default function App() {
               </div>
               <button 
                 onClick={() => navigate('/services/transport')}
-                className="w-full py-2.5 bg-slate-50 dark:bg-slate-800 text-slate-700 dark:text-slate-200 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-blue-50/50 dark:hover:bg-slate-700 rounded-xl text-xs font-black transition-colors"
+                className="w-full py-2.5 bg-slate-50 dark:bg-slate-800 text-slate-700 dark:text-slate-200 hover:text-purple-600 dark:hover:text-purple-400 hover:bg-purple-50/50 dark:hover:bg-slate-700 rounded-xl text-xs font-black transition-colors"
               >
                 کسب اطلاعات بیشتر
               </button>
@@ -488,7 +488,7 @@ export default function App() {
               </div>
               <button 
                 onClick={() => navigate('/services/storage')}
-                className="w-full py-2.5 bg-slate-50 dark:bg-slate-800 text-slate-700 dark:text-slate-200 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-blue-50/50 dark:hover:bg-slate-700 rounded-xl text-xs font-black transition-colors"
+                className="w-full py-2.5 bg-slate-50 dark:bg-slate-800 text-slate-700 dark:text-slate-200 hover:text-purple-600 dark:hover:text-purple-400 hover:bg-purple-50/50 dark:hover:bg-slate-700 rounded-xl text-xs font-black transition-colors"
               >
                 کسب اطلاعات بیشتر
               </button>
@@ -510,7 +510,7 @@ export default function App() {
                 پیش فاکتور دقیق با پوشش ضمانت‌نامه تا سقف دلخواه!
               </h2>
               <p className="text-xs md:text-sm text-slate-500 dark:text-slate-400 font-medium leading-relaxed text-justify">
-                سامانه هوشمند ظریف بار با تحلیل لحظه‌ای طبقات، فاصله مبدا و مقصد شما، نیاز به کادر مجزای بسته‌بندی یا کارگر تخلیه باربری، دقیق‌ترین برآورد مطابق با نرخ مصوب اتحادیه را محاسبه را برای شما نمایش می‌دهد. بدون حتی یک ریال پرداخت بیهوده یا افزایش مجدد در زمان اتمام کار!
+                سامانه هوشمند اسپاب چی با تحلیل لحظه‌ای طبقات، فاصله مبدا و مقصد شما، نیاز به کادر مجزای بسته‌بندی یا کارگر تخلیه باربری، دقیق‌ترین برآورد مطابق با نرخ مصوب اتحادیه را محاسبه را برای شما نمایش می‌دهد. بدون حتی یک ریال پرداخت بیهوده یا افزایش مجدد در زمان اتمام کار!
               </p>
 
               <div className="space-y-4 pt-2">
@@ -552,12 +552,12 @@ export default function App() {
         <section className="bg-slate-50 dark:bg-slate-900/40 border-y border-gray-100 dark:border-slate-800 py-16">
           <div className="max-w-7xl mx-auto px-4 md:px-8 grid grid-cols-1 md:grid-cols-3 gap-8">
             <div className="bg-white dark:bg-slate-900 p-6 rounded-2xl border border-gray-100 dark:border-slate-800 space-y-3 shadow-xs">
-              <div className="w-10 h-10 rounded-xl bg-blue-50 dark:bg-blue-950/40 text-blue-600 dark:text-blue-400 flex items-center justify-center">
+              <div className="w-10 h-10 rounded-xl bg-purple-50 dark:bg-blue-950/40 text-purple-600 dark:text-purple-400 flex items-center justify-center">
                 <ShieldCheck className="w-5 h-5" />
               </div>
               <h4 className="text-sm font-black text-slate-900 dark:text-white">مجوز رسمی با شماره ثبت ۱۰۰۲</h4>
               <p className="text-xs text-gray-500 dark:text-slate-300 leading-relaxed text-justify">
-                ظریف بار به عنوان باسابقه‌ترین اتوبار شهر تهران، تایید صلاحیت همه‌جانبه اعضای خود را از پلیس اماکن و سازمان تعزیرات حکومتی به ثبت رسانده است.
+                اسپاب چی به عنوان باسابقه‌ترین اتوبار شهر تهران، تایید صلاحیت همه‌جانبه اعضای خود را از پلیس اماکن و سازمان تعزیرات حکومتی به ثبت رسانده است.
               </p>
             </div>
 
@@ -594,7 +594,7 @@ export default function App() {
               </div>
               <button 
                 onClick={() => navigate('/blog')}
-                className="text-xs font-black text-blue-600 hover:text-blue-800 underline self-start cursor-pointer"
+                className="text-xs font-black text-purple-600 hover:text-blue-800 underline self-start cursor-pointer"
               >
                 مشاهده کل مقالات ⬅️
               </button>
@@ -623,7 +623,7 @@ export default function App() {
                         setActivePostSlug(post.slug);
                         navigate(`/blog/${post.slug}`);
                       }}
-                      className="text-sm font-black text-slate-900 dark:text-white hover:text-blue-600 dark:hover:text-blue-400 transition-colors line-clamp-2 leading-tight cursor-pointer"
+                      className="text-sm font-black text-slate-900 dark:text-white hover:text-purple-600 dark:hover:text-purple-400 transition-colors line-clamp-2 leading-tight cursor-pointer"
                     >
                       {post.title}
                     </h4>
@@ -637,7 +637,7 @@ export default function App() {
                         setActivePostSlug(post.slug);
                         navigate(`/blog/${post.slug}`);
                       }}
-                      className="text-[11px] font-black text-blue-600 hover:text-blue-800 dark:text-blue-400 flex items-center gap-1 cursor-pointer"
+                      className="text-[11px] font-black text-purple-600 hover:text-blue-800 dark:text-purple-400 flex items-center gap-1 cursor-pointer"
                     >
                       مطالعه مقاله کامل H1
                       <ArrowUpRight className="w-3.5 h-3.5" />
@@ -707,7 +707,7 @@ export default function App() {
             <div className="rounded-[32px] overflow-hidden shadow-md max-h-[360px]">
               <img 
                 src={about.image_url} 
-                alt="تیم اسباب کشی ظریف بار" 
+                alt="تیم اسباب کشی اسپاب چی" 
                 className="w-full h-full object-cover"
                 referrerPolicy="no-referrer"
               />
@@ -792,7 +792,7 @@ export default function App() {
       return (
         <div className="max-w-7xl mx-auto px-4 pt-4 pb-12 space-y-6 text-right animate-in fade-in duration-200" dir="rtl">
           <div className="text-center max-w-xl mx-auto space-y-3 pb-8">
-            <h1 className="text-3xl font-black text-slate-900">خدمات ممتاز و جامع حمل اثاثیه ظریف بار</h1>
+            <h1 className="text-3xl font-black text-slate-900">خدمات ممتاز و جامع حمل اثاثیه اسپاب چی</h1>
             <p className="text-xs text-gray-500">برای مشاهده جزئیات فاکتور و متد عملیاتی هر سرویس روی آن کلیک کنید.</p>
           </div>
 
@@ -807,7 +807,7 @@ export default function App() {
                   <p className="text-xs text-gray-550 text-justify line-clamp-3 leading-relaxed">{srv.description}</p>
                   <button 
                     onClick={() => navigate(`/services/${srv.slug}`)}
-                    className="text-xs font-bold text-blue-600 underline"
+                    className="text-xs font-bold text-purple-600 underline"
                   >
                     نمایش لندینگ تخصصی ⬅️
                   </button>
@@ -854,8 +854,8 @@ export default function App() {
     // Default Fallback
     return (
       <div className="text-center py-24 text-gray-500 font-bold space-y-4">
-        <p>به نظر می‌رسد آدرس مورد نظر در شبکه ظریف بار یافت نشد.</p>
-        <button onClick={() => navigate('/')} className="bg-blue-600 text-white rounded-xl px-5 py-2">بازگشت به سایت</button>
+        <p>به نظر می‌رسد آدرس مورد نظر در شبکه اسپاب چی یافت نشد.</p>
+        <button onClick={() => navigate('/')} className="bg-purple-600 text-white rounded-xl px-5 py-2">بازگشت به سایت</button>
       </div>
     );
   };
@@ -901,6 +901,7 @@ export default function App() {
           onNavigate={navigate} 
           phone={settings.phone} 
           logoUrl={settings.logo_url}
+          tagline={settings.tagline}
           isDarkMode={isDarkMode}
           onToggleDarkMode={() => setIsDarkMode(!isDarkMode)}
         />
@@ -917,6 +918,7 @@ export default function App() {
           phone_alt={settings.phone_alt}
           email={settings.email}
           address={settings.address}
+          aboutText={settings.about_text}
         />
       )}
 
@@ -924,7 +926,7 @@ export default function App() {
       {!isPlainAdminView && settings.back_to_top_enabled !== 'false' && (
         <button
           onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-          className={`fixed bottom-6 left-6 z-50 bg-white/95 backdrop-blur text-slate-850 hover:text-blue-600 border border-slate-200/60 hover:border-blue-200 w-11 h-11 md:w-12 md:h-12 rounded-2xl flex items-center justify-center shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 group ${
+          className={`fixed bottom-6 left-6 z-50 bg-white/95 backdrop-blur text-slate-850 hover:text-purple-600 border border-slate-200/60 hover:border-blue-200 w-11 h-11 md:w-12 md:h-12 rounded-2xl flex items-center justify-center shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 group ${
             showScrollTop ? 'opacity-100 translate-y-0 visible' : 'opacity-0 translate-y-10 invisible pointer-events-none'
           }`}
           title="برگشت به بالا"
@@ -955,7 +957,7 @@ export default function App() {
           {/* Direct phone call floating button */}
           <a
             href={`tel:${getCallPhone()}`}
-            className="bg-blue-600 hover:bg-blue-700 hover:scale-110 transition-all duration-300 text-white w-12 h-12 rounded-2xl flex items-center justify-center shadow-xl shadow-blue-500/20 group relative border border-blue-500/20"
+            className="bg-purple-600 hover:bg-purple-700 hover:scale-110 transition-all duration-300 text-white w-12 h-12 rounded-2xl flex items-center justify-center shadow-xl shadow-purple-500/20 group relative border border-purple-500/20"
             title="تماس مستقیم سریع"
           >
             <Phone className="w-5 h-5 animate-bounce" />

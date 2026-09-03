@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+﻿import React, { useState } from 'react';
 import { Mail, Phone, MapPin, Clock, Send, CheckCircle } from 'lucide-react';
 
 interface ContactViewProps {
@@ -65,7 +65,7 @@ export default function ContactView({ phone, phoneAlt, email, address, workingHo
           پشتیبانی سراسری و فوری
         </span>
         <h1 className="text-3xl md:text-4xl font-extrabold text-slate-900 tracking-tight">
-          {title || 'تماس با واحد پشتیبانی ظریف بار'}
+          {title || 'تماس با واحد پشتیبانی اسپاب چی'}
         </h1>
         <p className="text-sm text-gray-500 font-medium">
           {subtitle || 'هر گونه سوال، انتقاد، پیشنهاد یا مغایرت فاکتور دارید؟ تیم بازرسی ما ۲۴ ساعته همواره آماده شنیدن نظرات پرارزش شماست.'}
@@ -78,9 +78,9 @@ export default function ContactView({ phone, phoneAlt, email, address, workingHo
         <div className="lg:col-span-5 bg-gradient-to-br from-blue-900 to-slate-950 text-white rounded-3xl p-6 md:p-10 flex flex-col justify-between shadow-xl space-y-10">
           
           <div className="space-y-6">
-            <h2 className="text-xl font-bold text-yellow-300">راه‌های ارتباطی مستقیم با تلفن ۴ رقمی</h2>
+            <h2 className="text-xl font-bold text-yellow-300">راه‌های ارتباطی مستقیم با اسپاب چی</h2>
             <p className="text-xs text-slate-300 leading-relaxed">
-              ظریف بار با توسعه خط ویژه شبکه‌ای، فرآیند مشاوره را تسریع کرده است. بدون نیاز به پیش‌شماره در تهران، با شماره ۴ رقمی تماس بگیرید.
+              اسپاب چی با توسعه خط ویژه شبکه‌ای، فرآیند مشاوره را تسریع کرده است. بدون نیاز به پیش‌شماره در تهران، با شماره ۴ رقمی تماس بگیرید.
             </p>
 
             <div className="space-y-6 pt-4">
@@ -136,11 +136,6 @@ export default function ContactView({ phone, phoneAlt, email, address, workingHo
             </div>
           </div>
 
-          <div className="border-t border-white/10 pt-6">
-            <p className="text-[10px] text-slate-400 leading-relaxed">
-              * رانندگان و کارگران ما موظف به رعایت کامل پروتکل‌های اخلاقی و ارایه فاکتور ممهور به مهر برجسته ظریف بار می‌باشند.
-            </p>
-          </div>
 
         </div>
 
@@ -157,7 +152,7 @@ export default function ContactView({ phone, phoneAlt, email, address, workingHo
               </p>
               <button 
                 onClick={() => setSuccess(false)}
-                className="text-sm text-blue-600 hover:text-blue-800 font-bold underline"
+                className="text-sm text-purple-600 hover:text-blue-800 font-bold underline"
               >
                 ارسال پیام جدید
               </button>
@@ -210,7 +205,7 @@ export default function ContactView({ phone, phoneAlt, email, address, workingHo
               <button
                 type="submit"
                 disabled={loading}
-                className="w-full bg-gradient-to-r from-blue-600 to-indigo-600 text-white rounded-2xl py-3.5 px-6 font-bold text-sm shadow-md hover:opacity-95 transition-all flex items-center justify-center gap-2 cursor-pointer"
+                className="w-full bg-gradient-to-r from-purple-600 to-purple-600 text-white rounded-2xl py-3.5 px-6 font-bold text-sm shadow-md hover:opacity-95 transition-all flex items-center justify-center gap-2 cursor-pointer"
               >
                 {loading ? 'در حال ارسال پیام...' : 'ارسال نهایی پیام'}
                 <Send className="w-4.5 h-4.5" />

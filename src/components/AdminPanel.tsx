@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+﻿import React, { useState, useEffect } from 'react';
 import { User, Quote, ContactMessage, Settings, Service, Post, Category } from '../types';
 import { apiFetch, setAuthSession, clearAuthSession, validateStoredSession } from '../lib/api';
 import { DEFAULT_PACKING_DATA, DEFAULT_STORAGE_DATA, DEFAULT_TRANSPORT_DATA, DEFAULT_WORKERS_DATA } from './ServiceLanding';
@@ -714,11 +714,11 @@ export default function AdminPanel({ onLogout, phone }: AdminPanelProps) {
     // Deep copy of a structured default matching typical step forms
     return {
       notifications: {
-        step_alert: "کاربر گرامی، قیمت نهایی شامل **بیمه مسئولیت بار تا سقف ۱۰۰ میلیون تومان رایگان** از طرف شرکت بزرگ ظریف بار صادر خواهد شد.",
+        step_alert: "کاربر گرامی، قیمت نهایی شامل **بیمه مسئولیت بار تا سقف ۱۰۰ میلیون تومان رایگان** از طرف شرکت بزرگ اسپاب چی صادر خواهد شد.",
         step_alert_step: 1,
         price_disclaimer: "محاسبه بر اساس نرخ صنف باربری بهران سال ۱۴۰۵",
         success_title: "درخواست استعلام شما با موفقیت ثبت شد!",
-        success_message: "کد پیگیری شما صادر گردید. کارشناسان پشتیبان ظریف بار تا ۱۵ دقیقه آینده جهت هماهنگی نهایی تماس میگیرند."
+        success_message: "کد پیگیری شما صادر گردید. کارشناسان پشتیبان اسپاب چی تا ۱۵ دقیقه آینده جهت هماهنگی نهایی تماس میگیرند."
       },
       steps: [
         {
@@ -853,7 +853,7 @@ export default function AdminPanel({ onLogout, phone }: AdminPanelProps) {
             <div className="w-16 h-16 rounded-2xl bg-amber-500 text-white flex items-center justify-center mx-auto shadow-lg shadow-amber-500/20">
               <Shield className="w-8 h-8" />
             </div>
-            <h1 className="text-xl font-extrabold text-slate-900">ورود به پنل یکپارچه مدیریت ظریف بار</h1>
+            <h1 className="text-xl font-extrabold text-slate-900">ورود به پنل یکپارچه مدیریت اسپاب چی</h1>
             <p className="text-xs text-slate-400">امکان تغییر در کل استایل، وبلاگ، خدمات و قیمت‌ها</p>
           </div>
 
@@ -927,7 +927,7 @@ export default function AdminPanel({ onLogout, phone }: AdminPanelProps) {
             <Shield className="w-5.5 h-5.5" />
           </div>
           <div>
-            <span className="text-sm font-black block leading-tight text-white">مدیریت هوشمند ظریف بار</span>
+            <span className="text-sm font-black block leading-tight text-white">مدیریت هوشمند اسپاب چی</span>
             <span className="text-[10px] text-amber-400 font-extrabold block leading-none pt-0.5">
               {currentUser.role === 'admin' ? 'کنترل پنل مدیر ارشد' : 'دسترسی همکار/نویسنده'}
             </span>
@@ -962,7 +962,7 @@ export default function AdminPanel({ onLogout, phone }: AdminPanelProps) {
               <Shield className="w-6 h-6" />
             </div>
             <div>
-              <span className="text-lg font-black text-white block">پنل مدیریت ظریف بار</span>
+              <span className="text-lg font-black text-white block">پنل مدیریت اسپاب چی</span>
               <span className="text-[10px] text-amber-500 font-bold block">
                 {currentUser.role === 'admin' ? 'دسترسی ادمین کل' : 'دسترسی همکار/نویسنده'}
               </span>
@@ -1045,7 +1045,7 @@ export default function AdminPanel({ onLogout, phone }: AdminPanelProps) {
                   پیام‌های ورودی
                 </span>
                 {contacts.filter(c => c.status === 'unread').length > 0 && (
-                  <span className="bg-blue-500 text-white text-[10px] font-bold px-2 py-0.5 rounded-full">
+                  <span className="bg-purple-500 text-white text-[10px] font-bold px-2 py-0.5 rounded-full">
                     {contacts.filter(c => c.status === 'unread').length}
                   </span>
                 )}
@@ -1149,7 +1149,7 @@ export default function AdminPanel({ onLogout, phone }: AdminPanelProps) {
                         {contacts.filter(c => c.status === 'unread').length}
                       </strong>
                     </div>
-                    <div className="w-12 h-12 bg-blue-50 text-blue-500 rounded-2xl flex items-center justify-center">
+                    <div className="w-12 h-12 bg-purple-50 text-blue-500 rounded-2xl flex items-center justify-center">
                       <PhoneCall className="w-6 h-6" />
                     </div>
                   </div>
@@ -1182,7 +1182,7 @@ export default function AdminPanel({ onLogout, phone }: AdminPanelProps) {
                 <div className="bg-white rounded-3xl p-6 md:p-8 border border-gray-100 shadow-sm space-y-6">
                   <h3 className="text-base font-black text-slate-900">📌 راهنمای استفاده سریع از سیستم</h3>
                   <p className="text-xs text-slate-500 leading-relaxed text-justify">
-                    اتوبار ظریف بار مجهز به یک موتور مدیریت محتوای قدرتمند است. تغییراتی که در فیلد تلفن‌ها، آدرس، کارتن‌های ضربه‌گیر، نرخ‌های محاسباتی یا محتوای وبلاگ ایجاد می‌کنید، بلافاصله در کل فرانت‌اِند وب‌سایت اعمال و بروزرسانی خواهند شد. 
+                    اتوبار اسپاب چی مجهز به یک موتور مدیریت محتوای قدرتمند است. تغییراتی که در فیلد تلفن‌ها، آدرس، کارتن‌های ضربه‌گیر، نرخ‌های محاسباتی یا محتوای وبلاگ ایجاد می‌کنید، بلافاصله در کل فرانت‌اِند وب‌سایت اعمال و بروزرسانی خواهند شد. 
                     از امنیت اسناد و سوابق تماس گرفته تا تصاویر، همگی بهینه بارگذاری می‌شوند.
                   </p>
                   
@@ -1288,7 +1288,7 @@ export default function AdminPanel({ onLogout, phone }: AdminPanelProps) {
                         setShowPostForm(true);
                       }
                     }}
-                    className="flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white py-2.5 px-4 rounded-xl text-xs font-black transition-all cursor-pointer"
+                    className="flex items-center gap-2 bg-purple-600 hover:bg-purple-700 text-white py-2.5 px-4 rounded-xl text-xs font-black transition-all cursor-pointer"
                   >
                     <PlusCircle className="w-4.5 h-4.5" />
                     {showPostForm ? 'بستن فرم ویرایش' : 'افزودن مقاله جدید برای سئو'}
@@ -1298,7 +1298,7 @@ export default function AdminPanel({ onLogout, phone }: AdminPanelProps) {
                 {/* Blog Editor Form */}
                 {showPostForm && (
                   <form onSubmit={handleSavePost} className="bg-white rounded-3xl p-6 md:p-8 border border-gray-100 shadow-sm space-y-6">
-                    <h4 className="text-sm font-black text-blue-600 border-b border-gray-100 pb-3">
+                    <h4 className="text-sm font-black text-purple-600 border-b border-gray-100 pb-3">
                       {editingPost ? 'ویرایش آنلاین مطلب وبلاگ' : 'ایجاد و بارگذاری مقاله تخصصی جدید'}
                     </h4>
 
@@ -1373,7 +1373,7 @@ export default function AdminPanel({ onLogout, phone }: AdminPanelProps) {
                     {/* SEO Settings */}
                     <div className="bg-slate-50 rounded-2xl p-4 border border-slate-100 space-y-4">
                       <span className="text-xs font-black text-slate-700 flex items-center gap-1.5">
-                        <Tag className="w-4 h-4 text-blue-600" />
+                        <Tag className="w-4 h-4 text-purple-600" />
                         تنظیمات سئو (Meta SEO settings):
                       </span>
                       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -1546,7 +1546,7 @@ export default function AdminPanel({ onLogout, phone }: AdminPanelProps) {
                             <td className="py-3 px-4 text-center space-x-2">
                               <button 
                                 onClick={() => startEditPost(p)}
-                                className="p-1 text-blue-600 hover:text-blue-800"
+                                className="p-1 text-purple-600 hover:text-blue-800"
                               >
                                 <Edit2 className="w-3.5 h-3.5 inline" />
                               </button>
@@ -1581,12 +1581,12 @@ export default function AdminPanel({ onLogout, phone }: AdminPanelProps) {
                     <h3 className="text-base font-black text-slate-900">مدیریت لندینگ خدمات (بسته‌بندی، کارگر خالی، وانت، انبار)</h3>
                     <p className="text-xs text-slate-400 mt-1">تغییر فوری متن، تصاویر شاخص و سئوی لندینگ تکی ۴ خدمت اصلی سایت</p>
                   </div>
-                  <span className="text-xs text-blue-600 font-bold">بیمه دولتی رایگان تضمینی</span>
+                  <span className="text-xs text-purple-600 font-bold">بیمه دولتی رایگان تضمینی</span>
                 </div>
 
                 {editingService ? (
                   <form onSubmit={handleSaveService} className="bg-white rounded-3xl p-6 md:p-8 border border-gray-100 shadow-sm space-y-6">
-                    <h4 className="text-sm font-black text-blue-600">
+                    <h4 className="text-sm font-black text-purple-600">
                       ویرایش آنلاین فیلدهای مربوط به لندینگ: {editingService.name}
                     </h4>
 
@@ -1639,7 +1639,7 @@ export default function AdminPanel({ onLogout, phone }: AdminPanelProps) {
                       </div>
                     </div>
 
-                    <div className="bg-blue-50/50 rounded-2xl p-4 border border-blue-100 mt-2">
+                    <div className="bg-purple-50/50 rounded-2xl p-4 border border-blue-100 mt-2">
                       <label className="block text-xs font-black text-slate-800 mb-2">🎥 ویدیو اختصاصی لندینگ خدمت (لینک مستقیم یا آپلود فایل)</label>
                       <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 items-center">
                         <div className="sm:col-span-2">
@@ -1824,6 +1824,16 @@ export default function AdminPanel({ onLogout, phone }: AdminPanelProps) {
                     />
                   </div>
                   <div>
+                    <label className="block text-xs font-bold text-gray-500 mb-2">تگ‌لاین / شعار کنار لوگو</label>
+                    <input 
+                      type="text" 
+                      value={settings.tagline || ''}
+                      onChange={(e) => handleSettingChange('tagline', e.target.value)}
+                      placeholder="مثال: اتوبار مدرن"
+                      className="w-full bg-gray-50 border border-gray-150 rounded-2xl py-3 px-4 text-xs font-bold text-slate-800 font-sans"
+                    />
+                  </div>
+                  <div>
                     <label className="block text-xs font-bold text-gray-500 mb-2">شماره تلفن خط ویژه ۴ رقمی</label>
                     <input 
                       type="text" 
@@ -1904,13 +1914,11 @@ export default function AdminPanel({ onLogout, phone }: AdminPanelProps) {
                     <div className="flex flex-col items-center justify-center p-4 bg-white border border-gray-100 rounded-2xl min-h-[140px] shadow-sm">
                       <span className="text-[10px] text-gray-400 font-bold mb-2">پیش‌نمایش زنده لوگوی هدر:</span>
                       {settings.logo_url ? (
-                        <div className="w-16 h-16 rounded-xl bg-blue-600 flex items-center justify-center overflow-hidden border border-gray-100 p-1">
-                          <img src={settings.logo_url} alt="لوگوی وب‌سایت" className="w-full h-full object-contain" referrerPolicy="no-referrer" />
+                        <div className="h-16">
+                          <img src={settings.logo_url} alt="لوگوی وب‌سایت" className="h-full object-contain" referrerPolicy="no-referrer" />
                         </div>
                       ) : (
-                        <div className="w-16 h-16 rounded-xl bg-blue-600 flex items-center justify-center text-white shadow-md font-black text-xs">
-                          <span>LOGO</span>
-                        </div>
+                        <span className="text-sm font-black text-purple-600">LOGO</span>
                       )}
                     </div>
                   </div>
@@ -2036,15 +2044,26 @@ export default function AdminPanel({ onLogout, phone }: AdminPanelProps) {
                   />
                 </div>
 
+                <div>
+                  <label className="block text-xs font-bold text-gray-500 mb-2">متن معرفی شرکت در فوتر</label>
+                  <textarea 
+                    rows={4}
+                    value={settings.about_text || ''}
+                    onChange={(e) => handleSettingChange('about_text', e.target.value)}
+                    className="w-full bg-gray-50 border border-gray-150 rounded-2xl py-3 px-4 text-xs font-medium text-slate-800 leading-relaxed"
+                    placeholder="متن معرفی شرقت یا متن درباره اسپاب چی در فوتر سایت..."
+                  />
+                </div>
+
                 {/* DYNAMIC PACKING PAGE CONTENT EDITOR SECTION */}
                 <div className="border-t border-gray-150 pt-8 mt-8 space-y-6">
-                  <div className="bg-blue-50/40 rounded-[32px] p-6 md:p-8 border border-blue-100 space-y-6">
+                  <div className="bg-purple-50/40 rounded-[32px] p-6 md:p-8 border border-blue-100 space-y-6">
                     <div>
                       <h4 className="text-sm font-black text-blue-900 flex items-center gap-2">
-                        <Grid className="w-5 h-5 text-blue-600" />
-                        مدیریت محتوای فرود تکی صفحه بسته‌بندی ظریف بار
+                        <Grid className="w-5 h-5 text-purple-600" />
+                        مدیریت محتوای فرود تکی صفحه بسته‌بندی اسپاب چی
                       </h4>
-                      <p className="text-[11px] text-blue-600 mt-1">
+                      <p className="text-[11px] text-purple-600 mt-1">
                         با زدن دکمه‌های زیر، متون و تصاویر و قیمت‌های مخصوص صفحه بسته‌بندی را ویرایش کنید، سپس روی «ذخیره کلی تنظیمات» در بالا کلیک کنید.
                       </p>
                     </div>
@@ -2065,8 +2084,8 @@ export default function AdminPanel({ onLogout, phone }: AdminPanelProps) {
                           onClick={() => setPackingSubTab(t.id as any)}
                           className={`px-4 py-2 rounded-xl text-xs font-black transition-all ${
                             packingSubTab === t.id 
-                              ? 'bg-blue-600 text-white shadow-sm' 
-                              : 'bg-white hover:bg-blue-50 text-blue-800 border border-blue-100'
+                              ? 'bg-purple-600 text-white shadow-sm' 
+                              : 'bg-white hover:bg-purple-50 text-blue-800 border border-blue-100'
                           }`}
                         >
                           {t.name}
@@ -2118,7 +2137,7 @@ export default function AdminPanel({ onLogout, phone }: AdminPanelProps) {
                                 <ImageUploader onUpload={(url) => handlePackingFieldChange('heroImage', url)} />
                               </div>
                             </div>
-                            <div className="md:col-span-2 bg-blue-50/40 rounded-2xl p-4 border border-blue-100">
+                            <div className="md:col-span-2 bg-purple-50/40 rounded-2xl p-4 border border-blue-100">
                               <label className="block text-xs font-black text-slate-800 mb-2">🎥 ویدیو هیرو لندینگ بسته‌بندی</label>
                               <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 items-center">
                                 <div className="sm:col-span-2">
@@ -2331,7 +2350,7 @@ export default function AdminPanel({ onLogout, phone }: AdminPanelProps) {
                                 <div key={i} className="bg-slate-50 border border-slate-100 rounded-2xl p-4 space-y-3">
                                   <div className="font-extrabold text-xs text-blue-900 border-b border-blue-50/50 pb-1">موضوع تفصیلی هماهنگی {i + 1}</div>
                                   <div>
-                                    <label className="block text-[10px] font-bold text-slate-500 mb-1">عنوان موضوع (مثال: نحوه بسته‌بندی ظریف بار)</label>
+                                    <label className="block text-[10px] font-bold text-slate-500 mb-1">عنوان موضوع (مثال: نحوه بسته‌بندی اسپاب چی)</label>
                                     <input
                                       type="text"
                                       value={t.title || ''}
@@ -2357,7 +2376,7 @@ export default function AdminPanel({ onLogout, phone }: AdminPanelProps) {
                         {packingSubTab === 'outro' && (
                           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                             <div className="md:col-span-2">
-                              <h5 className="font-bold text-xs text-blue-900 mb-2 border-b border-blue-50 pb-2">داستان برند ظریف بار (Brand Trust Story)</h5>
+                              <h5 className="font-bold text-xs text-blue-900 mb-2 border-b border-blue-50 pb-2">داستان برند اسپاب چی (Brand Trust Story)</h5>
                             </div>
                             <div>
                               <label className="block text-[11px] font-bold text-gray-500 mb-2">عنوان داستان برند</label>
@@ -2424,7 +2443,7 @@ export default function AdminPanel({ onLogout, phone }: AdminPanelProps) {
                     <div>
                       <h4 className="text-sm font-black text-violet-900 flex items-center gap-2">
                         <Grid className="w-5 h-5 text-violet-600" />
-                        مدیریت محتوای فرود تکی صفحه اجاره انبار ظریف بار
+                        مدیریت محتوای فرود تکی صفحه اجاره انبار اسپاب چی
                       </h4>
                       <p className="text-[11px] text-violet-600 mt-1">
                         با زدن دکمه‌های زیر، متون و تصاویر و قیمت‌های مخصوص صفحه اجاره انبار را ویرایش کنید، سپس روی «ذخیره کلی تنظیمات» در بالا کلیک کنید.
@@ -2806,7 +2825,7 @@ export default function AdminPanel({ onLogout, phone }: AdminPanelProps) {
                     <div>
                       <h4 className="text-sm font-black text-indigo-900 flex items-center gap-2">
                         <Grid className="w-5 h-5 text-indigo-600" />
-                        مدیریت محتوای فرود تکی صفحه وانت بار و نیسان بار ظریف بار
+                        مدیریت محتوای فرود تکی صفحه وانت بار و نیسان بار اسپاب چی
                       </h4>
                       <p className="text-[11px] text-indigo-600 mt-1">
                         با زدن دکمه‌های زیر، متون و تصاویر و قیمت‌های مخصوص صفحه وانت و نیسان بار را ویرایش کنید، سپس روی «ذخیره کلی تنظیمات» در بالا کلیک کنید.
@@ -3173,13 +3192,13 @@ export default function AdminPanel({ onLogout, phone }: AdminPanelProps) {
 
                 {/* DYNAMIC WORKERS PAGE CONTENT EDITOR SECTION */}
                 <div className="border-t border-gray-150 pt-8 mt-8 space-y-6">
-                  <div className="bg-blue-50/40 rounded-[32px] p-6 md:p-8 border border-blue-100 space-y-6">
+                  <div className="bg-purple-50/40 rounded-[32px] p-6 md:p-8 border border-blue-100 space-y-6">
                     <div>
                       <h4 className="text-sm font-black text-blue-900 flex items-center gap-2">
-                        <Grid className="w-5 h-5 text-blue-600" />
-                        مدیریت محتوای فرود تکی صفحه کارگر خالی اسباب کشی ظریف بار
+                        <Grid className="w-5 h-5 text-purple-600" />
+                        مدیریت محتوای فرود تکی صفحه کارگر خالی اسباب کشی اسپاب چی
                       </h4>
-                      <p className="text-[11px] text-blue-600 mt-1">
+                      <p className="text-[11px] text-purple-600 mt-1">
                         با زدن دکمه‌های زیر، متون و تصاویر و قیمت‌های مخصوص صفحه کارگر خالی را ویرایش کنید، سپس روی «ذخیره کلی تنظیمات» در بالا کلیک کنید.
                       </p>
                     </div>
@@ -3200,7 +3219,7 @@ export default function AdminPanel({ onLogout, phone }: AdminPanelProps) {
                           onClick={() => setWorkersSubTab(t.id as any)}
                           className={`px-4 py-1.5 rounded-full text-xs font-bold transition-all border ${
                             workersSubTab === t.id 
-                              ? 'bg-blue-600 text-white border-blue-600 shadow-xs' 
+                              ? 'bg-purple-600 text-white border-purple-600 shadow-xs' 
                               : 'bg-white text-gray-600 border-gray-200 hover:bg-gray-50'
                           }`}
                         >
@@ -3417,6 +3436,9 @@ export default function AdminPanel({ onLogout, phone }: AdminPanelProps) {
                                       onChange={(e) => handleWorkersArrayChange('materials', i, 'image', e.target.value)}
                                       className="w-full bg-gray-50 border border-gray-150 rounded-lg py-1.5 px-2.5 text-xs font-semibold"
                                     />
+                                    <div className="mt-1">
+                                      <ImageUploader onUpload={(url) => handleWorkersArrayChange('materials', i, 'image', url)} />
+                                    </div>
                                   </div>
                                 </div>
                                 <div>
@@ -3790,7 +3812,7 @@ export default function AdminPanel({ onLogout, phone }: AdminPanelProps) {
                                     updateEstimatorConfig(conf);
                                   }}
                                   placeholder="مثال: اطلاعات مکانی"
-                                  className="bg-transparent border-b border-gray-200 dark:border-slate-700 hover:border-gray-300 dark:hover:border-slate-600 focus:border-blue-500 text-xs font-extrabold py-0.5 text-slate-900 dark:text-white focus:outline-none"
+                                  className="bg-transparent border-b border-gray-200 dark:border-slate-700 hover:border-gray-300 dark:hover:border-slate-600 focus:border-purple-500 text-xs font-extrabold py-0.5 text-slate-900 dark:text-white focus:outline-none"
                                 />
                               </div>
                             </div>
@@ -3983,7 +4005,7 @@ export default function AdminPanel({ onLogout, phone }: AdminPanelProps) {
                                           conf.steps[sIdx].fields[fIdx].required = e.target.checked;
                                           updateEstimatorConfig(conf);
                                         }}
-                                        className="w-4 h-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500 cursor-pointer"
+                                        className="w-4 h-4 text-purple-600 border-gray-300 rounded focus:ring-blue-500 cursor-pointer"
                                       />
                                       <label htmlFor={`req-${sIdx}-${fIdx}`} className="text-xs text-gray-500 dark:text-slate-400 font-bold select-none cursor-pointer">پر کردن فیلد اجباری است</label>
                                     </div>

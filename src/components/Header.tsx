@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+﻿import React, { useState, useEffect } from 'react';
 import { Menu, X, Phone, ShieldCheck, ChevronDown, UserCheck, Sun, Moon } from 'lucide-react';
 
 interface HeaderProps {
@@ -6,11 +6,12 @@ interface HeaderProps {
   onNavigate: (path: string) => void;
   phone: string;
   logoUrl?: string;
+  tagline?: string;
   isDarkMode?: boolean;
   onToggleDarkMode?: () => void;
 }
 
-export default function Header({ currentPath, onNavigate, phone, logoUrl, isDarkMode = false, onToggleDarkMode }: HeaderProps) {
+export default function Header({ currentPath, onNavigate, phone, logoUrl, tagline, isDarkMode = false, onToggleDarkMode }: HeaderProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [showSubMenu, setShowSubMenu] = useState(false);
@@ -51,16 +52,16 @@ export default function Header({ currentPath, onNavigate, phone, logoUrl, isDark
           onClick={() => handleLinkClick('/')} 
           className="flex items-center gap-2 md:gap-3 cursor-pointer group shrink-0"
         >
-          <div className="w-8 h-8 md:w-10 md:h-10 rounded-xl bg-blue-600 flex items-center justify-center text-white shadow-lg shadow-blue-500/30 group-hover:bg-blue-700 transition-colors overflow-hidden shrink-0">
+          <div className="h-8 md:h-10 shrink-0">
              {logoUrl ? (
-               <img src={logoUrl} alt="ظریف بار" className="w-full h-full object-contain" referrerPolicy="no-referrer" />
+               <img src={logoUrl} alt="اسپاب چی" className="h-full object-contain" referrerPolicy="no-referrer" />
              ) : (
-               <span className="font-black text-[10px] md:text-xs">LOGO</span>
+               <span className="font-black text-xs md:text-sm text-purple-600">LOGO</span>
              )}
           </div>
           <div>
             <span className="text-sm md:text-xl lg:text-2xl font-black text-gray-900 tracking-tight block whitespace-nowrap">
-              ظریف بار <span className="hidden md:inline-block text-blue-600 font-medium text-xs md:text-sm">اتوبار مدرن</span>
+              اسپاب چی <span className="hidden md:inline-block text-purple-600 font-medium text-xs md:text-sm">{tagline || 'اتوبار مدرن'}</span>
             </span>
           </div>
         </div>
@@ -69,7 +70,7 @@ export default function Header({ currentPath, onNavigate, phone, logoUrl, isDark
         <nav className="hidden xl:flex items-center gap-3 xl:gap-5 text-[#475569] dark:text-slate-300 font-semibold text-xs xl:text-sm whitespace-nowrap">
           <button 
             onClick={() => handleLinkClick('/')} 
-            className={`transition-colors py-2 hover:text-blue-600 dark:hover:text-blue-400 whitespace-nowrap ${currentPath === '/' ? 'text-blue-600 border-b-2 border-blue-600' : ''}`}
+            className={`transition-colors py-2 hover:text-purple-600 dark:hover:text-purple-400 whitespace-nowrap ${currentPath === '/' ? 'text-purple-600 border-b-2 border-purple-600' : ''}`}
           >
             صفحه اصلی
           </button>
@@ -81,8 +82,8 @@ export default function Header({ currentPath, onNavigate, phone, logoUrl, isDark
             onMouseLeave={() => setShowSubMenu(false)}
           >
             <button 
-              className={`flex items-center gap-1 py-2 transition-colors hover:text-blue-600 dark:hover:text-blue-400 cursor-pointer whitespace-nowrap ${
-                currentPath.startsWith('/services') ? 'text-blue-600 dark:text-blue-400' : ''
+              className={`flex items-center gap-1 py-2 transition-colors hover:text-purple-600 dark:hover:text-purple-400 cursor-pointer whitespace-nowrap ${
+                currentPath.startsWith('/services') ? 'text-purple-600 dark:text-purple-400' : ''
               }`}
             >
               خدمات ما
@@ -95,8 +96,8 @@ export default function Header({ currentPath, onNavigate, phone, logoUrl, isDark
                     <button
                       key={item.slug}
                       onClick={() => handleLinkClick(`/services/${item.slug}`)}
-                      className={`w-full text-right px-4 py-3 rounded-xl transition-all duration-200 text-sm font-medium hover:bg-blue-50 dark:hover:bg-slate-800 hover:text-blue-600 dark:hover:text-blue-400 whitespace-nowrap ${
-                        currentPath === `/services/${item.slug}` ? 'bg-blue-50 dark:bg-slate-800 text-blue-600 dark:text-blue-400' : 'text-gray-700 dark:text-slate-350'
+                      className={`w-full text-right px-4 py-3 rounded-xl transition-all duration-200 text-sm font-medium hover:bg-purple-50 dark:hover:bg-slate-800 hover:text-purple-600 dark:hover:text-purple-400 whitespace-nowrap ${
+                        currentPath === `/services/${item.slug}` ? 'bg-purple-50 dark:bg-slate-800 text-purple-600 dark:text-purple-400' : 'text-gray-700 dark:text-slate-350'
                       }`}
                     >
                       {item.title}
@@ -105,7 +106,7 @@ export default function Header({ currentPath, onNavigate, phone, logoUrl, isDark
                   <div className="border-t border-gray-100 dark:border-slate-800 my-1"></div>
                   <button
                     onClick={() => handleLinkClick('/services')}
-                    className="w-full text-center px-4 py-2 text-xs font-bold text-gray-500 hover:text-blue-600 dark:hover:text-blue-400 transition-colors whitespace-nowrap"
+                    className="w-full text-center px-4 py-2 text-xs font-bold text-gray-500 hover:text-purple-600 dark:hover:text-purple-400 transition-colors whitespace-nowrap"
                   >
                     مشاهده تمامی خدمات
                   </button>
@@ -116,35 +117,35 @@ export default function Header({ currentPath, onNavigate, phone, logoUrl, isDark
 
           <button 
             onClick={() => handleLinkClick('/blog')} 
-            className={`transition-colors py-2 hover:text-blue-600 dark:hover:text-blue-400 whitespace-nowrap ${currentPath.startsWith('/blog') ? 'text-blue-600 border-b-2 border-blue-600' : ''}`}
+            className={`transition-colors py-2 hover:text-purple-600 dark:hover:text-purple-400 whitespace-nowrap ${currentPath.startsWith('/blog') ? 'text-purple-600 border-b-2 border-purple-600' : ''}`}
           >
             وبلاگ و دانستنی‌ها
           </button>
 
           <button 
             onClick={() => handleLinkClick('/areas')} 
-            className={`transition-colors py-2 hover:text-blue-600 dark:hover:text-blue-400 whitespace-nowrap ${currentPath === '/areas' ? 'text-blue-600 border-b-2 border-blue-600' : ''}`}
+            className={`transition-colors py-2 hover:text-purple-600 dark:hover:text-purple-400 whitespace-nowrap ${currentPath === '/areas' ? 'text-purple-600 border-b-2 border-purple-600' : ''}`}
           >
             مناطق تحت پوشش
           </button>
 
           <button 
             onClick={() => handleLinkClick('/about')} 
-            className={`transition-colors py-2 hover:text-blue-600 dark:hover:text-blue-400 whitespace-nowrap ${currentPath === '/about' ? 'text-blue-600 border-b-2 border-blue-600' : ''}`}
+            className={`transition-colors py-2 hover:text-purple-600 dark:hover:text-purple-400 whitespace-nowrap ${currentPath === '/about' ? 'text-purple-600 border-b-2 border-purple-600' : ''}`}
           >
             درباره ما
           </button>
 
           <button 
             onClick={() => handleLinkClick('/contact')} 
-            className={`transition-colors py-2 hover:text-blue-600 dark:hover:text-blue-400 whitespace-nowrap ${currentPath === '/contact' ? 'text-blue-600 border-b-2 border-blue-600' : ''}`}
+            className={`transition-colors py-2 hover:text-purple-600 dark:hover:text-purple-400 whitespace-nowrap ${currentPath === '/contact' ? 'text-purple-600 border-b-2 border-purple-600' : ''}`}
           >
             تماس با ما
           </button>
 
           <button 
             onClick={() => handleLinkClick('/privacy')} 
-            className={`transition-colors py-2 hover:text-blue-600 dark:hover:text-blue-400 whitespace-nowrap ${currentPath === '/privacy' ? 'text-blue-600 border-b-2 border-blue-600' : ''}`}
+            className={`transition-colors py-2 hover:text-purple-600 dark:hover:text-purple-400 whitespace-nowrap ${currentPath === '/privacy' ? 'text-purple-600 border-b-2 border-purple-600' : ''}`}
           >
             حریم خصوصی و قوانین
           </button>
@@ -164,7 +165,7 @@ export default function Header({ currentPath, onNavigate, phone, logoUrl, isDark
 
           <a 
             href={`tel:${phone}`}
-            className="flex items-center gap-1.5 bg-gradient-to-r from-blue-600 to-indigo-600 text-white rounded-xl md:rounded-2xl px-2.5 py-1.5 md:px-5 md:py-2.5 shadow-md shadow-blue-500/20 hover:opacity-95 transition-all text-xs md:text-sm font-bold whitespace-nowrap shrink-0"
+            className="flex items-center gap-1.5 bg-gradient-to-r from-purple-600 to-purple-600 text-white rounded-xl md:rounded-2xl px-2.5 py-1.5 md:px-5 md:py-2.5 shadow-md shadow-purple-500/20 hover:opacity-95 transition-all text-xs md:text-sm font-bold whitespace-nowrap shrink-0"
           >
             <Phone className="w-3.5 h-3.5 md:w-4 md:h-4 animate-bounce" />
             <span className="hidden sm:inline">تماس سریع:</span>
@@ -189,7 +190,7 @@ export default function Header({ currentPath, onNavigate, phone, logoUrl, isDark
               onClick={() => handleLinkClick('/')} 
               className={`text-right py-3 px-4 rounded-xl text-sm transition-all duration-200 hover:bg-slate-50 dark:hover:bg-slate-800/50 ${
                 currentPath === '/' 
-                  ? 'text-blue-600 dark:text-blue-400 bg-blue-50/50 dark:bg-slate-800 border-r-4 border-blue-600 dark:border-blue-500 font-extrabold' 
+                  ? 'text-purple-600 dark:text-purple-400 bg-purple-50/50 dark:bg-slate-800 border-r-4 border-purple-600 dark:border-purple-500 font-extrabold' 
                   : 'text-slate-700 dark:text-slate-300'
               }`}
             >
@@ -198,7 +199,7 @@ export default function Header({ currentPath, onNavigate, phone, logoUrl, isDark
             
             <div className="bg-slate-50 dark:bg-slate-950/40 border border-slate-100/50 dark:border-slate-800/60 rounded-2xl p-3 my-1">
               <span className="text-slate-400 dark:text-slate-500 text-[11px] font-black tracking-wider px-4 block pb-2 border-b border-slate-100 dark:border-slate-800/40 mb-2">
-                خدمات تخصصی ظریف بار
+                خدمات تخصصی اسپاب چی
               </span>
               <div className="flex flex-col gap-1">
                 {services.map((child) => (
@@ -207,8 +208,8 @@ export default function Header({ currentPath, onNavigate, phone, logoUrl, isDark
                     onClick={() => handleLinkClick(`/services/${child.slug}`)}
                     className={`text-right py-2 px-4 rounded-lg text-xs font-semibold transition-all duration-150 ${
                       currentPath === `/services/${child.slug}`
-                        ? 'text-blue-600 dark:text-blue-400 bg-blue-50/30 dark:bg-slate-900/60 font-black'
-                        : 'text-slate-600 dark:text-slate-400 hover:bg-white dark:hover:bg-slate-900 hover:text-blue-600 dark:hover:text-blue-400'
+                        ? 'text-purple-600 dark:text-purple-400 bg-purple-50/30 dark:bg-slate-900/60 font-black'
+                        : 'text-slate-600 dark:text-slate-400 hover:bg-white dark:hover:bg-slate-900 hover:text-purple-600 dark:hover:text-purple-400'
                     }`}
                   >
                     • {child.title}
@@ -221,7 +222,7 @@ export default function Header({ currentPath, onNavigate, phone, logoUrl, isDark
               onClick={() => handleLinkClick('/blog')} 
               className={`text-right py-3 px-4 rounded-xl text-sm transition-all duration-150 hover:bg-slate-50 dark:hover:bg-slate-800/50 ${
                 currentPath.startsWith('/blog') 
-                  ? 'text-blue-600 dark:text-blue-400 bg-blue-50/50 dark:bg-slate-800 border-r-4 border-blue-600 dark:border-blue-500 font-extrabold' 
+                  ? 'text-purple-600 dark:text-purple-400 bg-purple-50/50 dark:bg-slate-800 border-r-4 border-purple-600 dark:border-purple-500 font-extrabold' 
                   : 'text-slate-700 dark:text-slate-300'
               }`}
             >
@@ -232,7 +233,7 @@ export default function Header({ currentPath, onNavigate, phone, logoUrl, isDark
               onClick={() => handleLinkClick('/areas')} 
               className={`text-right py-3 px-4 rounded-xl text-sm transition-all duration-150 hover:bg-slate-50 dark:hover:bg-slate-800/50 ${
                 currentPath === '/areas' 
-                  ? 'text-blue-600 dark:text-blue-400 bg-blue-50/50 dark:bg-slate-800 border-r-4 border-blue-600 dark:border-blue-500 font-extrabold' 
+                  ? 'text-purple-600 dark:text-purple-400 bg-purple-50/50 dark:bg-slate-800 border-r-4 border-purple-600 dark:border-purple-500 font-extrabold' 
                   : 'text-slate-700 dark:text-slate-300'
               }`}
             >
@@ -243,7 +244,7 @@ export default function Header({ currentPath, onNavigate, phone, logoUrl, isDark
               onClick={() => handleLinkClick('/about')} 
               className={`text-right py-3 px-4 rounded-xl text-sm transition-all duration-150 hover:bg-slate-50 dark:hover:bg-slate-800/50 ${
                 currentPath === '/about' 
-                  ? 'text-blue-600 dark:text-blue-400 bg-blue-50/50 dark:bg-slate-800 border-r-4 border-blue-600 dark:border-blue-500 font-extrabold' 
+                  ? 'text-purple-600 dark:text-purple-400 bg-purple-50/50 dark:bg-slate-800 border-r-4 border-purple-600 dark:border-purple-500 font-extrabold' 
                   : 'text-slate-700 dark:text-slate-300'
               }`}
             >
@@ -254,7 +255,7 @@ export default function Header({ currentPath, onNavigate, phone, logoUrl, isDark
               onClick={() => handleLinkClick('/contact')} 
               className={`text-right py-3 px-4 rounded-xl text-sm transition-all duration-150 hover:bg-slate-50 dark:hover:bg-slate-800/50 ${
                 currentPath === '/contact' 
-                  ? 'text-blue-600 dark:text-blue-400 bg-blue-50/50 dark:bg-slate-800 border-r-4 border-blue-600 dark:border-blue-500 font-extrabold' 
+                  ? 'text-purple-600 dark:text-purple-400 bg-purple-50/50 dark:bg-slate-800 border-r-4 border-purple-600 dark:border-purple-500 font-extrabold' 
                   : 'text-slate-700 dark:text-slate-300'
               }`}
             >
@@ -265,7 +266,7 @@ export default function Header({ currentPath, onNavigate, phone, logoUrl, isDark
               onClick={() => handleLinkClick('/privacy')} 
               className={`text-right py-3 px-4 rounded-xl text-sm transition-all duration-150 hover:bg-slate-50 dark:hover:bg-slate-800/50 ${
                 currentPath === '/privacy' 
-                  ? 'text-blue-600 dark:text-blue-400 bg-blue-50/50 dark:bg-slate-800 border-r-4 border-blue-600 dark:border-blue-500 font-extrabold' 
+                  ? 'text-purple-600 dark:text-purple-400 bg-purple-50/50 dark:bg-slate-800 border-r-4 border-purple-600 dark:border-purple-500 font-extrabold' 
                   : 'text-slate-700 dark:text-slate-300'
               }`}
             >

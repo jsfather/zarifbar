@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+﻿import React, { useEffect, useState } from 'react';
 import { Post, Category } from '../types';
 import { Calendar, User, Search, ArrowRight, BookOpen, Clock, Tag, ChevronLeft } from 'lucide-react';
 
@@ -77,7 +77,7 @@ export default function BlogView({ onNavigate, selectedPostSlug, onSelectPost }:
     if (singleLoading) {
       return (
         <div className="flex justify-center items-center py-24">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600"></div>
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-purple-600"></div>
         </div>
       );
     }
@@ -86,7 +86,7 @@ export default function BlogView({ onNavigate, selectedPostSlug, onSelectPost }:
       return (
         <div className="max-w-3xl mx-auto px-4 py-16 text-center text-gray-500">
           مطلب مورد نظر یافت نشد.
-          <button onClick={() => onSelectPost('')} className="block mx-auto mt-4 text-blue-600 font-bold underline">بازگشت به آرشیو وبلاگ</button>
+          <button onClick={() => onSelectPost('')} className="block mx-auto mt-4 text-purple-600 font-bold underline">بازگشت به آرشیو وبلاگ</button>
         </div>
       );
     }
@@ -95,7 +95,7 @@ export default function BlogView({ onNavigate, selectedPostSlug, onSelectPost }:
       <div className="pt-3 pb-12 md:pt-4 md:pb-16 max-w-4xl mx-auto px-4 leading-relaxed" dir="rtl">
         {/* Breadcrumb path */}
         <div className="mb-4 flex items-center gap-2 text-xs text-gray-400 font-bold">
-          <button onClick={() => onSelectPost('')} className="hover:text-blue-600">دانستنی‌های وبلاگ</button>
+          <button onClick={() => onSelectPost('')} className="hover:text-purple-600">دانستنی‌های وبلاگ</button>
           <span className="text-gray-300">/</span>
           <span className="text-gray-600 font-black">{singlePost.title}</span>
         </div>
@@ -103,7 +103,7 @@ export default function BlogView({ onNavigate, selectedPostSlug, onSelectPost }:
         {/* Back button */}
         <button 
           onClick={() => onSelectPost('')}
-          className="mb-8 inline-flex items-center gap-2 text-sm text-blue-600 hover:text-blue-800 font-black transition-colors"
+          className="mb-8 inline-flex items-center gap-2 text-sm text-purple-600 hover:text-blue-800 font-black transition-colors"
         >
           <ArrowRight className="w-4 h-4" />
           بازگشت به لیست مطالب و وبلاگ
@@ -113,7 +113,7 @@ export default function BlogView({ onNavigate, selectedPostSlug, onSelectPost }:
         <article className="bg-white rounded-3xl border border-gray-100 overflow-hidden shadow-sm p-6 md:p-10 space-y-6">
           <div className="flex flex-wrap items-center gap-4 text-xs text-gray-400 font-bold">
             {singlePost.category_name && (
-              <span className="bg-blue-50 text-blue-600 px-3 py-1 rounded-full flex items-center gap-1">
+              <span className="bg-purple-50 text-purple-600 px-3 py-1 rounded-full flex items-center gap-1">
                 <Tag className="w-3.5 h-3.5" />
                 {singlePost.category_name}
               </span>
@@ -124,7 +124,7 @@ export default function BlogView({ onNavigate, selectedPostSlug, onSelectPost }:
             </span>
             <span className="flex items-center gap-1">
               <User className="w-3.5 h-3.5" />
-              نویسنده: {singlePost.author_name || 'ظریف بار'}
+              نویسنده: {singlePost.author_name || 'اسپاب چی'}
             </span>
           </div>
 
@@ -173,7 +173,7 @@ export default function BlogView({ onNavigate, selectedPostSlug, onSelectPost }:
           دانستنی‌های اسباب‌کشی و باربری
         </h1>
         <p className="text-sm text-gray-500 font-medium leading-relaxed">
-          پیش از شروع اسباب‌کشی، با خواندن مقالات و آموزش‌های تخصصی ظریف بار، امنیت اثاثیه و سلامت کار خود را بالا ببرید.
+          پیش از شروع اسباب‌کشی، با خواندن مقالات و آموزش‌های تخصصی اسپاب چی، امنیت اثاثیه و سلامت کار خود را بالا ببرید.
         </p>
 
         {/* Search */}
@@ -194,7 +194,7 @@ export default function BlogView({ onNavigate, selectedPostSlug, onSelectPost }:
               onClick={() => setSelectedCategory(null)}
               className={`px-4 py-2 text-xs font-black rounded-xl border transition-all ${
                 selectedCategory === null 
-                  ? 'bg-blue-600 text-white border-blue-600' 
+                  ? 'bg-purple-600 text-white border-purple-600' 
                   : 'bg-white border-gray-200 text-gray-600 hover:bg-gray-50'
               }`}
             >
@@ -206,7 +206,7 @@ export default function BlogView({ onNavigate, selectedPostSlug, onSelectPost }:
                 onClick={() => setSelectedCategory(cat.id)}
                 className={`px-4 py-2 text-xs font-black rounded-xl border transition-all ${
                   selectedCategory === cat.id 
-                    ? 'bg-blue-600 text-white border-blue-600' 
+                    ? 'bg-purple-600 text-white border-purple-600' 
                     : 'bg-white border-gray-200 text-gray-600 hover:bg-gray-50'
                 }`}
               >
@@ -219,7 +219,7 @@ export default function BlogView({ onNavigate, selectedPostSlug, onSelectPost }:
 
       {loading ? (
         <div className="flex justify-center items-center py-20">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600"></div>
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-purple-600"></div>
         </div>
       ) : (
         <>
@@ -242,7 +242,7 @@ export default function BlogView({ onNavigate, selectedPostSlug, onSelectPost }:
                       referrerPolicy="no-referrer"
                     />
                     {post.category_name && (
-                      <span className="absolute top-4 right-4 bg-blue-600 text-white font-black text-[10px] px-3 py-1.5 rounded-full shadow-md">
+                      <span className="absolute top-4 right-4 bg-purple-600 text-white font-black text-[10px] px-3 py-1.5 rounded-full shadow-md">
                         {post.category_name}
                       </span>
                     )}
@@ -258,13 +258,13 @@ export default function BlogView({ onNavigate, selectedPostSlug, onSelectPost }:
                         <span>•</span>
                         <span className="flex items-center gap-1">
                           <User className="w-3.5 h-3.5" />
-                          {post.author_name || 'ظریف بار'}
+                          {post.author_name || 'اسپاب چی'}
                         </span>
                       </div>
                       
                       <h3 
                         onClick={() => onSelectPost(post.slug)}
-                        className="text-base font-black text-slate-900 group-hover:text-blue-600 transition-colors cursor-pointer line-clamp-2 leading-snug"
+                        className="text-base font-black text-slate-900 group-hover:text-purple-600 transition-colors cursor-pointer line-clamp-2 leading-snug"
                       >
                         {post.title}
                       </h3>
@@ -276,7 +276,7 @@ export default function BlogView({ onNavigate, selectedPostSlug, onSelectPost }:
 
                     <button
                       onClick={() => onSelectPost(post.slug)}
-                      className="inline-flex items-center gap-1.5 text-xs text-blue-600 hover:text-blue-800 font-black transition-colors self-start"
+                      className="inline-flex items-center gap-1.5 text-xs text-purple-600 hover:text-blue-800 font-black transition-colors self-start"
                     >
                       ادامه مطلب و دیدگاه‌ها
                       <ChevronLeft className="w-4 h-4" />

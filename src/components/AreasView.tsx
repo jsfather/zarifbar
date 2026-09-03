@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+﻿import React, { useState, useEffect } from 'react';
 import { MapPin, Phone, ShieldCheck, Truck, Warehouse, BadgeCheck, PhoneCall, CheckCircle } from 'lucide-react';
 import { DEFAULT_AREAS_DATA, AreasData, RegionalAreaData } from '../data/areas_defaults';
 
@@ -42,9 +42,9 @@ export default function AreasView({ areasDataObj, onBackToHome, phone }: AreasVi
     <div className="pt-3 pb-12 md:pt-4 md:pb-16 max-w-7xl mx-auto px-4 md:px-8 space-y-8 text-right" dir="rtl">
       {/* HEADER SECTION */}
       <div className="text-center max-w-3xl mx-auto space-y-4">
-        <span className="inline-flex items-center gap-1 bg-blue-50 text-blue-700 font-extrabold text-xs px-4 py-2 rounded-full border border-blue-100 shadow-sm">
-          <MapPin className="w-4 h-4 text-blue-600 animate-pulse" />
-          محدوده سرویس‌دهی و شعب فعال اتوبار ظریف بار تهران
+        <span className="inline-flex items-center gap-1 bg-purple-50 text-blue-700 font-extrabold text-xs px-4 py-2 rounded-full border border-blue-100 shadow-sm">
+          <MapPin className="w-4 h-4 text-purple-600 animate-pulse" />
+          محدوده سرویس‌دهی و شعب فعال اتوبار اسپاب چی تهران
         </span>
         <h1 className="text-2xl md:text-4xl font-black text-slate-900 leading-snug">
           {data.title}
@@ -58,10 +58,10 @@ export default function AreasView({ areasDataObj, onBackToHome, phone }: AreasVi
       <div className="flex justify-center border-b border-gray-100 pb-4 max-w-2xl mx-auto">
         <div className="flex flex-wrap md:flex-nowrap gap-2 bg-slate-100/80 p-1.5 rounded-2xl w-full">
           {[
-            { key: 'north', name: 'شمال تهران', color: 'bg-blue-600' },
-            { key: 'west', name: 'غرب تهران', color: 'bg-blue-600' },
-            { key: 'east', name: 'شرق تهران', color: 'bg-blue-600' },
-            { key: 'karaj', name: 'شعبه کرج / البرز', color: 'bg-blue-600' },
+            { key: 'north', name: 'شمال تهران', color: 'bg-purple-600' },
+            { key: 'west', name: 'غرب تهران', color: 'bg-purple-600' },
+            { key: 'east', name: 'شرق تهران', color: 'bg-purple-600' },
+            { key: 'karaj', name: 'شعبه کرج / البرز', color: 'bg-purple-600' },
           ].map((tab) => (
             <button
               key={tab.key}
@@ -105,7 +105,7 @@ export default function AreasView({ areasDataObj, onBackToHome, phone }: AreasVi
           {/* TELEPHONE DIRECTORY CARDS */}
           <div className="bg-white rounded-3xl border border-slate-100 p-6 space-y-4 shadow-sm">
             <h3 className="text-sm font-black text-slate-900 flex items-center gap-2 pb-2 border-b border-gray-100">
-              <PhoneCall className="w-5 h-5 text-blue-600" />
+              <PhoneCall className="w-5 h-5 text-purple-600" />
               شماره تماس‌های مستقیم {activeRegion.name}
             </h3>
             <div className="grid grid-cols-1 gap-3">
@@ -113,7 +113,7 @@ export default function AreasView({ areasDataObj, onBackToHome, phone }: AreasVi
                 <a
                   key={idx}
                   href={`tel:${ph.value}`}
-                  className="flex justify-between items-center p-3.5 rounded-2xl bg-gray-50/50 hover:bg-blue-50 border border-transparent hover:border-blue-100 transition-all duration-250 group group-hover:scale-[1.01]"
+                  className="flex justify-between items-center p-3.5 rounded-2xl bg-gray-50/50 hover:bg-purple-50 border border-transparent hover:border-blue-100 transition-all duration-250 group group-hover:scale-[1.01]"
                 >
                   <span className="text-xs font-bold text-gray-600 group-hover:text-blue-950 transition-colors">
                     {ph.label}
@@ -122,7 +122,7 @@ export default function AreasView({ areasDataObj, onBackToHome, phone }: AreasVi
                     <span className="text-xs font-black text-slate-800 font-sans tracking-wide" dir="ltr">
                       {ph.value}
                     </span>
-                    <div className="w-7 h-7 rounded-lg bg-white shadow-sm border border-gray-100 flex items-center justify-center text-blue-600">
+                    <div className="w-7 h-7 rounded-lg bg-white shadow-sm border border-gray-100 flex items-center justify-center text-purple-600">
                       <Phone className="w-3.5 h-3.5 fill-current" />
                     </div>
                   </div>
@@ -135,8 +135,8 @@ export default function AreasView({ areasDataObj, onBackToHome, phone }: AreasVi
           </div>
 
           {/* ACCREDITATION STAT */}
-          <div className="bg-blue-50/50 rounded-2xl p-4 border border-blue-100 flex items-center gap-3">
-            <ShieldCheck className="w-8 h-8 text-blue-600 shrink-0" />
+          <div className="bg-purple-50/50 rounded-2xl p-4 border border-blue-100 flex items-center gap-3">
+            <ShieldCheck className="w-8 h-8 text-purple-600 shrink-0" />
             <div>
               <h4 className="text-xs font-black text-blue-900">نرخ مصوب اتحادیه باربری</h4>
               <p className="text-[10px] text-blue-700 mt-0.5 leading-relaxed font-bold">
@@ -151,7 +151,7 @@ export default function AreasView({ areasDataObj, onBackToHome, phone }: AreasVi
         <div className="lg:col-span-8 space-y-6">
           <div className="bg-white rounded-3xl border border-gray-150 p-6 md:p-8 shadow-sm space-y-8">
             <div>
-              <h3 className="text-lg font-black text-slate-900 border-b-2 border-blue-600 pb-3 inline-block">
+              <h3 className="text-lg font-black text-slate-900 border-b-2 border-purple-600 pb-3 inline-block">
                 جزئیات و مطالب تفصیلی با ناوبری {activeRegion.name}
               </h3>
               <p className="text-xs text-gray-400 mt-2 font-bold">
@@ -166,7 +166,7 @@ export default function AreasView({ areasDataObj, onBackToHome, phone }: AreasVi
                   className="border-b border-gray-100 pb-6 last:border-b-0 last:pb-0 space-y-3"
                 >
                   <div className="flex items-start gap-2.5">
-                    <div className="w-5 h-5 bg-blue-50 text-blue-600 rounded-full flex items-center justify-center font-bold text-xs shrink-0 mt-1">
+                    <div className="w-5 h-5 bg-purple-50 text-purple-600 rounded-full flex items-center justify-center font-bold text-xs shrink-0 mt-1">
                       {idx + 1}
                     </div>
                     <h4 className="text-sm font-black text-slate-800">
@@ -194,7 +194,7 @@ export default function AreasView({ areasDataObj, onBackToHome, phone }: AreasVi
                     if (el) el.scrollIntoView({ behavior: 'smooth' });
                   }, 300);
                 }}
-                className="bg-blue-600 hover:bg-blue-700 text-white font-extrabold rounded-xl px-6 py-3 transition-colors text-xs"
+                className="bg-purple-600 hover:bg-purple-700 text-white font-extrabold rounded-xl px-6 py-3 transition-colors text-xs"
               >
                 محاسبه قیمت و استعلام کرونولوژی هزینه
               </button>

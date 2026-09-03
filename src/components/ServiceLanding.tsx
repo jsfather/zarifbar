@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+﻿import React, { useEffect, useState } from 'react';
 import { Service } from '../types';
 import { 
   Package, Users, Truck, Warehouse, CheckCircle, ArrowRight, Phone, 
@@ -6,19 +6,19 @@ import {
 } from 'lucide-react';
 
 export const DEFAULT_PACKING_DATA = {
-  heroBadge: "بسته بندی اثاثیه منزل ظریف بار",
-  heroTitle: "بسته بندی اثاثیه منزل ظریف بار",
-  heroDesc: "بسته بندی اثاثیه منزل در اسباب کشی و جابجایی گام اول است که میتواند به عنوان اولین و سخت ترین قسمت شما باشد، به همین دلیل اتوبار ظریف بار اینجاست تا به شما کمک کند، پرسنل و کادر اجرایی که به محل اعزام میشوند تا عمل باربری را به خوبی انجام دهند در تمامی مراحل نظارت کامل را دارند حتی در بسته بندی که مهم ترین بخش اسباب کشی است. برای اطلاعات بیشتر در مورد خدمات بسته بندی ظریف بار در هر تایمی از شبانه روز و در 7 روز هفته حتی روزای تعطیل با شماره 02144895314 از سراسر کشور تماس گرفته و از مشاوره رایگان برخوردار شوید.",
+  heroBadge: "بسته بندی اثاثیه منزل اسپاب چی",
+  heroTitle: "بسته بندی اثاثیه منزل اسپاب چی",
+  heroDesc: "بسته بندی اثاثیه منزل در اسباب کشی و جابجایی گام اول است که میتواند به عنوان اولین و سخت ترین قسمت شما باشد، به همین دلیل اتوبار اسپاب چی اینجاست تا به شما کمک کند، پرسنل و کادر اجرایی که به محل اعزام میشوند تا عمل باربری را به خوبی انجام دهند در تمامی مراحل نظارت کامل را دارند حتی در بسته بندی که مهم ترین بخش اسباب کشی است. برای اطلاعات بیشتر در مورد خدمات بسته بندی اسپاب چی در هر تایمی از شبانه روز و در 7 روز هفته حتی روزای تعطیل با شماره 02144895314 از سراسر کشور تماس گرفته و از مشاوره رایگان برخوردار شوید.",
   heroPhone: "02144895314",
   heroImage: "https://images.unsplash.com/photo-1549401378-02484c349d21?auto=format&fit=crop&q=80&w=800",
   branches: [
-    { name: 'شماره ظریف بار تهران', phone: '02122637259', desc: 'تلفن تماس مستقیم سراسری' },
-    { name: 'شماره ظریف بار شمال تهران', phone: '02188235358', desc: 'نیاوران، الهیه، اقدسیه، کامرانیه، فرمانیه، قیطریه، زعفرانیه' },
-    { name: 'شماره ظریف بار مرکز تهران', phone: '02144895314', desc: 'ملاصدرا، یوسف‌آباد، مطهری، امیرآباد، گاندی، آرژانتین، شریعتی، جردن' },
-    { name: 'شماره ظریف بار غرب تهران', phone: '02188235358', desc: 'سعادت‌آباد، شهرک غرب، پونک، جنت‌آباد، مرزداران، شهران، گیشا، ستارخان' },
+    { name: 'شماره اسپاب چی تهران', phone: '02122637259', desc: 'تلفن تماس مستقیم سراسری' },
+    { name: 'شماره اسپاب چی شمال تهران', phone: '02188235358', desc: 'نیاوران، الهیه، اقدسیه، کامرانیه، فرمانیه، قیطریه، زعفرانیه' },
+    { name: 'شماره اسپاب چی مرکز تهران', phone: '02144895314', desc: 'ملاصدرا، یوسف‌آباد، مطهری، امیرآباد، گاندی، آرژانتین، شریعتی، جردن' },
+    { name: 'شماره اسپاب چی غرب تهران', phone: '02188235358', desc: 'سعادت‌آباد، شهرک غرب، پونک، جنت‌آباد، مرزداران، شهران، گیشا، ستارخان' },
   ],
   pillarsTitle: "چیزی که ما را خاص می کند",
-  pillarsSubtitle: "باربری و اتوبار ظریف بار بهترین باربری تهران",
+  pillarsSubtitle: "باربری و اتوبار اسپاب چی بهترین باربری تهران",
   pillars: [
     {
       title: "کارکنان صمیمی",
@@ -33,12 +33,12 @@ export const DEFAULT_PACKING_DATA = {
       desc: "78درصد مشتریان ما می گویند ما را برای قیمت هایمان انتخاب کرده اند."
     }
   ],
-  materialsTitle: "تجهیزات و خدمات ویژه بسته بندی ظریف بار",
+  materialsTitle: "تجهیزات و خدمات ویژه بسته بندی اسپاب چی",
   materialsSubtitle: "ارائه دهنده خدمات سریع و ارزان با رعایت بالاترین ضوابط ایمنی",
   materials: [
     {
-      title: "کارتن بسته بندی ظریف بار",
-      desc: "کارتن های حمل بار و اسباب کشی ظریف بار با استحکامی بینظیر.",
+      title: "کارتن بسته بندی اسپاب چی",
+      desc: "کارتن های حمل بار و اسباب کشی اسپاب چی با استحکامی بینظیر.",
       image: "https://images.unsplash.com/photo-1513151233558-d860c5398176?auto=format&fit=crop&q=80&w=800",
       badge: "استحکام بینظیر"
     },
@@ -50,7 +50,7 @@ export const DEFAULT_PACKING_DATA = {
     },
     {
       title: "حمل بار ارزان",
-      desc: "ظریف بار ارائه دهنده ی خدمات سریع و ارزان بار با کیفیت بالا",
+      desc: "اسپاب چی ارائه دهنده ی خدمات سریع و ارزان بار با کیفیت بالا",
       image: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&q=80&w=800",
       badge: "سریع و ارزان"
     },
@@ -74,46 +74,46 @@ export const DEFAULT_PACKING_DATA = {
     }
   ],
   videoUrl: "",
-  fullStoryTitle: "اسباب کشی و بسته بندی ظریف بار",
-  fullStoryDesc: "یکی از مهم ترین دغدغه های مردم که با گذشت زمان نیز بیشتر با آن روبرو میشوند انتخاب باربری و اتوبار مناسب در هنگام اثاث کشی و تغییر محل زندگی است، برای پیدا کردن شرکت باربری معتبر با وجود تعداد بالای مجموعه های فیک کار دشوار و حساسی است. در ابتدا با سرچ در اینترنت و تحقیق و پرس جو از کسانی که قبلاً اسباب کشی کرده‌اند فهرستی آماده کنید؛ در این میان شما متوجه خواهید شد که اولین و بزرگترین باربری و اتوبار معتبر تهران ظریف بار است به این علت که تمامی موارد شامل بسته بندی و موارد مربوط به باربری را تحت پوشش قرار میدهد.",
+  fullStoryTitle: "اسباب کشی و بسته بندی اسپاب چی",
+  fullStoryDesc: "یکی از مهم ترین دغدغه های مردم که با گذشت زمان نیز بیشتر با آن روبرو میشوند انتخاب باربری و اتوبار مناسب در هنگام اثاث کشی و تغییر محل زندگی است، برای پیدا کردن شرکت باربری معتبر با وجود تعداد بالای مجموعه های فیک کار دشوار و حساسی است. در ابتدا با سرچ در اینترنت و تحقیق و پرس جو از کسانی که قبلاً اسباب کشی کرده‌اند فهرستی آماده کنید؛ در این میان شما متوجه خواهید شد که اولین و بزرگترین باربری و اتوبار معتبر تهران اسپاب چی است به این علت که تمامی موارد شامل بسته بندی و موارد مربوط به باربری را تحت پوشش قرار میدهد.",
   fullStoryImage: "https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?auto=format&fit=crop&q=80&w=800",
   topics: [
     {
-      title: "اسباب کشی ظریف بار و مدیریت دغدغه‌ها",
-      desc: "انتخاب باربری مجهز و با سابقه در وقت اثاث کشی بسیار حیاتی است. ظریف بار با ارائه راهکارهای نوین، بسته‌بندی پنج لایه ضد ضربه و استفاده از کارگران ورزیده خیال شما را کاملاً آسوده می‌سازد."
+      title: "اسباب کشی اسپاب چی و مدیریت دغدغه‌ها",
+      desc: "انتخاب باربری مجهز و با سابقه در وقت اثاث کشی بسیار حیاتی است. اسپاب چی با ارائه راهکارهای نوین، بسته‌بندی پنج لایه ضد ضربه و استفاده از کارگران ورزیده خیال شما را کاملاً آسوده می‌سازد."
     },
     {
       title: "برنامه‌ریزی، وقت‌شناسی و سرعت عمل بی‌رقیب",
-      desc: "وقتشناسی و با برنامه بودن یکی از مهمترین عوامل یک اتوبار تهران است، زیرا مشتری دوست ندارد کارگران دیر برسد و برنامه آنها را مختل کند. باربری ظریف بار با بیش از 150 ماشین فعال پخش شده در سراسر تهران در کمترین زمان ممکن و حتی کمتر از ربع ساعت از زمان تماس خود را به مبدا می‌رساند."
+      desc: "وقتشناسی و با برنامه بودن یکی از مهمترین عوامل یک اتوبار تهران است، زیرا مشتری دوست ندارد کارگران دیر برسد و برنامه آنها را مختل کند. باربری اسپاب چی با بیش از 150 ماشین فعال پخش شده در سراسر تهران در کمترین زمان ممکن و حتی کمتر از ربع ساعت از زمان تماس خود را به مبدا می‌رساند."
     },
     {
-      title: "سامانه رزرو آنلاین و تلفنی شرکت باربری ظریف بار",
-      desc: "باربری و اتوبار ظریف بار امکان رزرو اینترنتی اتوبار را فراهم آورده است. شما می‌توانید با تکمیل فرم آنلاین زمان اسباب کشی را انتخاب نمایید، کارشناسان با شما تماس خواهند گرفت. کافی است با تلفن ۱۵۰۰ یا شماره 02144895769 تماس حاصل فرمایید."
+      title: "سامانه رزرو آنلاین و تلفنی شرکت باربری اسپاب چی",
+      desc: "باربری و اتوبار اسپاب چی امکان رزرو اینترنتی اتوبار را فراهم آورده است. شما می‌توانید با تکمیل فرم آنلاین زمان اسباب کشی را انتخاب نمایید، کارشناسان با شما تماس خواهند گرفت. کافی است با تلفن ۱۵۰۰ یا شماره 02144895769 تماس حاصل فرمایید."
     },
     {
       title: "مناطق شمال تهران تحت پوشش کامل",
-      desc: "ظریف بار نیاوران – خیابان بوکان – کوهستان، خیابان جمشید – ظریف بار الهیه – ظریف بار اقدسیه، ظریف بار کامرانیه – ظریف بار فرمانیه – ظریف بار اندرزگو، قیطریه – ظریف بار زعفرانیه – جردن، ظریف بار تجریش – بلوار ارتش – اختیاریه، دیباجی – جماران – باهنر - شریعتی، ظریف بار پاسداران – خیابان دولت – کلاهدوز."
+      desc: "اسپاب چی نیاوران – خیابان بوکان – کوهستان، خیابان جمشید – اسپاب چی الهیه – اسپاب چی اقدسیه، اسپاب چی کامرانیه – اسپاب چی فرمانیه – اسپاب چی اندرزگو، قیطریه – اسپاب چی زعفرانیه – جردن، اسپاب چی تجریش – بلوار ارتش – اختیاریه، دیباجی – جماران – باهنر - شریعتی، اسپاب چی پاسداران – خیابان دولت – کلاهدوز."
     },
     {
       title: "مناطق شرق، غرب و جنوب تهران",
-      desc: "شرق: ظریف بار تهرانپارس، شهرک امید، باقری، استخر، پیروزی، نارمک. غرب: اتی ساز، پونک، شهرک نفت، جنت آباد، مرزداران، شهران، شهر زیبا، سردار جنگل، آریا شهر، ستارخان، گیشا، سید خندان، گاندی، آرژانتین، آفریقا، چیتگر، دهکده، شهرک راه آهن. جنوب: نواب، پیروزی، منیریه."
+      desc: "شرق: اسپاب چی تهرانپارس، شهرک امید، باقری، استخر، پیروزی، نارمک. غرب: اتی ساز، پونک، شهرک نفت، جنت آباد، مرزداران، شهران، شهر زیبا، سردار جنگل، آریا شهر، ستارخان، گیشا، سید خندان، گاندی، آرژانتین، آفریقا، چیتگر، دهکده، شهرک راه آهن. جنوب: نواب، پیروزی، منیریه."
     }
   ],
-  concludingTitle: "اسباب کشی و بسته بندی ظریف بار",
-  concludingDesc: "مهمترین و اساسی ترین نکته برای ما برخورداری از کیفیت بالا در باربری و اتوبار ظریف بار است و خوشبختانه توانستیم به عنوان بهترین معرفی شویم. اثاث کشی خود را از صفر تا صد با خیالی آسوده به ما بسپارید."
+  concludingTitle: "اسباب کشی و بسته بندی اسپاب چی",
+  concludingDesc: "مهمترین و اساسی ترین نکته برای ما برخورداری از کیفیت بالا در باربری و اتوبار اسپاب چی است و خوشبختانه توانستیم به عنوان بهترین معرفی شویم. اثاث کشی خود را از صفر تا صد با خیالی آسوده به ما بسپارید."
 };
 
 export const DEFAULT_TRANSPORT_DATA = {
-  heroBadge: "حمل و نقل سریع و ارزان بارهای سبک و متوسط ظریف بار",
-  heroTitle: "وانت بار و نیسان بار ظریف بار",
+  heroBadge: "حمل و نقل سریع و ارزان بارهای سبک و متوسط اسپاب چی",
+  heroTitle: "وانت بار و نیسان بار اسپاب چی",
   heroDesc: "مخصوص حمل فوری اثاثیه سبک، بارهای تکی، مبلمان، یخچال و کارتن‌ها با وانت مجهز و نیسان‌های ضربه‌گیر دار پتو دار در هر ساعت از شبانه‌روز و حتی ایام تعطیل با تعرفه منصفانه.",
   heroPhone: "02122637259",
   heroImage: "https://images.unsplash.com/photo-1549401378-02484c349d21?auto=format&fit=crop&q=80&w=800",
   branches: [
-    { name: 'شماره ظریف بار تهران', phone: '02122637259', desc: 'تلفن تماس و رزرواسیون اصلی' },
-    { name: 'شماره ظریف بار شمال تهران', phone: '02188235358', desc: 'نیاوران، اقدسیه، تجریش، پاسداران، الهیه، زعفرانیه' },
-    { name: 'شماره ظریف بار مرکز تهران', phone: '02144895314', desc: 'ملاصدرا، ونک، یوسف آباد، مطهری، گاندی، آرژانتین' },
-    { name: 'شماره ظریف بار غرب تهران', phone: '02188235358', desc: 'پونک، مرزداران، صادقیه، پوتک، جنت‌آباد، شهران' },
+    { name: 'شماره اسپاب چی تهران', phone: '02122637259', desc: 'تلفن تماس و رزرواسیون اصلی' },
+    { name: 'شماره اسپاب چی شمال تهران', phone: '02188235358', desc: 'نیاوران، اقدسیه، تجریش، پاسداران، الهیه، زعفرانیه' },
+    { name: 'شماره اسپاب چی مرکز تهران', phone: '02144895314', desc: 'ملاصدرا، ونک، یوسف آباد، مطهری، گاندی، آرژانتین' },
+    { name: 'شماره اسپاب چی غرب تهران', phone: '02188235358', desc: 'پونک، مرزداران، صادقیه، پوتک، جنت‌آباد، شهران' },
   ],
   pillarsTitle: "چیزی که ما را خاص می کند",
   pillarsSubtitle: "ارائه‌دهنده سرویس‌های وانت‌بار و نیسان ممتاز و ارزان در پایتخت",
@@ -153,8 +153,8 @@ export const DEFAULT_TRANSPORT_DATA = {
       badge: "۱۰۰٪ ضد آب و گرد و غبار"
     }
   ],
-  fullStoryTitle: "وانت بار تلفنی و نیسان بار ظریف بار",
-  fullStoryDesc: "حمل بار سبک و نیمه‌سنگین نیازمند چابکی و دقت عمل بالاست. اگر نیاز به حمل یک یا چند قلم بار دارید، با پرداخت نیمی از هزینه کامیون‌های اسباب‌کشی می‌توانید از سرویس وانت و نیسان تلفنی ما برخوردار شوید. خودروهای ما همراه با رانندگانی ماهر و پتوهای مخمل مخصوص ضربه‌گیر، بار شما را به کمال ایمنی جابجا می‌نمایند. وقت‌شناسی بالا و حضور کمتر از ربع ساعت از ویژگی‌های بارز اتوبار ظریف بار است.",
+  fullStoryTitle: "وانت بار تلفنی و نیسان بار اسپاب چی",
+  fullStoryDesc: "حمل بار سبک و نیمه‌سنگین نیازمند چابکی و دقت عمل بالاست. اگر نیاز به حمل یک یا چند قلم بار دارید، با پرداخت نیمی از هزینه کامیون‌های اسباب‌کشی می‌توانید از سرویس وانت و نیسان تلفنی ما برخوردار شوید. خودروهای ما همراه با رانندگانی ماهر و پتوهای مخمل مخصوص ضربه‌گیر، بار شما را به کمال ایمنی جابجا می‌نمایند. وقت‌شناسی بالا و حضور کمتر از ربع ساعت از ویژگی‌های بارز اتوبار اسپاب چی است.",
   fullStoryImage: "https://images.unsplash.com/photo-1595428774223-ef52624120d2?auto=format&fit=crop&q=80&w=800",
   topics: [
     {
@@ -179,23 +179,23 @@ export const DEFAULT_TRANSPORT_DATA = {
     }
   ],
   videoUrl: "",
-  concludingTitle: "وانت بار و نیسان بار ظریف بار تهران",
-  concludingDesc: "حمل باری ایمن، پرسرعت و مقرون به صرفه را همین حالا تجربه کنید. پشتیبانی شبانه‌روزی ظریف بار با شماره‌‌های مستقیم منتظر پاسخگویی به شما خوبان است."
+  concludingTitle: "وانت بار و نیسان بار اسپاب چی تهران",
+  concludingDesc: "حمل باری ایمن، پرسرعت و مقرون به صرفه را همین حالا تجربه کنید. پشتیبانی شبانه‌روزی اسپاب چی با شماره‌‌های مستقیم منتظر پاسخگویی به شما خوبان است."
 };
 
 export const DEFAULT_STORAGE_DATA = {
-  heroBadge: "اجاره انبار تمیز و مسقف ظریف بار با امنیت فوق العاده بالا",
-  heroTitle: "اجاره انبار ظریف بار",
-  heroDesc: "اجاره انبار ظریف بار برای اثاثیه منزل ، جهیزیه ، کالاهای تجاری و صنعتی شما در محیطی کاملا تمیز و با امنیت بالا و دارای نگهبان 24 ساعته و دوربین های مدار بسته نگهداری میشوند. انبارهای روباز و مسقف در اندازه های استاندارد موجود می باشد.همچنین انبار های عمومی و بصورت خصوصی در انبار ظریف بار با قیمت مناسب موجود می باشد .",
+  heroBadge: "اجاره انبار تمیز و مسقف اسپاب چی با امنیت فوق العاده بالا",
+  heroTitle: "اجاره انبار اسپاب چی",
+  heroDesc: "اجاره انبار اسپاب چی برای اثاثیه منزل ، جهیزیه ، کالاهای تجاری و صنعتی شما در محیطی کاملا تمیز و با امنیت بالا و دارای نگهبان 24 ساعته و دوربین های مدار بسته نگهداری میشوند. انبارهای روباز و مسقف در اندازه های استاندارد موجود می باشد.همچنین انبار های عمومی و بصورت خصوصی در انبار اسپاب چی با قیمت مناسب موجود می باشد .",
   heroPhone: "02122637259",
   heroImage: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&q=80&w=800",
   branches: [
-    { name: 'شماره اجاره انبار ظریف بار', phone: '02122637259', desc: 'تلفن تماس مستقیم رزرو و پذیرش' },
+    { name: 'شماره اجاره انبار اسپاب چی', phone: '02122637259', desc: 'تلفن تماس مستقیم رزرو و پذیرش' },
     { name: 'شعبه شمال تهران', phone: '02188235358', desc: 'زعفرانیه، نیاوران، جردن، ولنجک' },
     { name: 'شعبه مرکز تهران', phone: '02144895314', desc: 'ملاصدرا، یوسف‌آباد، مطهری، امیرآباد' },
     { name: 'شعبه غرب تهران', phone: '02188235358', desc: 'سعادت‌آباد، شهرک غرب، پونک، ستارخان' },
   ],
-  pillarsTitle: "امنیت ۱۰۰٪ بار در انبارهای ظریف بار",
+  pillarsTitle: "امنیت ۱۰۰٪ بار در انبارهای اسپاب چی",
   pillarsSubtitle: "نگهبـان شبانه‌روزی فیزیکی، مجهز به پیشرفته‌ترین دوربین‌های مداربسته",
   pillars: [
     {
@@ -238,8 +238,8 @@ export const DEFAULT_STORAGE_DATA = {
   fullStoryImage: "https://images.unsplash.com/photo-1595428774223-ef52624120d2?auto=format&fit=crop&q=80&w=800",
   topics: [
     {
-      title: "اجاره انبار ظریف بار",
-      desc: "اجاره انبار ظریف بار ، اجاه انبار های مقف و روباز، خصوصی و عمومی در بهترین مکان در تهران با دوربین هی مداربسته ، نگهبان شبانه روزی جهت نگهداری اثاثیه منزل،محل کار کالاهای تجاری و صنعتی آماده می باشد."
+      title: "اجاره انبار اسپاب چی",
+      desc: "اجاره انبار اسپاب چی ، اجاه انبار های مقف و روباز، خصوصی و عمومی در بهترین مکان در تهران با دوربین هی مداربسته ، نگهبان شبانه روزی جهت نگهداری اثاثیه منزل،محل کار کالاهای تجاری و صنعتی آماده می باشد."
     },
     {
       title: "دسترسی عالی به شاهراه‌ها",
@@ -255,27 +255,27 @@ export const DEFAULT_STORAGE_DATA = {
     },
     {
       title: "مدارک و قرارداد رسمی",
-      desc: "دریافت رسیدهای رسمی با مهر شرکت ظریف بار و مشخصات کامل وسایل تحویل داده شده جهت آسودگی کامل خاطر شما هموطنان عزیز."
+      desc: "دریافت رسیدهای رسمی با مهر شرکت اسپاب چی و مشخصات کامل وسایل تحویل داده شده جهت آسودگی کامل خاطر شما هموطنان عزیز."
     }
   ],
   videoUrl: "",
-  concludingTitle: "اجاره انبار ظریف بار با بهترین قیمت",
+  concludingTitle: "اجاره انبار اسپاب چی با بهترین قیمت",
   concludingDesc: "انبارهـای ما انتخابی مناسب برای تضمین ماندگاری کالاهای شما با خدمات جابجایی تیمی می‌باشد. برای رزو با ما تماس بگیرید."
 };
 
 export const DEFAULT_WORKERS_DATA = {
-  heroBadge: "کارگر اسباب کشی و نیروی جابجایی متخصص ظریف بار",
-  heroTitle: "کارگر خالی اسباب کشی ظریف بار",
-  heroDesc: "اگر برای تخلیه بار، بارگیری اثاثیه، جابجایی یخچال ساید‌بای‌ساید، گاوصندوق، پیانو یا تنها چیدمان اثاثیه منزل در خانه جدید نیاز به کارگران ورزیده، توانمند و امین دارید، ظریف بار با پرسنل تخصصی خود به صورت ۲۴ ساعته در خدمت شماست.",
+  heroBadge: "کارگر اسباب کشی و نیروی جابجایی متخصص اسپاب چی",
+  heroTitle: "کارگر خالی اسباب کشی اسپاب چی",
+  heroDesc: "اگر برای تخلیه بار، بارگیری اثاثیه، جابجایی یخچال ساید‌بای‌ساید، گاوصندوق، پیانو یا تنها چیدمان اثاثیه منزل در خانه جدید نیاز به کارگران ورزیده، توانمند و امین دارید، اسپاب چی با پرسنل تخصصی خود به صورت ۲۴ ساعته در خدمت شماست.",
   heroPhone: "02144895314",
   heroImage: "https://images.unsplash.com/photo-1513151233558-d860c5398176?auto=format&fit=crop&q=80&w=800",
   branches: [
-    { name: 'شماره مستقیم کارگر خالی ظریف بار', phone: '02122637259', desc: 'رزرو فوری نیروی جابجایی برای تمامی نقاط' },
+    { name: 'شماره مستقیم کارگر خالی اسپاب چی', phone: '02122637259', desc: 'رزرو فوری نیروی جابجایی برای تمامی نقاط' },
     { name: 'اعزام کارگر شمال تهران', phone: '02188235358', desc: 'نیاوران، اندرزگو، زعفرانیه، ولنجک، دیباجی، قلهک' },
     { name: 'اعزام کارگر مرکز تهران', phone: '02144895314', desc: 'ملاصدرا، امیرآباد، سیدخندان، یوسف‌آباد، کریمخان' },
     { name: 'اعزام کارگر غرب تهران', phone: '02188235358', desc: 'سعادت‌آباد، شهرک غرب، پونک، جنت‌آباد، صادقیه، مرزداران' },
   ],
-  pillarsTitle: "چرا کارگران جابجایی ظریف بار؟",
+  pillarsTitle: "چرا کارگران جابجایی اسپاب چی؟",
   pillarsSubtitle: "نیروی کادر مجرب، خوش‌اخلاق، آموزش‌دیده و با امانت صد در صد",
   pillars: [
     {
@@ -313,8 +313,8 @@ export const DEFAULT_WORKERS_DATA = {
       badge: "کوشا و خوش‌برخورد"
     }
   ],
-  fullStoryTitle: "اعزام کارگر خالی جابجایی و اتوبار تلفنی ظریف بار",
-  fullStoryDesc: "اکثر مواقع اسباب‌کشی با خودروی سواری شخصی یا وانت شخصی انجام می‌شود، اما عدم وجود توان فیزیکی یا نداشتن کادر ورزیده جابجایی باعث آسیب به سلامتی و ستون فقرات یا شکستگی وسایل می‌گردد. در این راستا شرکت ظریف بار امکان اعزام کارگر خالی بدون نیاز به خودرو را برای شهروندان محترم تهران مهیا ساخته است. خدمات نظیر حمل اثاث بین طبقات، بسته بندی، بالابری و چیدمان تماماً توسط نیروهای ورزیده شرکت پشتیبانی می‌شود. همین امروز با تلفن ۱۵۰۰ یا شماره 02144895314 تماس حاصل فرمایید.",
+  fullStoryTitle: "اعزام کارگر خالی جابجایی و اتوبار تلفنی اسپاب چی",
+  fullStoryDesc: "اکثر مواقع اسباب‌کشی با خودروی سواری شخصی یا وانت شخصی انجام می‌شود، اما عدم وجود توان فیزیکی یا نداشتن کادر ورزیده جابجایی باعث آسیب به سلامتی و ستون فقرات یا شکستگی وسایل می‌گردد. در این راستا شرکت اسپاب چی امکان اعزام کارگر خالی بدون نیاز به خودرو را برای شهروندان محترم تهران مهیا ساخته است. خدمات نظیر حمل اثاث بین طبقات، بسته بندی، بالابری و چیدمان تماماً توسط نیروهای ورزیده شرکت پشتیبانی می‌شود. همین امروز با تلفن ۱۵۰۰ یا شماره 02144895314 تماس حاصل فرمایید.",
   fullStoryImage: "https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?auto=format&fit=crop&q=80&w=800",
   topics: [
     {
@@ -331,7 +331,7 @@ export const DEFAULT_WORKERS_DATA = {
     },
     {
       title: "اعزام کارگر زن و مرد برای بسته بندی ظریف",
-      desc: "در صورت تمایل به بسته‌بندی ریزه‌کاری‌ها، پوشاک و ظروف شکستنی آشپزخانه می‌توانید از کادر مجرب بانوان شرکت ظریف بار نیز استفاده کنید."
+      desc: "در صورت تمایل به بسته‌بندی ریزه‌کاری‌ها، پوشاک و ظروف شکستنی آشپزخانه می‌توانید از کادر مجرب بانوان شرکت اسپاب چی نیز استفاده کنید."
     },
     {
       title: "جایگزینی آنی کارگر در مبدا در صورت رخداد ناگهانی",
@@ -339,8 +339,8 @@ export const DEFAULT_WORKERS_DATA = {
     }
   ],
   videoUrl: "",
-  concludingTitle: "تیم متبحر کارگران خالی جابجایی ظریف بار",
-  concludingDesc: "آسودگی خیال از بابت جابجایی ایمن و درست سنگین‌ترین اثاثه با کادر زبده ظریف بار. منتظر تماس شما جهت اعزام در سراسر پایتخت هستیم."
+  concludingTitle: "تیم متبحر کارگران خالی جابجایی اسپاب چی",
+  concludingDesc: "آسودگی خیال از بابت جابجایی ایمن و درست سنگین‌ترین اثاثه با کادر زبده اسپاب چی. منتظر تماس شما جهت اعزام در سراسر پایتخت هستیم."
 };
 
 interface ServiceLandingProps {
@@ -497,7 +497,7 @@ export default function ServiceLanding({ slug, onBackToServices, onOpenEstimator
       <div className="pt-3 pb-12 md:pt-4 md:pb-16 max-w-7xl mx-auto px-4 md:px-8 space-y-8 md:space-y-12" dir="rtl">
         {/* BREADCRUMB */}
         <div className="flex items-center gap-2 text-xs text-slate-400 font-bold">
-          <button onClick={onBackToServices} className="hover:text-blue-600 transition-colors">خدمات ما</button>
+          <button onClick={onBackToServices} className="hover:text-purple-600 transition-colors">خدمات ما</button>
           <span className="text-gray-300">/</span>
           <span className="text-slate-600 font-black">{pageName}</span>
         </div>
@@ -518,7 +518,7 @@ export default function ServiceLanding({ slug, onBackToServices, onOpenEstimator
             {activeVideoUrl ? (
               <div className="grid grid-cols-1 lg:grid-cols-5 gap-8 items-center text-right">
                 <div className="lg:col-span-3 space-y-6">
-                  <span className="inline-block bg-blue-600 text-white text-[11px] font-black px-4 py-2 rounded-full shadow-md uppercase tracking-wider">
+                  <span className="inline-block bg-purple-600 text-white text-[11px] font-black px-4 py-2 rounded-full shadow-md uppercase tracking-wider">
                     {data.heroBadge}
                   </span>
                   <h1 className="text-3xl md:text-5xl font-black leading-tight text-white drop-shadow-sm">
@@ -584,7 +584,7 @@ export default function ServiceLanding({ slug, onBackToServices, onOpenEstimator
               </div>
             ) : (
               <div className="max-w-2xl space-y-6 text-right">
-                <span className="inline-block bg-blue-600 text-white text-[11px] font-black px-4 py-2 rounded-full shadow-md uppercase tracking-wider">
+                <span className="inline-block bg-purple-600 text-white text-[11px] font-black px-4 py-2 rounded-full shadow-md uppercase tracking-wider">
                   {data.heroBadge}
                 </span>
                 <h1 className="text-3xl md:text-5xl font-black leading-tight text-white drop-shadow-sm">
@@ -620,7 +620,7 @@ export default function ServiceLanding({ slug, onBackToServices, onOpenEstimator
         <section className="space-y-6">
           <div className="text-center max-w-lg mx-auto space-y-2">
             <h2 className="text-xl md:text-2xl font-black text-slate-900">
-              {slug === 'packing' ? 'شعبه‌های فعال بسته‌بندی ظریف بار تهران' : (slug === 'storage' ? 'شعبه‌های فعال اجاره انبار ظریف بار تهران' : (slug === 'transport' ? 'شعبه‌های فعال وانت بار و نیسان بار ظریف بار تهران' : 'شعبه‌های فعال اعزام کارگر خالی ظریف بار تهران'))}
+              {slug === 'packing' ? 'شعبه‌های فعال بسته‌بندی اسپاب چی تهران' : (slug === 'storage' ? 'شعبه‌های فعال اجاره انبار اسپاب چی تهران' : (slug === 'transport' ? 'شعبه‌های فعال وانت بار و نیسان بار اسپاب چی تهران' : 'شعبه‌های فعال اعزام کارگر خالی اسپاب چی تهران'))}
             </h2>
             <p className="text-xs text-gray-400">تماس مستقیم با کارشناسان و کادر مجرب در سراسر پایتخت</p>
           </div>
@@ -631,7 +631,7 @@ export default function ServiceLanding({ slug, onBackToServices, onOpenEstimator
                 href={`tel:${br.phone}`}
                 className="bg-white border border-gray-150 hover:border-blue-300 rounded-2xl p-5 hover:shadow-lg transition-all text-center flex flex-col justify-between space-y-3 group"
               >
-                <div className="w-10 h-10 bg-blue-50 text-blue-600 rounded-full flex items-center justify-center mx-auto group-hover:bg-blue-600 group-hover:text-white transition-colors duration-300">
+                <div className="w-10 h-10 bg-purple-50 text-purple-600 rounded-full flex items-center justify-center mx-auto group-hover:bg-purple-600 group-hover:text-white transition-colors duration-300">
                   <Phone className="w-4 h-4" />
                 </div>
                 <div>
@@ -685,7 +685,7 @@ export default function ServiceLanding({ slug, onBackToServices, onOpenEstimator
                   <img src={mat.image || 'https://images.unsplash.com/photo-1513151233558-d860c5398176?auto=format&fit=crop&q=80&w=800'} alt={mat.title} className="w-full h-full object-cover" referrerPolicy="no-referrer" />
                 </div>
                 <div className="w-full md:w-3/5 text-right">
-                  <span className="inline-block bg-blue-50 text-blue-700 font-extrabold text-xs px-4 py-2 mb-5 md:mb-6 rounded-full border border-blue-100 shadow-xs">
+                  <span className="inline-block bg-purple-50 text-blue-700 font-extrabold text-xs px-4 py-2 mb-5 md:mb-6 rounded-full border border-blue-100 shadow-xs">
                     {mat.badge}
                   </span>
                   <h3 className="text-lg md:text-xl font-black text-slate-900 mb-2">{mat.title}</h3>
@@ -705,7 +705,7 @@ export default function ServiceLanding({ slug, onBackToServices, onOpenEstimator
           
           <div className="relative text-center max-w-xl mx-auto space-y-6">
             <h3 className="text-xl md:text-2xl font-black">
-              {slug === 'packing' ? 'سفارش تلفنی بسته بندی ظریف بار' : (slug === 'storage' ? 'سفارش تلفنی اجاره انبار ظریف بار' : (slug === 'transport' ? 'سفارش تلفنی وانت بار و نیسان بار ظریف بار' : 'سفارش تلفنی اعزام کارگر خالی ظریف بار'))}
+              {slug === 'packing' ? 'سفارش تلفنی بسته بندی اسپاب چی' : (slug === 'storage' ? 'سفارش تلفنی اجاره انبار اسپاب چی' : (slug === 'transport' ? 'سفارش تلفنی وانت بار و نیسان بار اسپاب چی' : 'سفارش تلفنی اعزام کارگر خالی اسپاب چی'))}
             </h3>
             <p className="text-xs md:text-sm text-blue-100 leading-relaxed">
               تنها با یک تماس و ارتباط با مشاورین آسان ترین و بی دغدغه ترین اثاث کشی و خدمات را تجربه نمایید. همین حالا با ما تماس بگیرید.
@@ -749,7 +749,7 @@ export default function ServiceLanding({ slug, onBackToServices, onOpenEstimator
               ) : (
                 <img 
                   src={data.fullStoryImage} 
-                  alt={slug === 'packing' ? 'کارگران بسته بندی ظریف بار' : (slug === 'storage' ? 'انبار و اجاره کانتینر ظریف بار' : (slug === 'transport' ? 'وانت بار و نیسان بار ظریف بار' : 'کارگر خالی اسباب کشی ظریف بار'))} 
+                  alt={slug === 'packing' ? 'کارگران بسته بندی اسپاب چی' : (slug === 'storage' ? 'انبار و اجاره کانتینر اسپاب چی' : (slug === 'transport' ? 'وانت بار و نیسان بار اسپاب چی' : 'کارگر خالی اسباب کشی اسپاب چی'))} 
                   className="w-full h-full object-cover"
                   referrerPolicy="no-referrer"
                 />
@@ -768,7 +768,7 @@ export default function ServiceLanding({ slug, onBackToServices, onOpenEstimator
               <h4 className={`text-sm md:text-base font-black border-r-4 pr-3 ${
                 idx === 0 ? 'text-indigo-900 border-indigo-600' :
                 idx === 1 ? 'text-rose-950 border-rose-600' :
-                idx === 2 ? 'text-blue-900 border-blue-600' :
+                idx === 2 ? 'text-blue-900 border-purple-600' :
                 idx === 3 ? 'text-emerald-950 border-emerald-600' :
                 'text-amber-950 border-amber-600'
               }`}>{t.title}</h4>
@@ -781,7 +781,7 @@ export default function ServiceLanding({ slug, onBackToServices, onOpenEstimator
 
         {/* CONCLUDING OUTRO ALERT CARD */}
         <section className="bg-slate-950 text-white rounded-[32px] p-8 text-center space-y-4 border border-slate-900">
-          <div className="w-12 h-12 bg-blue-600/20 text-blue-400 rounded-full flex items-center justify-center mx-auto mb-2 border border-blue-500/30">
+          <div className="w-12 h-12 bg-purple-600/20 text-purple-400 rounded-full flex items-center justify-center mx-auto mb-2 border border-purple-500/30">
             <ShieldAlert className="w-6 h-6" />
           </div>
           <h4 className="text-lg font-black text-amber-400">{data.concludingTitle}</h4>
@@ -791,7 +791,7 @@ export default function ServiceLanding({ slug, onBackToServices, onOpenEstimator
           <div className="pt-2">
             <a 
               href={`tel:${data.heroPhone}`}
-              className="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white font-extrabold px-6 py-3 rounded-2xl shadow-md transition-colors"
+              className="inline-flex items-center gap-2 bg-purple-600 hover:bg-purple-700 text-white font-extrabold px-6 py-3 rounded-2xl shadow-md transition-colors"
             >
               <PhoneCall className="w-4 h-4" />
               تماس فوری: {data.heroPhone}
@@ -806,7 +806,7 @@ export default function ServiceLanding({ slug, onBackToServices, onOpenEstimator
   if (loading) {
     return (
       <div className="flex justify-center items-center py-20">
-        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600"></div>
+        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-purple-600"></div>
       </div>
     );
   }
@@ -815,7 +815,7 @@ export default function ServiceLanding({ slug, onBackToServices, onOpenEstimator
     return (
       <div className="text-center py-20 text-gray-500" dir="rtl">
         خدمت مورد نظر یافت نشد.
-        <button onClick={onBackToServices} className="text-blue-600 font-bold mr-4 underline">بازگشت به خدمات</button>
+        <button onClick={onBackToServices} className="text-purple-600 font-bold mr-4 underline">بازگشت به خدمات</button>
       </div>
     );
   }
@@ -823,15 +823,15 @@ export default function ServiceLanding({ slug, onBackToServices, onOpenEstimator
   const renderIcon = () => {
     switch (service.icon_name) {
       case 'Package':
-        return <Package className="w-12 h-12 text-blue-600" />;
+        return <Package className="w-12 h-12 text-purple-600" />;
       case 'Users':
-        return <Users className="w-12 h-12 text-blue-600" />;
+        return <Users className="w-12 h-12 text-purple-600" />;
       case 'Truck':
-        return <Truck className="w-12 h-12 text-blue-600" />;
+        return <Truck className="w-12 h-12 text-purple-600" />;
       case 'Warehouse':
-        return <Warehouse className="w-12 h-12 text-blue-600" />;
+        return <Warehouse className="w-12 h-12 text-purple-600" />;
       default:
-        return <Package className="w-12 h-12 text-blue-600" />;
+        return <Package className="w-12 h-12 text-purple-600" />;
     }
   };
 
@@ -846,7 +846,7 @@ export default function ServiceLanding({ slug, onBackToServices, onOpenEstimator
     <div className="pt-3 pb-12 md:pt-4 md:pb-16 max-w-7xl mx-auto px-4 md:px-8 leading-relaxed" dir="rtl">
       {/* Breadcrumb path */}
       <div className="mb-5 flex items-center gap-2 text-xs text-gray-400 font-bold">
-        <button onClick={onBackToServices} className="hover:text-blue-600">خدمات ما</button>
+        <button onClick={onBackToServices} className="hover:text-purple-600">خدمات ما</button>
         <span className="text-gray-300">/</span>
         <span className="text-gray-600 font-black">{service.name}</span>
       </div>
@@ -864,8 +864,8 @@ export default function ServiceLanding({ slug, onBackToServices, onOpenEstimator
             {/* Overlay */}
             <div className="absolute inset-0 bg-gradient-to-t from-slate-900/85 via-slate-900/30 to-transparent flex items-end p-6 md:p-10">
               <div>
-                <span className="inline-flex items-center gap-1.5 bg-blue-600 text-white font-bold text-xs px-3 py-1.5 rounded-full mb-3 shadow-md">
-                  سرویس طلایی ظریف بار
+                <span className="inline-flex items-center gap-1.5 bg-purple-600 text-white font-bold text-xs px-3 py-1.5 rounded-full mb-3 shadow-md">
+                  سرویس طلایی اسپاب چی
                 </span>
                 <h1 className="text-2xl md:text-4xl font-extrabold text-white leading-tight">
                   {service.title}
@@ -876,7 +876,7 @@ export default function ServiceLanding({ slug, onBackToServices, onOpenEstimator
 
           <div className="bg-white rounded-3xl p-6 md:p-8 border border-gray-100 shadow-sm space-y-6">
             <div className="flex items-center gap-4">
-              <div className="p-3 bg-blue-50 rounded-2xl">
+              <div className="p-3 bg-purple-50 rounded-2xl">
                 {renderIcon()}
               </div>
               <div>
@@ -891,15 +891,15 @@ export default function ServiceLanding({ slug, onBackToServices, onOpenEstimator
               {service.content}
             </p>
 
-            <div className="bg-blue-50/50 border border-blue-100 rounded-2xl p-5 mt-6">
+            <div className="bg-purple-50/50 border border-blue-100 rounded-2xl p-5 mt-6">
               <h3 className="text-sm font-bold text-blue-900 mb-3 flex items-center gap-2">
-                <ShieldCheck className="w-5 h-5 text-blue-600" />
-                تعهدات و استانداردهای کیفی ظریف بار:
+                <ShieldCheck className="w-5 h-5 text-purple-600" />
+                تعهدات و استانداردهای کیفی اسپاب چی:
               </h3>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs text-gray-600 font-semibold">
                 {benefits.map((benefit, i) => (
                   <div key={i} className="flex items-center gap-2">
-                    <CheckCircle className="w-4.5 h-4.5 text-blue-600 shrink-0" />
+                    <CheckCircle className="w-4.5 h-4.5 text-purple-600 shrink-0" />
                     <span>{benefit}</span>
                   </div>
                 ))}
@@ -951,7 +951,7 @@ export default function ServiceLanding({ slug, onBackToServices, onOpenEstimator
                   }}
                   className={`w-full py-3 px-4 rounded-2xl border text-sm text-right font-medium transition-all ${
                     item.slug === slug 
-                      ? 'border-blue-600 bg-blue-50 text-blue-600' 
+                      ? 'border-purple-600 bg-purple-50 text-purple-600' 
                       : 'border-gray-100 bg-gray-50/50 hover:bg-gray-50 hover:border-gray-300'
                   }`}
                 >

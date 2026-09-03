@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+﻿import React, { useState, useEffect } from 'react';
 import { Sparkles, Calculator, Calendar, ArrowLeft, ArrowRight, CheckCircle2, Phone, Building, User, Info, Check, MessageSquare } from 'lucide-react';
 
 export interface Option {
@@ -35,11 +35,11 @@ export interface EstimatorConfig {
 
 export const DEFAULT_ESTIMATOR_CONFIG: EstimatorConfig = {
   notifications: {
-    step_alert: "کاربر گرامی، قیمت نهایی شامل **بیمه مسئولیت بار تا سقف ۱۰۰ میلیون تومان رایگان** از طرف شرکت بزرگ ظریف بار صادر خواهد شد.",
+    step_alert: "کاربر گرامی، قیمت نهایی شامل **بیمه مسئولیت بار تا سقف ۱۰۰ میلیون تومان رایگان** از طرف شرکت بزرگ اسپاب چی صادر خواهد شد.",
     step_alert_step: 1,
     price_disclaimer: "محاسبه بر اساس نرخ اتحادیه صنف باربری تهران سال ۱۴۰۵",
     success_title: "درخواست استعلام شما با موفقیت ثبت شد!",
-    success_message: "کد پیگیری شما صادر گردید. کارشناسان پشتیبان ظریف بار تا ۱۵ دقیقه آینده جهت هماهنگی نهایی و صدور بیمه‌نامه رایگان بار با شما تماس خواهند گرفت."
+    success_message: "کد پیگیری شما صادر گردید. کارشناسان پشتیبان اسپاب چی تا ۱۵ دقیقه آینده جهت هماهنگی نهایی و صدور بیمه‌نامه رایگان بار با شما تماس خواهند گرفت."
   },
   steps: [
     {
@@ -364,14 +364,14 @@ export default function Estimator({ baseTruck, perWorker, packService, onSuccess
         <div className="flex justify-between items-center mb-6">
           <div className="flex items-center gap-3">
             <div className="w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center">
-              <Calculator className="w-6 h-6 text-yellow-300 dark:text-blue-400" />
+              <Calculator className="w-6 h-6 text-yellow-300 dark:text-purple-400" />
             </div>
             <div>
               <h2 className="text-lg md:text-xl font-extrabold text-white">محاسبه‌گر پیشرفته هزینه اسباب‌کشی</h2>
               <p className="text-xs text-blue-100 dark:text-slate-300 font-medium">استعلام آنلاین قیمت تضمین‌شده بدون تغییر</p>
             </div>
           </div>
-          <span className="text-xs bg-yellow-400 dark:bg-blue-600 text-blue-950 dark:text-white font-black px-3 py-1.5 rounded-full shadow-sm">
+          <span className="text-xs bg-yellow-400 dark:bg-purple-600 text-blue-950 dark:text-white font-black px-3 py-1.5 rounded-full shadow-sm">
             شبانه‌روزی
           </span>
         </div>
@@ -389,7 +389,7 @@ export default function Estimator({ baseTruck, perWorker, packService, onSuccess
                     key={idx}
                     className={`w-8 h-8 rounded-full flex items-center justify-center font-bold text-sm z-10 transition-all ${
                       step >= sNum 
-                        ? 'bg-yellow-400 dark:bg-blue-500 text-blue-950 dark:text-white scale-110 shadow-md' 
+                        ? 'bg-yellow-400 dark:bg-purple-500 text-blue-950 dark:text-white scale-110 shadow-md' 
                         : 'bg-blue-300 dark:bg-slate-800 text-blue-900 dark:text-slate-400'
                     }`}
                   >
@@ -400,7 +400,7 @@ export default function Estimator({ baseTruck, perWorker, packService, onSuccess
             </div>
             <div className="flex justify-between text-[10px] md:text-xs text-blue-100 dark:text-slate-400 font-bold">
               {config.steps.map((s, idx) => (
-                <span key={idx} className={step === idx + 1 ? 'text-yellow-300 dark:text-blue-400 font-extrabold scale-105' : ''}>
+                <span key={idx} className={step === idx + 1 ? 'text-yellow-300 dark:text-purple-400 font-extrabold scale-105' : ''}>
                   {s.title}
                 </span>
               ))}
@@ -419,10 +419,10 @@ export default function Estimator({ baseTruck, perWorker, packService, onSuccess
               {config.notifications.success_title || 'درخواست استعلام شما با موفقیت ثبت شد!'}
             </h3>
             <p className="text-sm text-gray-550 dark:text-gray-400 max-w-md mx-auto mb-6 leading-relaxed">
-              {config.notifications.success_message || 'کد پیگیری شما صادر گردید. کارشناسان پشتیبان ظریف بار تا ۱۵ دقیقه آینده جهت هماهنگی نهایی تماس میگیرند.'}
+              {config.notifications.success_message || 'کد پیگیری شما صادر گردید. کارشناسان پشتیبان اسپاب چی تا ۱۵ دقیقه آینده جهت هماهنگی نهایی تماس میگیرند.'}
             </p>
-            <div className="bg-blue-50 dark:bg-blue-950/20 border border-blue-100 dark:border-blue-900/40 rounded-2xl p-4 max-w-xs mx-auto mb-6">
-              <div className="text-xs text-blue-600 dark:text-blue-400 font-bold mb-1">هزینه حدودی برآورد شده:</div>
+            <div className="bg-purple-50 dark:bg-blue-950/20 border border-blue-100 dark:border-blue-900/40 rounded-2xl p-4 max-w-xs mx-auto mb-6">
+              <div className="text-xs text-purple-600 dark:text-purple-400 font-bold mb-1">هزینه حدودی برآورد شده:</div>
               <div className="text-xl font-black text-blue-900 dark:text-blue-200 font-sans" dir="ltr">
                 {formatPrice(currentPrice)} <span className="text-xs font-normal">تومان</span>
               </div>
@@ -433,7 +433,7 @@ export default function Estimator({ baseTruck, perWorker, packService, onSuccess
                 setStep(1);
                 setFormValues({});
               }}
-              className="text-sm text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 font-bold underline"
+              className="text-sm text-purple-600 dark:text-purple-400 hover:text-blue-800 dark:hover:text-blue-300 font-bold underline"
             >
               ثبت استعلام جدید
             </button>
@@ -465,13 +465,13 @@ export default function Estimator({ baseTruck, perWorker, packService, onSuccess
                                 onClick={() => updateField(f.name, opt.value)}
                                 className={`p-4 rounded-2xl border-2 cursor-pointer transition-all ${
                                   getFieldValue(f.name) === opt.value
-                                    ? 'border-blue-600 bg-blue-50/40 dark:bg-blue-950/20 dark:border-blue-500 shadow-sm' 
+                                    ? 'border-purple-600 bg-purple-50/40 dark:bg-blue-950/20 dark:border-purple-500 shadow-sm' 
                                     : 'border-slate-100 dark:border-slate-800 hover:border-slate-200 dark:hover:border-slate-700 bg-slate-50/50 dark:bg-slate-900/50'
                                 }`}
                               >
                                 <div className="flex items-center gap-2 mb-1">
                                   <div className={`w-4 h-4 rounded-full border-2 flex items-center justify-center ${
-                                    getFieldValue(f.name) === opt.value ? 'border-blue-600 bg-blue-600 dark:border-blue-500 dark:bg-blue-500' : 'border-gray-300 dark:border-slate-700'
+                                    getFieldValue(f.name) === opt.value ? 'border-purple-600 bg-purple-600 dark:border-purple-500 dark:bg-purple-500' : 'border-gray-300 dark:border-slate-700'
                                   }`}>
                                     {getFieldValue(f.name) === opt.value && <div className="w-1.5 h-1.5 rounded-full bg-white"></div>}
                                   </div>
@@ -492,7 +492,7 @@ export default function Estimator({ baseTruck, perWorker, packService, onSuccess
                                 onClick={() => updateField(f.name, opt.value)}
                                 className={`flex-1 py-3 px-4 rounded-xl border text-xs font-bold transition-all text-right flex items-center justify-between ${
                                   getFieldValue(f.name) === opt.value 
-                                    ? 'bg-blue-600 text-white border-blue-600' 
+                                    ? 'bg-purple-600 text-white border-purple-600' 
                                     : 'bg-white dark:bg-slate-800 border-gray-200 dark:border-slate-700 hover:bg-gray-50 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200'
                                 }`}
                               >
@@ -500,7 +500,7 @@ export default function Estimator({ baseTruck, perWorker, packService, onSuccess
                                 <div className={`w-3.5 h-3.5 rounded-full border flex items-center justify-center ${
                                   getFieldValue(f.name) === opt.value ? 'border-white bg-white' : 'border-gray-400'
                                 }`}>
-                                  {getFieldValue(f.name) === opt.value && <div className="w-1.5 h-1.5 rounded-full bg-blue-600"></div>}
+                                  {getFieldValue(f.name) === opt.value && <div className="w-1.5 h-1.5 rounded-full bg-purple-600"></div>}
                                 </div>
                               </button>
                             ))}
@@ -516,7 +516,7 @@ export default function Estimator({ baseTruck, perWorker, packService, onSuccess
                                 onClick={() => updateField(f.name, opt.value)}
                                 className={`w-11 h-11 md:w-12 md:h-12 rounded-xl border text-xs font-bold transition-all flex items-center justify-center ${
                                   String(getFieldValue(f.name)) === String(opt.value) 
-                                    ? 'bg-blue-600 text-white border-blue-600 shadow' 
+                                    ? 'bg-purple-600 text-white border-purple-600 shadow' 
                                     : 'bg-white dark:bg-slate-800 border-gray-200 dark:border-slate-700 hover:bg-gray-50 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200'
                                 }`}
                               >
@@ -608,7 +608,7 @@ export default function Estimator({ baseTruck, perWorker, packService, onSuccess
                 <button
                   type="button"
                   onClick={handleNext}
-                  className="flex items-center gap-2 bg-gradient-to-r from-blue-600 to-indigo-600 text-white px-6 py-3 rounded-2xl shadow-md hover:shadow-indigo-500/20 font-bold text-xs md:text-sm transition-all cursor-pointer"
+                  className="flex items-center gap-2 bg-gradient-to-r from-purple-600 to-purple-600 text-white px-6 py-3 rounded-2xl shadow-md hover:shadow-indigo-500/20 font-bold text-xs md:text-sm transition-all cursor-pointer"
                 >
                   مرحله بعدی
                   <ArrowLeft className="w-4 h-4" />
