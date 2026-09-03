@@ -65,6 +65,15 @@ async function startServer() {
 
   app.use(express.json({ limit: '1mb' }));
 
+  app.use((req, res, next) => {
+    if (req.path.startsWith('/api') || req.path.startsWith('/uploads')) {
+      res.setHeader('Cache-Control', 'no-store, no-cache, must-revalidate, proxy-revalidate');
+      res.setHeader('Pragma', 'no-cache');
+      res.setHeader('Expires', '0');
+    }
+    next();
+  });
+
   app.get('/health', async (_req, res) => {
     try {
       await getDB().get('SELECT 1');

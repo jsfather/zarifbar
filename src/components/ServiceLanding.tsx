@@ -364,7 +364,7 @@ export default function ServiceLanding({ slug, onBackToServices, onOpenEstimator
     setLoading(true);
 
     // Fetch video url from service_videos table
-    fetch(`/api/service_videos/${slug}`)
+    fetch(`/api/service_videos/${slug}`, { cache: 'no-store' })
       .then((res) => res.json())
       .then((vData) => {
         if (vData && vData.video_url) {
@@ -377,7 +377,7 @@ export default function ServiceLanding({ slug, onBackToServices, onOpenEstimator
     
     // Load dynamic packing content if it is the packing slug
     if (slug === 'packing') {
-      fetch('/api/settings')
+      fetch('/api/settings', { cache: 'no-store' })
         .then((res) => res.json())
         .then((settingsData) => {
           if (settingsData && settingsData.packing_data) {
@@ -400,7 +400,7 @@ export default function ServiceLanding({ slug, onBackToServices, onOpenEstimator
         .catch((err) => console.error('Failed to fetch settings for packing page:', err))
         .finally(() => setLoading(false));
     } else if (slug === 'storage') {
-      fetch('/api/settings')
+      fetch('/api/settings', { cache: 'no-store' })
         .then((res) => res.json())
         .then((settingsData) => {
           if (settingsData && settingsData.storage_data) {
@@ -422,7 +422,7 @@ export default function ServiceLanding({ slug, onBackToServices, onOpenEstimator
         .catch((err) => console.error('Failed to fetch settings for storage page:', err))
         .finally(() => setLoading(false));
     } else if (slug === 'transport') {
-      fetch('/api/settings')
+      fetch('/api/settings', { cache: 'no-store' })
         .then((res) => res.json())
         .then((settingsData) => {
           if (settingsData && settingsData.transport_data) {
@@ -444,7 +444,7 @@ export default function ServiceLanding({ slug, onBackToServices, onOpenEstimator
         .catch((err) => console.error('Failed to fetch settings for transport page:', err))
         .finally(() => setLoading(false));
     } else if (slug === 'workers') {
-      fetch('/api/settings')
+      fetch('/api/settings', { cache: 'no-store' })
         .then((res) => res.json())
         .then((settingsData) => {
           if (settingsData && settingsData.workers_data) {
@@ -467,7 +467,7 @@ export default function ServiceLanding({ slug, onBackToServices, onOpenEstimator
         .finally(() => setLoading(false));
     } else {
       // Find normal service info
-      fetch(`/api/services/${slug}`)
+      fetch(`/api/services/${slug}`, { cache: 'no-store' })
         .then((res) => res.json())
         .then((data) => {
           if (!data.error) {

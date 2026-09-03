@@ -75,13 +75,13 @@ export default function App() {
   // Fetch settings & services dynamic data
   useEffect(() => {
     Promise.all([
-      fetch('/api/settings').then(res => res.json()),
-      fetch('/api/services').then(res => res.json()),
-      fetch('/api/posts').then(res => res.json()),
-      fetch('/api/pages/home').then(res => res.json()).catch(() => ({})),
-      fetch('/api/pages/about').then(res => res.json()).catch(() => ({})),
-      fetch('/api/pages/contact').then(res => res.json()).catch(() => ({})),
-      fetch('/api/pages/privacy').then(res => res.json()).catch(() => ({}))
+      fetch('/api/settings', { cache: 'no-store' }).then(res => res.json()),
+      fetch('/api/services', { cache: 'no-store' }).then(res => res.json()),
+      fetch('/api/posts', { cache: 'no-store' }).then(res => res.json()),
+      fetch('/api/pages/home', { cache: 'no-store' }).then(res => res.json()).catch(() => ({})),
+      fetch('/api/pages/about', { cache: 'no-store' }).then(res => res.json()).catch(() => ({})),
+      fetch('/api/pages/contact', { cache: 'no-store' }).then(res => res.json()).catch(() => ({})),
+      fetch('/api/pages/privacy', { cache: 'no-store' }).then(res => res.json()).catch(() => ({}))
     ])
       .then(([settingsData, servicesData, postsData, homePage, aboutPage, contactPage, privacyPage]) => {
         if (!settingsData.error) setSettings(settingsData);

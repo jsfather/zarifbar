@@ -24,8 +24,8 @@ export default function BlogView({ onNavigate, selectedPostSlug, onSelectPost }:
     if (!selectedPostSlug) {
       setLoading(true);
       Promise.all([
-        fetch('/api/posts').then((res) => res.json()),
-        fetch('/api/categories').then((res) => res.json()),
+        fetch('/api/posts', { cache: 'no-store' }).then((res) => res.json()),
+        fetch('/api/categories', { cache: 'no-store' }).then((res) => res.json()),
       ])
         .then(([postsData, catsData]) => {
           if (!postsData.error) setPosts(postsData);
@@ -40,19 +40,20 @@ export default function BlogView({ onNavigate, selectedPostSlug, onSelectPost }:
   useEffect(() => {
     if (selectedPostSlug) {
       setSingleLoading(true);
-      fetch(`/api/posts/${selectedPostSlug}`)
+      fetch(`/api/posts/${selectedPostSlug}`, { cache: 'no-store' })
         .then((res) => res.json())
         .then((data) => {
           if (!data.error) {
             setSinglePost(data);
             // Apply meta SEO tags dynamically
-            if (data.seo_title) document.title = data.seo_title;
+            document.title = data.seo_title || 'اسپاب چی';
           }
         })
         .catch((err) => console.error(err))
         .finally(() => setSingleLoading(false));
     } else {
       setSinglePost(null);
+      document.title = 'اسپاب چی - اتوبار و حمل اثاثیه منزل مدرن';
     }
   }, [selectedPostSlug]);
 

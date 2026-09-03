@@ -31,7 +31,7 @@ export function getStoredUser(): User | null {
 type ApiFetchInit = RequestInit & { skipAuth?: boolean };
 
 export async function apiFetch(input: string, init: ApiFetchInit = {}) {
-  const { skipAuth, headers, ...rest } = init;
+  const { skipAuth, headers, cache, ...rest } = init;
   const mergedHeaders = new Headers(headers);
 
   if (!skipAuth) {
@@ -43,7 +43,11 @@ export async function apiFetch(input: string, init: ApiFetchInit = {}) {
     mergedHeaders.set('Content-Type', 'application/json');
   }
 
-  const response = await fetch(input, { ...rest, headers: mergedHeaders });
+  const response = await fetch(input, {
+    ...rest,
+    cache: cache ?? 'no-store',
+    headers: mergedHeaders,
+  });
 
   if (response.status === 401 && !skipAuth) {
     clearAuthSession();
