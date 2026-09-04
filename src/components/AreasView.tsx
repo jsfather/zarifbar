@@ -9,15 +9,19 @@ interface AreasViewProps {
 }
 
 export default function AreasView({ areasDataObj, onBackToHome, phone }: AreasViewProps) {
-  const [data, setData] = useState<AreasData>(DEFAULT_AREAS_DATA);
   const [activeTab, setActiveTab] = useState<'north' | 'west' | 'east' | 'karaj'>('north');
 
-  // Hydrate data from database settings if exists
-  useEffect(() => {
+  // Parse before render so bundled fallback content never flashes on the screen.
+  const data = React.useMemo(() => {
+    const normalizeBrand = (value: AreasData): AreasData =>
+      JSON.parse(
+        JSON.stringify(value).replace(/ظریف[\s‌-]*بار|اسپاپ[\s‌-]*چی/g, 'اسپاب چی')
+      );
+
     if (areasDataObj) {
       try {
         const parsed = JSON.parse(areasDataObj);
-        setData({
+        return normalizeBrand({
           title: parsed.title || DEFAULT_AREAS_DATA.title,
           subtitle: parsed.subtitle || DEFAULT_AREAS_DATA.subtitle,
           regions: {
@@ -29,11 +33,11 @@ export default function AreasView({ areasDataObj, onBackToHome, phone }: AreasVi
         });
       } catch (e) {
         console.error("Error setting custom areas data, using defaults", e);
-        setData(DEFAULT_AREAS_DATA);
+        return normalizeBrand(DEFAULT_AREAS_DATA);
       }
-    } else {
-      setData(DEFAULT_AREAS_DATA);
     }
+
+    return normalizeBrand(DEFAULT_AREAS_DATA);
   }, [areasDataObj]);
 
   const activeRegion: RegionalAreaData = data.regions[activeTab];

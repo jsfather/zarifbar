@@ -54,6 +54,7 @@ export default function App() {
   const [recentPosts, setRecentPosts] = useState<Post[]>([]);
   const [activePostSlug, setActivePostSlug] = useState<string>('');
   const [pages, setPages] = useState<Record<string, any>>({});
+  const [isInitialLoading, setIsInitialLoading] = useState(true);
 
   // Toast confirmation
   const [toastMessage, setToastMessage] = useState('');
@@ -97,7 +98,8 @@ export default function App() {
         if (privacyPage && privacyPage.slug) pagesObj.privacy = privacyPage;
         setPages(pagesObj);
       })
-      .catch((err) => console.error('Error fetching initial dynamic modules:', err));
+      .catch((err) => console.error('Error fetching initial dynamic modules:', err))
+      .finally(() => setIsInitialLoading(false));
   }, []);
 
   // Update real titles from database
@@ -882,6 +884,18 @@ export default function App() {
   };
 
   const isPlainAdminView = path === '/admin';
+
+  // Do not briefly render bundled fallback content while the latest CMS data is loading.
+  if (isInitialLoading && !isPlainAdminView) {
+    return (
+      <div className="min-h-screen bg-slate-50 dark:bg-slate-950 flex items-center justify-center" dir="rtl">
+        <div className="flex flex-col items-center gap-4 text-slate-600 dark:text-slate-300">
+          <div className="w-10 h-10 rounded-full border-4 border-purple-100 border-t-purple-600 animate-spin" />
+          <span className="text-sm font-bold">در حال دریافت آخرین اطلاعات اسپاب چی...</span>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-100 flex flex-col justify-between font-sans selection:bg-blue-100 selection:text-blue-900 overflow-x-hidden transition-colors duration-300">
