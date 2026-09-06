@@ -538,7 +538,7 @@ export default function PageEditor() {
                   </div>
                   <div>
                     <label className="block text-[11px] font-bold text-gray-500 mb-1.5">توضیح زیر عنوان CTA</label>
-                    <input type="text" value={parsedContents.about?.cta_desc || ''} onChange={(e) => handleFieldChange('about', 'cta_desc', e.target.value)} className="w-full bg-gray-50 border border-gray-150 rounded-xl py-2.5 px-4 text-xs font-medium text-slate-800" placeholder="کارشناسان اسپاب‌چی در تمام ساعات شبانه‌روز..." />
+                    <input type="text" value={parsedContents.about?.cta_desc || ''} onChange={(e) => handleFieldChange('about', 'cta_desc', e.target.value)} className="w-full bg-gray-50 border border-gray-150 rounded-xl py-2.5 px-4 text-xs font-medium text-slate-800" placeholder="کارشناسان اسپاب‌چی در تمام ساعات ..." />
                   </div>
                   <div>
                     <label className="block text-[11px] font-bold text-gray-500 mb-1.5">متن دکمه تماس (قبل از شماره)</label>
@@ -565,12 +565,12 @@ export default function PageEditor() {
                   value={parsedContents.contact?.subtitle || ''}
                   onChange={(e) => handleFieldChange('contact', 'subtitle', e.target.value)}
                   className="w-full bg-gray-50 border border-gray-150 rounded-xl py-2.5 px-4 text-xs font-medium text-slate-800"
-                  placeholder="مثال: پاسخگویی شبانه‌روزی و بدون تعطیلی جهت رفاه حال..."
+                  placeholder="مثال: پاسخگویی  و بدون تعطیلی جهت رفاه حال..."
                 />
               </div>
 
               <div className="p-4 bg-teal-50/20 rounded-2xl border border-teal-100 text-[11px] text-teal-800 leading-relaxed font-bold">
-                💡 توجه: اطلاعات تماس تلفن گویا (۱۵۰۰)، شماره های فرعی، آدرس دفتر، و ایمیل به صورت سراسری بر روی سایت و تنظیمات کل سامانه مدیریت می‌شود. اینجا فقط زیرعنوان‌های توضیحی این مسیر قابل ویرایش هستند تا ثبات ارتباطات مشتری حفظ گردد.
+                💡 توجه: اطلاعات تماس تلفن گویا )، شماره های فرعی، آدرس دفتر، و ایمیل به صورت سراسری بر روی سایت و تنظیمات کل سامانه مدیریت می‌شود. اینجا فقط زیرعنوان‌های توضیحی این مسیر قابل ویرایش هستند تا ثبات ارتباطات مشتری حفظ گردد.
               </div>
             </div>
           )}

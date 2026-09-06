@@ -55,7 +55,7 @@ export const DEFAULT_ESTIMATOR_CONFIG: EstimatorConfig = {
           options: [
             { value: "packing", label: "بسته‌بندی کامل و اسباب‌کشی لوکس", desc: "کارتن، سلفون، کارگر، کامیونت مسقف پتودار" },
             { value: "workers", label: "کارگر خالی اسباب‌کشی (بدون کامیون)", desc: "اعزام نیروی ورزیده برای تخلیه و چیدمان" },
-            { value: "transport", label: "وانت بار یا نیسان شبانه‌روزی", desc: "جابجایی بارهای سبک و سریع با راننده پتو دار" },
+            { value: "transport", label: "وانت بار یا نیسان ", desc: "جابجایی بارهای سبک و سریع با راننده پتو دار" },
             { value: "storage", label: "اجاره انبار موقت کانکسی", desc: "دپوی مطمئن وسایل با کلید شخصی و بیمه کامل" }
           ]
         }

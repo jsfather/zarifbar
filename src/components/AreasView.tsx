@@ -144,7 +144,7 @@ export default function AreasView({ areasDataObj, onBackToHome, phone }: AreasVi
             <div>
               <h4 className="text-xs font-black text-blue-900">نرخ مصوب اتحادیه باربری</h4>
               <p className="text-[10px] text-blue-700 mt-0.5 leading-relaxed font-bold">
-                تمام تعرفه‌های محاسبه شده تحت کنترل تعزیرات بوده و در پایان کار هیچگونه افزایش قیمتی نخواهید داشت.
+                تمام تعرفه‌های محاسبه شده براساس اخرین تغییرات اتحادیه باربری می باشد.
               </p>
             </div>
           </div>

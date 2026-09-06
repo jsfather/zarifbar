@@ -45,7 +45,7 @@ export default function App() {
     email: '',
     address: '',
     seo_keywords: 'اسباب‌کشی، اسپاب‌چی، اتوبار تهران، وانت بار، نیسان بار',
-    working_hours: '۷ روز هفته، ۲۴ ساعته در خدمت شما هستیم',
+    working_hours: '۷ روز هفته، در طول روز  در خدمت شما هستیم',
     pricing_base_truck: '1800000',
     pricing_per_worker: '450000',
     pricing_pack_service: '1200000'
@@ -181,9 +181,9 @@ export default function App() {
       video_url: parsed.video_url || '',
       // Section 2 – Services
       services_section_title: parsed.services_section_title || 'خدماتی که اسپاب‌چی ارائه می‌دهد',
-      service_1_title: parsed.service_1_title || 'حمل اثاثیه منزل',
+      service_1_title: parsed.service_1_title || 'در تهرانحمل اثاثیه منزل ',
       service_1_desc: parsed.service_1_desc || 'جابجایی کامل وسایل منزل با کامیونت، خاور یا وانت متناسب با حجم بار.',
-      service_2_title: parsed.service_2_title || 'بسته‌بندی اثاثیه',
+      service_2_title: parsed.service_2_title || ' بسته‌بندی اثاثیه در تهران',
       service_2_desc: parsed.service_2_desc || 'بسته‌بندی با کارتن، پتو، نایلون حبابی و متریال محافظ برای کاهش آسیب در حمل.',
       service_3_title: parsed.service_3_title || 'کارگر خالی اسباب‌کشی',
       service_3_desc: parsed.service_3_desc || 'اعزام نیروی جابجایی برای تخلیه، بارگیری یا چیدمان بدون نیاز به خودرو.',
@@ -191,8 +191,8 @@ export default function App() {
       service_4_desc: parsed.service_4_desc || 'انبارهای مسقف و روباز برای نگهداری موقت اثاثیه، جهیزیه یا کالاهای تجاری.',
       // Section 3 – Process
       process_section_title: parsed.process_section_title || 'نحوه ثبت و انجام سفارش',
-      step_1_title: parsed.step_1_title || 'تماس یا پر کردن فرم',
-      step_1_desc: parsed.step_1_desc || 'با شماره‌های اسپاب‌چی تماس بگیرید یا از فرم محاسبه آنلاین استفاده کنید.',
+      step_1_title: parsed.step_1_title || 'تماس با اسپاب چی ',
+      step_1_desc: parsed.step_1_desc || 'با شماره‌های اسپاب‌چی تماس بگیرید  .',
       step_2_title: parsed.step_2_title || 'بررسی و برآورد اولیه',
       step_2_desc: parsed.step_2_desc || 'کارشناس اطلاعات مسیر، حجم بار، طبقه و سرویس‌های مورد نیاز را دریافت می‌کند و برآورد اولیه هزینه را اعلام می‌کند.',
       step_3_title: parsed.step_3_title || 'هماهنگی زمان اعزام',
@@ -228,7 +228,7 @@ export default function App() {
       transparency_3_desc: parsed.transparency_3_desc || 'تمام آیتم‌های هزینه‌ساز (طبقه، آسانسور، بسته‌بندی) از ابتدا در برآورد لحاظ می‌شوند.',
       // Section 7 – CTA
       cta_title: parsed.cta_title || 'برای استعلام قیمت یا ثبت سفارش تماس بگیرید',
-      cta_desc: parsed.cta_desc || 'کارشناسان اسپاب‌چی در تمام ساعات شبانه‌روز آماده پاسخگویی و هماهنگی هستند.',
+      cta_desc: parsed.cta_desc || 'کارشناسان اسپاب‌چی در تمام ساعات روز آماده پاسخگویی و هماهنگی هستند.',
       cta_btn_call: parsed.cta_btn_call || 'تماس',
       cta_btn_calc: parsed.cta_btn_calc || 'محاسبه آنلاین قیمت',
     };
@@ -679,7 +679,7 @@ export default function App() {
               <div className="w-10 h-10 rounded-xl bg-amber-50 dark:bg-amber-950/40 text-amber-600 dark:text-amber-400 flex items-center justify-center">
                 <Clock className="w-5 h-5" />
               </div>
-              <h4 className="text-sm font-black text-slate-900 dark:text-white">سرویس دهی منظم شبانه‌روزی</h4>
+              <h4 className="text-sm font-black text-slate-900 dark:text-white">سرویس دهی منظم </h4>
               <p className="text-xs text-gray-500 dark:text-slate-300 leading-relaxed text-justify">
                 حتی در سردترین یا شلوغ‌ترین روزهای آخر هفته تهران بزرگ، با اتکا به کادر پاسخگو رزرو‌های اختصاصی شما راس ساعت هماهنگ شده به محل اعزام می‌گردند.
               </p>
