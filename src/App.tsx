@@ -508,7 +508,7 @@ export default function App() {
           
           <div className="text-center max-w-xl mx-auto space-y-3">
             <span className="inline-block mb-5 md:mb-6 text-xs bg-amber-50 dark:bg-amber-950/40 text-amber-700 dark:text-amber-400 font-extrabold px-4 py-2 rounded-full border border-amber-100 dark:border-amber-900/40 shadow-xs">
-              چرا هشدارهای اسباب‌کشی را جدی بگیریم؟
+             اسپاب چی
             </span>
             <h2 className="text-2xl md:text-3xl font-black text-slate-900 dark:text-white leading-snug">
               ۴ خدمت تخصصی باربری و بسته‌بندی اسپاب چی
