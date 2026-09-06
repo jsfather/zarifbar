@@ -621,7 +621,7 @@ export default function App() {
                 بروزرسانی تعرفه خرداد ۱۴۰۵
               </span>
               <h2 className="text-2xl md:text-3.5xl font-black text-slate-900 dark:text-white leading-[1.25]">
-                پیش فاکتور دقیق با پوشش ضمانت‌نامه تا سقف دلخواه!
+               امکان بیمه بار به درخواست کارفرما
               </h2>
               <p className="text-xs md:text-sm text-slate-500 dark:text-slate-400 font-medium leading-relaxed text-justify">
                 با وارد کردن اطلاعات اسباب‌کشی خود، برآورد اولیه هزینه را دریافت کنید. هزینه نهایی پس از بررسی اطلاعات سفارش توسط کارشناسان اسپاب‌چی به شما اعلام می‌شود.

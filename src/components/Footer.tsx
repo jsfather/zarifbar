@@ -113,7 +113,7 @@ export default function Footer({ onNavigate, phone, phone_alt, email, address, a
 
       <div className="max-w-7xl mx-auto px-4 md:px-8 pt-8 border-t border-slate-900 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-slate-500">
         <p className="text-center md:text-right">
-          تمامی حقوق برای اسپاب چی محفوظ می باشد | طراحی و توسعه: <a href="https://farinohub.com" target="_blank" rel="noreferrer" className="text-blue-500 hover:text-purple-400 font-medium transition-colors">آژانس دیجیتال مارکتینگ فارینو</a>
+          تمامی حقوق برای اسپاب چی محفوظ می باشد | <a href="#" target="_blank" rel="noreferrer" className="text-blue-500 hover:text-purple-400 font-medium transition-colors"></a>
         </p>
         <div className="flex gap-4 items-center">
           <button onClick={() => onNavigate('/privacy')} className="hover:text-slate-300 transition-colors text-slate-400 font-medium">حریم خصوصی</button>

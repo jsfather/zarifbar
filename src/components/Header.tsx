@@ -31,10 +31,10 @@ export default function Header({ currentPath, onNavigate, phone, logoUrl, taglin
   };
 
   const services = [
-    { title: 'بسته‌بندی اثاثیه منزل', slug: 'packing' },
-    { title: 'کارگر خالی و نیروی جابجایی', slug: 'workers' },
-    { title: 'وانت بار و نیسان بار', slug: 'transport' },
-    { title: 'انبار و اجاره موقت وسایل', slug: 'storage' },
+    { title: 'بسته‌بندی اثاثیه منزل تهران', slug: 'packing' },
+    { title: 'کارگر خالی و نیروی جابجایی تهران', slug: 'workers' },
+    { title: 'حمل اثاثیه منرل تهران', slug: 'transport' },
+    { title: 'انبار و اجاره موقت وسایل تهران', slug: 'storage' },
   ];
 
   return (

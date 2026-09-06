@@ -1582,7 +1582,7 @@ export default function AdminPanel({ onLogout, phone }: AdminPanelProps) {
                     <h3 className="text-base font-black text-slate-900">مدیریت لندینگ خدمات (بسته‌بندی، کارگر خالی، وانت، انبار)</h3>
                     <p className="text-xs text-slate-400 mt-1">تغییر فوری متن، تصاویر شاخص و سئوی لندینگ تکی ۴ خدمت اصلی سایت</p>
                   </div>
-                  <span className="text-xs text-purple-600 font-bold">بیمه دولتی رایگان تضمینی</span>
+                  <span className="text-xs text-purple-600 font-bold"</span>
                 </div>
 
                 {editingService ? (

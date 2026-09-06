@@ -375,12 +375,12 @@ export default function Estimator({ baseTruck, perWorker, packService, onSuccess
               <Calculator className="w-6 h-6 text-yellow-300 dark:text-purple-400" />
             </div>
             <div>
-              <h2 className="text-lg md:text-xl font-extrabold text-white">محاسبه‌گر پیشرفته هزینه اسباب‌کشی</h2>
-              <p className="text-xs text-blue-100 dark:text-slate-300 font-medium">استعلام آنلاین قیمت تضمین‌شده بدون تغییر</p>
+              <h2 className="text-lg md:text-xl font-extrabold text-white">محاسبه‌گر تقریبی هزینه اسباب‌کشی</h2>
+              <p className="text-xs text-blue-100 dark:text-slate-300 font-medium">استعلام آنلاین هزینه  اسباب کشی</p>
             </div>
           </div>
           <span className="text-xs bg-yellow-400 dark:bg-purple-600 text-blue-950 dark:text-white font-black px-3 py-1.5 rounded-full shadow-sm">
-            شبانه‌روزی
+           هزینه تقریبی میباشد 
           </span>
         </div>
 
