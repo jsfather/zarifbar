@@ -11,7 +11,7 @@ export default function PageEditor() {
   const [loading, setLoading] = useState(false);
   const [toastMessage, setToastMessage] = useState('');
 
-  const slugs = ['home', 'about', 'contact', 'privacy'];
+  const slugs = ['home', 'about', 'contact', 'privacy', 'terms'];
 
   useEffect(() => {
     fetchContent();
@@ -26,7 +26,7 @@ export default function PageEditor() {
       try {
         const res = await apiFetch(`/api/pages/${slug}`);
         const data = res.ok ? await res.json() : {};
-        newPages[slug] = data.slug ? data : { slug, title: slug === 'home' ? 'صفحه اصلی' : slug === 'about' ? 'درباره ما' : slug === 'contact' ? 'تماس با ما' : 'حریم خصوصی و قوانین', content_json: '{}', image_url: '' };
+        newPages[slug] = data.slug ? data : { slug, title: slug === 'home' ? 'صفحه اصلی' : slug === 'about' ? 'درباره ما' : slug === 'contact' ? 'تماس با ما' : slug === 'privacy' ? 'حریم خصوصی و قوانین' : 'شرایط و ضوابط', content_json: '{}', image_url: '' };
         
         let contentObj = {};
         if (newPages[slug].content_json) {
@@ -100,7 +100,8 @@ export default function PageEditor() {
     { id: 'home', label: 'صفحه اصلی', icon: Layout, color: 'text-blue-600' },
     { id: 'about', label: 'درباره ما', icon: Info, color: 'text-indigo-600' },
     { id: 'contact', label: 'تماس با ما', icon: PhoneCall, color: 'text-teal-600' },
-    { id: 'privacy', label: 'حریم خصوصی و ضوابط', icon: ShieldAlert, color: 'text-amber-500' }
+    { id: 'privacy', label: 'حریم خصوصی و ضوابط', icon: ShieldAlert, color: 'text-amber-500' },
+    { id: 'terms', label: 'شرایط و ضوابط', icon: List, color: 'text-purple-500' }
   ];
 
   return (
@@ -123,7 +124,7 @@ export default function PageEditor() {
       </div>
 
       {/* Graphical Tabs selection */}
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+      <div className="grid grid-cols-2 md:grid-cols-5 gap-3">
         {tabs.map(tab => {
           const Icon = tab.icon;
           const isActive = activePage === tab.id;
@@ -366,92 +367,190 @@ export default function PageEditor() {
           )}
 
           {activePage === 'about' && (
-            <div className="space-y-6">
-              <h4 className="text-xs font-black text-slate-800 border-r-2 border-indigo-500 pr-2">👥 ویرایش محتوای تاریخی و تعهدات درباره ما</h4>
-              
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div>
-                  <label className="block text-[11px] font-bold text-gray-500 mb-1.5">زیرعنوان خاکستری بالای صفحه</label>
-                  <input 
-                    type="text"
-                    value={parsedContents.about?.subtitle || ''}
-                    onChange={(e) => handleFieldChange('about', 'subtitle', e.target.value)}
-                    className="w-full bg-gray-50 border border-gray-150 rounded-xl py-2.5 px-4 text-xs font-medium text-slate-800"
-                    placeholder="مثال: پنج دهه همراهی صادقانه و خدمت‌رسانی..."
-                  />
-                </div>
-                <div>
-                  <label className="block text-[11px] font-bold text-gray-500 mb-1.5">عنوان فرعی اصلی کارت متنی (Heading)</label>
-                  <input 
-                    type="text"
-                    value={parsedContents.about?.heading || ''}
-                    onChange={(e) => handleFieldChange('about', 'heading', e.target.value)}
-                    className="w-full bg-gray-50 border border-gray-150 rounded-xl py-2.5 px-4 text-xs font-medium text-slate-800"
-                    placeholder="مثال: آرمان ما کیفیت عالی و جلب اعتماد اسباب‌کشی لوکس است"
-                  />
-                </div>
-              </div>
+            <div className="space-y-8">
+              <h4 className="text-xs font-black text-slate-800 border-r-2 border-indigo-500 pr-2">👥 ویرایش کامل محتوای صفحه درباره ما</h4>
 
-              <div>
-                <label className="block text-[11px] font-bold text-gray-500 mb-1.5">پاراگراف متنی اول معرفی شرکت</label>
-                <textarea 
-                  rows={4}
-                  value={parsedContents.about?.paragraph_1 || ''}
-                  onChange={(e) => handleFieldChange('about', 'paragraph_1', e.target.value)}
-                  className="w-full bg-gray-50 border border-gray-150 rounded-xl py-2.5 px-4 text-xs font-medium text-slate-800 leading-relaxed text-justify"
-                  placeholder="پاراگراف متنی اول شروع تاریخچه و معرفی کادر..."
-                />
-              </div>
-
-              <div>
-                <label className="block text-[11px] font-bold text-gray-500 mb-1.5">پاراگراف متنی دوم معرفی شرکت</label>
-                <textarea 
-                  rows={4}
-                  value={parsedContents.about?.paragraph_2 || ''}
-                  onChange={(e) => handleFieldChange('about', 'paragraph_2', e.target.value)}
-                  className="w-full bg-gray-50 border border-gray-150 rounded-xl py-2.5 px-4 text-xs font-medium text-slate-800 leading-relaxed text-justify"
-                  placeholder="پاراگراف متنی دوم (تفاوتهای ما با باربری‌های خرده‌پا)..."
-                />
-              </div>
-
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div>
-                  <label className="block text-[11px] font-bold text-gray-500 mb-1.5 font-sans">آدرس تصویر متناوب درباره ما</label>
-                  <input 
-                    type="text"
-                    value={pages.about.image_url || ''}
-                    onChange={(e) => handleMetadataChange('about', 'image_url', e.target.value)}
-                    className="w-full bg-gray-50 border border-gray-150 rounded-xl py-2.5 px-4 text-xs font-medium text-slate-800 text-left mb-2"
-                    dir="ltr"
-                  />
-                  <ImageUploader onUpload={(url) => handleMetadataChange('about', 'image_url', url)} />
-                </div>
-                <div className="border border-slate-100 rounded-2xl p-4 bg-slate-50 flex items-center justify-center">
-                  {pages.about.image_url ? (
-                    <img src={pages.about.image_url} alt="پیش‌نمایش تصویر" className="max-h-[140px] rounded-xl object-contain" />
-                  ) : (
-                    <span className="text-[10px] text-slate-400">تصویری آپلود نشده است</span>
-                  )}
-                </div>
-              </div>
-
-              <div className="bg-slate-50/50 rounded-2xl p-4 border border-slate-100 mt-4">
-                <label className="block text-xs font-black text-slate-800 mb-2">🎥 ویدیو اختصاصی درباره ما (لینک مستقیم یا آپلود)</label>
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-3 items-center">
-                  <div className="md:col-span-2">
-                    <input 
-                      type="text" 
-                      placeholder="لینک مستقیم ویدیو یا آپلود فایل"
-                      value={parsedContents.about?.video_url || ''}
-                      onChange={(e) => handleFieldChange('about', 'video_url', e.target.value)}
-                      className="w-full bg-white border border-gray-200 rounded-xl py-2 px-3 text-xs font-medium text-slate-800"
-                    />
+              {/* ── بخش ۱: اطلاعات پایه ── */}
+              <div className="space-y-4 pb-6 border-b border-gray-100">
+                <p className="text-[11px] font-black text-indigo-700 bg-indigo-50 px-3 py-1.5 rounded-lg inline-block">بخش ۱ — معرفی اسپاب‌چی</p>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div>
+                    <label className="block text-[11px] font-bold text-gray-500 mb-1.5">زیرعنوان خاکستری بالای صفحه</label>
+                    <input type="text" value={parsedContents.about?.subtitle || ''} onChange={(e) => handleFieldChange('about', 'subtitle', e.target.value)} className="w-full bg-gray-50 border border-gray-150 rounded-xl py-2.5 px-4 text-xs font-medium text-slate-800" placeholder="خدمات حمل‌ونقل و اسباب‌کشی در تهران" />
                   </div>
                   <div>
-                    <VideoUploader onUpload={(url) => handleFieldChange('about', 'video_url', url)} buttonText="آپلود ویدیو درباره ما" />
+                    <label className="block text-[11px] font-bold text-gray-500 mb-1.5">عنوان فرعی کارت متنی (Heading)</label>
+                    <input type="text" value={parsedContents.about?.heading || ''} onChange={(e) => handleFieldChange('about', 'heading', e.target.value)} className="w-full bg-gray-50 border border-gray-150 rounded-xl py-2.5 px-4 text-xs font-medium text-slate-800" placeholder="اسپاب‌چی چه خدماتی ارائه می‌دهد؟" />
+                  </div>
+                </div>
+                <div>
+                  <label className="block text-[11px] font-bold text-gray-500 mb-1.5">پاراگراف اول</label>
+                  <textarea rows={3} value={parsedContents.about?.paragraph_1 || ''} onChange={(e) => handleFieldChange('about', 'paragraph_1', e.target.value)} className="w-full bg-gray-50 border border-gray-150 rounded-xl py-2.5 px-4 text-xs font-medium text-slate-800 leading-relaxed text-justify" placeholder="معرفی کلی اسپاب‌چی..." />
+                </div>
+                <div>
+                  <label className="block text-[11px] font-bold text-gray-500 mb-1.5">پاراگراف دوم</label>
+                  <textarea rows={3} value={parsedContents.about?.paragraph_2 || ''} onChange={(e) => handleFieldChange('about', 'paragraph_2', e.target.value)} className="w-full bg-gray-50 border border-gray-150 rounded-xl py-2.5 px-4 text-xs font-medium text-slate-800 leading-relaxed text-justify" placeholder="توضیحات بیشتر..." />
+                </div>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div>
+                    <label className="block text-[11px] font-bold text-gray-500 mb-1.5">تصویر صفحه</label>
+                    <input type="text" value={pages.about?.image_url || ''} onChange={(e) => handleMetadataChange('about', 'image_url', e.target.value)} className="w-full bg-gray-50 border border-gray-150 rounded-xl py-2.5 px-4 text-xs font-medium text-slate-800 text-left mb-2" dir="ltr" placeholder="/uploads/about.webp" />
+                    <ImageUploader onUpload={(url) => handleMetadataChange('about', 'image_url', url)} />
+                  </div>
+                  <div className="border border-slate-100 rounded-2xl p-4 bg-slate-50 flex items-center justify-center">
+                    {pages.about?.image_url ? (
+                      <img src={pages.about.image_url} alt="پیش‌نمایش" className="max-h-[120px] rounded-xl object-contain" />
+                    ) : (
+                      <span className="text-[10px] text-slate-400">تصویری آپلود نشده</span>
+                    )}
+                  </div>
+                </div>
+                <div className="bg-slate-50/50 rounded-2xl p-4 border border-slate-100 space-y-3">
+                  <label className="text-xs font-black text-slate-800">🎥 ویدیو درباره ما</label>
+                  <div className="grid grid-cols-1 md:grid-cols-3 gap-3 items-center">
+                    <div className="md:col-span-2">
+                      <input type="text" placeholder="لینک ویدیو یا آپلود" value={parsedContents.about?.video_url || ''} onChange={(e) => handleFieldChange('about', 'video_url', e.target.value)} className="w-full bg-white border border-gray-200 rounded-xl py-2 px-3 text-xs font-medium text-slate-800" />
+                    </div>
+                    <VideoUploader onUpload={(url) => handleFieldChange('about', 'video_url', url)} buttonText="آپلود ویدیو" />
                   </div>
                 </div>
               </div>
+
+              {/* ── بخش ۲: خدمات ── */}
+              <div className="space-y-4 pb-6 border-b border-gray-100">
+                <p className="text-[11px] font-black text-blue-700 bg-blue-50 px-3 py-1.5 rounded-lg inline-block">بخش ۲ — خدماتی که ارائه می‌دهیم</p>
+                <div>
+                  <label className="block text-[11px] font-bold text-gray-500 mb-1.5">عنوان بخش خدمات</label>
+                  <input type="text" value={parsedContents.about?.services_section_title || ''} onChange={(e) => handleFieldChange('about', 'services_section_title', e.target.value)} className="w-full bg-gray-50 border border-gray-150 rounded-xl py-2.5 px-4 text-xs font-medium text-slate-800" placeholder="خدماتی که اسپاب‌چی ارائه می‌دهد" />
+                </div>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  {[
+                    { numKey: '1', label: 'خدمت ۱ (حمل اثاثیه)' },
+                    { numKey: '2', label: 'خدمت ۲ (بسته‌بندی)' },
+                    { numKey: '3', label: 'خدمت ۳ (کارگر خالی)' },
+                    { numKey: '4', label: 'خدمت ۴ (اجاره انبار)' },
+                  ].map(({ numKey, label }) => (
+                    <div key={numKey} className="bg-slate-50 rounded-2xl p-4 border border-gray-100 space-y-2">
+                      <p className="text-[10px] font-black text-slate-600">{label}</p>
+                      <input type="text" value={parsedContents.about?.[`service_${numKey}_title`] || ''} onChange={(e) => handleFieldChange('about', `service_${numKey}_title`, e.target.value)} className="w-full bg-white border border-gray-200 rounded-xl py-2 px-3 text-xs font-medium text-slate-800" placeholder="عنوان خدمت" />
+                      <textarea rows={2} value={parsedContents.about?.[`service_${numKey}_desc`] || ''} onChange={(e) => handleFieldChange('about', `service_${numKey}_desc`, e.target.value)} className="w-full bg-white border border-gray-200 rounded-xl py-2 px-3 text-xs font-medium text-slate-800" placeholder="توضیح خدمت" />
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* ── بخش ۳: فرآیند سفارش ── */}
+              <div className="space-y-4 pb-6 border-b border-gray-100">
+                <p className="text-[11px] font-black text-green-700 bg-green-50 px-3 py-1.5 rounded-lg inline-block">بخش ۳ — نحوه ثبت و انجام سفارش</p>
+                <div>
+                  <label className="block text-[11px] font-bold text-gray-500 mb-1.5">عنوان بخش فرآیند</label>
+                  <input type="text" value={parsedContents.about?.process_section_title || ''} onChange={(e) => handleFieldChange('about', 'process_section_title', e.target.value)} className="w-full bg-gray-50 border border-gray-150 rounded-xl py-2.5 px-4 text-xs font-medium text-slate-800" placeholder="نحوه ثبت و انجام سفارش" />
+                </div>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  {[
+                    { numKey: '1', label: 'مرحله ۱' },
+                    { numKey: '2', label: 'مرحله ۲' },
+                    { numKey: '3', label: 'مرحله ۳' },
+                    { numKey: '4', label: 'مرحله ۴' },
+                  ].map(({ numKey, label }) => (
+                    <div key={numKey} className="bg-slate-50 rounded-2xl p-4 border border-gray-100 space-y-2">
+                      <p className="text-[10px] font-black text-slate-600">{label}</p>
+                      <input type="text" value={parsedContents.about?.[`step_${numKey}_title`] || ''} onChange={(e) => handleFieldChange('about', `step_${numKey}_title`, e.target.value)} className="w-full bg-white border border-gray-200 rounded-xl py-2 px-3 text-xs font-medium text-slate-800" placeholder="عنوان مرحله" />
+                      <textarea rows={2} value={parsedContents.about?.[`step_${numKey}_desc`] || ''} onChange={(e) => handleFieldChange('about', `step_${numKey}_desc`, e.target.value)} className="w-full bg-white border border-gray-200 rounded-xl py-2 px-3 text-xs font-medium text-slate-800" placeholder="توضیح مرحله" />
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* ── بخش ۴: عوامل قیمت ── */}
+              <div className="space-y-4 pb-6 border-b border-gray-100">
+                <p className="text-[11px] font-black text-amber-700 bg-amber-50 px-3 py-1.5 rounded-lg inline-block">بخش ۴ — عوامل مؤثر بر هزینه</p>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div>
+                    <label className="block text-[11px] font-bold text-gray-500 mb-1.5">عنوان بخش</label>
+                    <input type="text" value={parsedContents.about?.pricing_section_title || ''} onChange={(e) => handleFieldChange('about', 'pricing_section_title', e.target.value)} className="w-full bg-gray-50 border border-gray-150 rounded-xl py-2.5 px-4 text-xs font-medium text-slate-800" placeholder="عوامل مؤثر بر هزینه اسباب‌کشی" />
+                  </div>
+                  <div>
+                    <label className="block text-[11px] font-bold text-gray-500 mb-1.5">توضیح کوتاه زیر عنوان</label>
+                    <input type="text" value={parsedContents.about?.pricing_section_desc || ''} onChange={(e) => handleFieldChange('about', 'pricing_section_desc', e.target.value)} className="w-full bg-gray-50 border border-gray-150 rounded-xl py-2.5 px-4 text-xs font-medium text-slate-800" placeholder="هزینه نهایی پیش از شروع کار تأیید می‌شود." />
+                  </div>
+                </div>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                  {[1, 2, 3, 4, 5, 6].map((n) => (
+                    <div key={n}>
+                      <label className="block text-[10px] font-bold text-gray-500 mb-1">عامل {n}</label>
+                      <input type="text" value={parsedContents.about?.[`pricing_factor_${n}`] || ''} onChange={(e) => handleFieldChange('about', `pricing_factor_${n}`, e.target.value)} className="w-full bg-gray-50 border border-gray-150 rounded-xl py-2 px-3 text-xs font-medium text-slate-800" placeholder={`عامل ${n}`} />
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* ── بخش ۵: محدوده خدمات ── */}
+              <div className="space-y-4 pb-6 border-b border-gray-100">
+                <p className="text-[11px] font-black text-rose-700 bg-rose-50 px-3 py-1.5 rounded-lg inline-block">بخش ۵ — محدوده خدمات در تهران</p>
+                <div>
+                  <label className="block text-[11px] font-bold text-gray-500 mb-1.5">عنوان بخش</label>
+                  <input type="text" value={parsedContents.about?.areas_section_title || ''} onChange={(e) => handleFieldChange('about', 'areas_section_title', e.target.value)} className="w-full bg-gray-50 border border-gray-150 rounded-xl py-2.5 px-4 text-xs font-medium text-slate-800" placeholder="محدوده خدمات در تهران" />
+                </div>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  {[
+                    { numKey: '1', label: 'منطقه ۱ (شمال)' },
+                    { numKey: '2', label: 'منطقه ۲ (مرکز)' },
+                    { numKey: '3', label: 'منطقه ۳ (غرب)' },
+                    { numKey: '4', label: 'منطقه ۴ (شرق/جنوب)' },
+                  ].map(({ numKey, label }) => (
+                    <div key={numKey} className="bg-slate-50 rounded-2xl p-4 border border-gray-100 space-y-2">
+                      <p className="text-[10px] font-black text-slate-600">{label}</p>
+                      <input type="text" value={parsedContents.about?.[`area_${numKey}_zone`] || ''} onChange={(e) => handleFieldChange('about', `area_${numKey}_zone`, e.target.value)} className="w-full bg-white border border-gray-200 rounded-xl py-2 px-3 text-xs font-medium text-slate-800" placeholder="نام منطقه (مثلا: شمال تهران)" />
+                      <textarea rows={2} value={parsedContents.about?.[`area_${numKey}_areas`] || ''} onChange={(e) => handleFieldChange('about', `area_${numKey}_areas`, e.target.value)} className="w-full bg-white border border-gray-200 rounded-xl py-2 px-3 text-xs font-medium text-slate-800" placeholder="محله‌ها با کاما جدا شوند" />
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* ── بخش ۶: شفافیت ── */}
+              <div className="space-y-4 pb-6 border-b border-gray-100">
+                <p className="text-[11px] font-black text-indigo-700 bg-indigo-50 px-3 py-1.5 rounded-lg inline-block">بخش ۶ — چرا اطلاعات شفاف قبل از شروع کار</p>
+                <div>
+                  <label className="block text-[11px] font-bold text-gray-500 mb-1.5">عنوان بخش</label>
+                  <input type="text" value={parsedContents.about?.transparency_section_title || ''} onChange={(e) => handleFieldChange('about', 'transparency_section_title', e.target.value)} className="w-full bg-gray-50 border border-gray-150 rounded-xl py-2.5 px-4 text-xs font-medium text-slate-800" placeholder="چرا مشتری پیش از شروع کار اطلاعات شفافی دریافت می‌کند؟" />
+                </div>
+                {[
+                  { numKey: '1', label: 'دلیل ۱' },
+                  { numKey: '2', label: 'دلیل ۲' },
+                  { numKey: '3', label: 'دلیل ۳' },
+                ].map(({ numKey, label }) => (
+                  <div key={numKey} className="bg-slate-50 rounded-2xl p-4 border border-gray-100 space-y-2">
+                    <p className="text-[10px] font-black text-slate-600">{label}</p>
+                    <input type="text" value={parsedContents.about?.[`transparency_${numKey}_title`] || ''} onChange={(e) => handleFieldChange('about', `transparency_${numKey}_title`, e.target.value)} className="w-full bg-white border border-gray-200 rounded-xl py-2 px-3 text-xs font-medium text-slate-800" placeholder="عنوان دلیل" />
+                    <textarea rows={2} value={parsedContents.about?.[`transparency_${numKey}_desc`] || ''} onChange={(e) => handleFieldChange('about', `transparency_${numKey}_desc`, e.target.value)} className="w-full bg-white border border-gray-200 rounded-xl py-2 px-3 text-xs font-medium text-slate-800" placeholder="توضیح" />
+                  </div>
+                ))}
+              </div>
+
+              {/* ── بخش ۷: CTA ── */}
+              <div className="space-y-4">
+                <p className="text-[11px] font-black text-purple-700 bg-purple-50 px-3 py-1.5 rounded-lg inline-block">بخش ۷ — دکمه تماس و CTA</p>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div>
+                    <label className="block text-[11px] font-bold text-gray-500 mb-1.5">عنوان CTA</label>
+                    <input type="text" value={parsedContents.about?.cta_title || ''} onChange={(e) => handleFieldChange('about', 'cta_title', e.target.value)} className="w-full bg-gray-50 border border-gray-150 rounded-xl py-2.5 px-4 text-xs font-medium text-slate-800" placeholder="برای استعلام قیمت یا ثبت سفارش تماس بگیرید" />
+                  </div>
+                  <div>
+                    <label className="block text-[11px] font-bold text-gray-500 mb-1.5">توضیح زیر عنوان CTA</label>
+                    <input type="text" value={parsedContents.about?.cta_desc || ''} onChange={(e) => handleFieldChange('about', 'cta_desc', e.target.value)} className="w-full bg-gray-50 border border-gray-150 rounded-xl py-2.5 px-4 text-xs font-medium text-slate-800" placeholder="کارشناسان اسپاب‌چی در تمام ساعات شبانه‌روز..." />
+                  </div>
+                  <div>
+                    <label className="block text-[11px] font-bold text-gray-500 mb-1.5">متن دکمه تماس (قبل از شماره)</label>
+                    <input type="text" value={parsedContents.about?.cta_btn_call || ''} onChange={(e) => handleFieldChange('about', 'cta_btn_call', e.target.value)} className="w-full bg-gray-50 border border-gray-150 rounded-xl py-2.5 px-4 text-xs font-medium text-slate-800" placeholder="تماس" />
+                  </div>
+                  <div>
+                    <label className="block text-[11px] font-bold text-gray-500 mb-1.5">متن دکمه محاسبه قیمت</label>
+                    <input type="text" value={parsedContents.about?.cta_btn_calc || ''} onChange={(e) => handleFieldChange('about', 'cta_btn_calc', e.target.value)} className="w-full bg-gray-50 border border-gray-150 rounded-xl py-2.5 px-4 text-xs font-medium text-slate-800" placeholder="محاسبه آنلاین قیمت" />
+                  </div>
+                </div>
+              </div>
+
             </div>
           )}
 
@@ -477,122 +576,170 @@ export default function PageEditor() {
           )}
 
           {activePage === 'privacy' && (
-            <div className="space-y-6">
-              <h4 className="text-xs font-black text-slate-800 border-r-2 border-amber-500 pr-2">🔒 ویرایش کامل سند حقوقی، ضوابط عمومی، حریم خصوصی و بیمه‌نامه‌ها</h4>
-              
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div>
-                  <label className="block text-[11px] font-bold text-gray-500 mb-1.5">زیرعنوان خاکستری (تاریخ بروزرسانی)</label>
-                  <input 
-                    type="text"
-                    value={parsedContents.privacy?.subtitle || ''}
-                    onChange={(e) => handleFieldChange('privacy', 'subtitle', e.target.value)}
-                    className="w-full bg-gray-50 border border-gray-150 rounded-xl py-2.5 px-4 text-xs font-medium text-slate-800"
-                    placeholder="مثال: آخرین بروزرسانی مقررات مدنی اسباب‌کشی..."
-                  />
+            <div className="space-y-8">
+              <h4 className="text-xs font-black text-slate-800 border-r-2 border-amber-500 pr-2">🔒 ویرایش کامل صفحه حریم خصوصی و ضوابط</h4>
+
+              {/* ── محتوا ── */}
+              <div className="space-y-4 pb-6 border-b border-gray-100">
+                <p className="text-[11px] font-black text-amber-700 bg-amber-50 px-3 py-1.5 rounded-lg inline-block">محتوای صفحه</p>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div>
+                    <label className="block text-[11px] font-bold text-gray-500 mb-1.5">زیرعنوان (تاریخ بروزرسانی)</label>
+                    <input type="text" value={parsedContents.privacy?.subtitle || ''} onChange={(e) => handleFieldChange('privacy', 'subtitle', e.target.value)} className="w-full bg-gray-50 border border-gray-150 rounded-xl py-2.5 px-4 text-xs font-medium text-slate-800" placeholder="آخرین بروزرسانی: ..." />
+                  </div>
+                  <div>
+                    <label className="block text-[11px] font-bold text-gray-500 mb-1.5">عنوان بخش قوانین عمومی</label>
+                    <input type="text" value={parsedContents.privacy?.rules_heading || ''} onChange={(e) => handleFieldChange('privacy', 'rules_heading', e.target.value)} className="w-full bg-gray-50 border border-gray-150 rounded-xl py-2.5 px-4 text-xs font-medium text-slate-800" placeholder="قوانین عمومی حمل‌ونقل و صدور فاکتور" />
+                  </div>
                 </div>
                 <div>
-                  <label className="block text-[11px] font-bold text-gray-500 mb-1.5">تیتر بخش اول قوانین و فاکتورها (Rules title)</label>
-                  <input 
-                    type="text"
-                    value={parsedContents.privacy?.rules_heading || ''}
-                    onChange={(e) => handleFieldChange('privacy', 'rules_heading', e.target.value)}
-                    className="w-full bg-gray-50 border border-gray-150 rounded-xl py-2.5 px-4 text-xs font-medium text-slate-800"
-                  />
+                  <label className="block text-[11px] font-bold text-gray-500 mb-1.5">پاراگراف مقدمه</label>
+                  <textarea rows={3} value={parsedContents.privacy?.intro || ''} onChange={(e) => handleFieldChange('privacy', 'intro', e.target.value)} className="w-full bg-gray-50 border border-gray-150 rounded-xl py-2.5 px-4 text-xs font-medium text-slate-800 leading-relaxed text-justify" />
+                </div>
+                <div className="grid grid-cols-1 gap-3">
+                  {[
+                    { key: 'rule_1', label: 'قانون ۱ (قیمت‌های نهایی)' },
+                    { key: 'rule_2', label: 'قانون ۲ (لغو نوبت)' },
+                    { key: 'rule_3', label: 'قانون ۳ (کالاهای گران‌قیمت)' },
+                  ].map(({ key, label }) => (
+                    <div key={key}>
+                      <label className="block text-[10px] font-bold text-gray-500 mb-1">{label}</label>
+                      <textarea rows={2} value={parsedContents.privacy?.[key] || ''} onChange={(e) => handleFieldChange('privacy', key, e.target.value)} className="w-full bg-gray-50 border border-gray-150 rounded-xl py-2 px-3 text-xs font-medium text-slate-800" />
+                    </div>
+                  ))}
+                </div>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div>
+                    <label className="block text-[11px] font-bold text-gray-500 mb-1.5">عنوان بخش بیمه‌نامه</label>
+                    <input type="text" value={parsedContents.privacy?.insurance_heading || ''} onChange={(e) => handleFieldChange('privacy', 'insurance_heading', e.target.value)} className="w-full bg-gray-50 border border-gray-150 rounded-xl py-2.5 px-4 text-xs font-medium text-slate-800" />
+                  </div>
+                  <div>
+                    <label className="block text-[11px] font-bold text-gray-500 mb-1.5">عنوان بخش حریم خصوصی</label>
+                    <input type="text" value={parsedContents.privacy?.privacy_heading || ''} onChange={(e) => handleFieldChange('privacy', 'privacy_heading', e.target.value)} className="w-full bg-gray-50 border border-gray-150 rounded-xl py-2.5 px-4 text-xs font-medium text-slate-800" />
+                  </div>
+                </div>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div>
+                    <label className="block text-[11px] font-bold text-gray-500 mb-1.5">متن بیمه‌نامه و غرامت</label>
+                    <textarea rows={4} value={parsedContents.privacy?.insurance_text || ''} onChange={(e) => handleFieldChange('privacy', 'insurance_text', e.target.value)} className="w-full bg-gray-50 border border-gray-150 rounded-xl py-2.5 px-4 text-xs font-medium text-slate-800 leading-relaxed text-justify" />
+                  </div>
+                  <div>
+                    <label className="block text-[11px] font-bold text-gray-500 mb-1.5">متن حریم خصوصی کاربران</label>
+                    <textarea rows={4} value={parsedContents.privacy?.privacy_text || ''} onChange={(e) => handleFieldChange('privacy', 'privacy_text', e.target.value)} className="w-full bg-gray-50 border border-gray-150 rounded-xl py-2.5 px-4 text-xs font-medium text-slate-800 leading-relaxed text-justify" />
+                  </div>
+                </div>
+                <div>
+                  <label className="block text-[11px] font-bold text-gray-500 mb-1.5">متن هشدار (کادر زرد)</label>
+                  <textarea rows={2} value={parsedContents.privacy?.box_alert || ''} onChange={(e) => handleFieldChange('privacy', 'box_alert', e.target.value)} className="w-full bg-gray-50 border border-gray-150 rounded-xl py-2.5 px-4 text-xs font-medium text-slate-800" />
                 </div>
               </div>
 
-              <div>
-                <label className="block text-[11px] font-bold text-gray-500 mb-1.5">پاراگراف مقدمه و تعهد مدنی</label>
-                <textarea 
-                  rows={3}
-                  value={parsedContents.privacy?.intro || ''}
-                  onChange={(e) => handleFieldChange('privacy', 'intro', e.target.value)}
-                  className="w-full bg-gray-50 border border-gray-150 rounded-xl py-2.5 px-4 text-xs font-medium text-slate-800 leading-relaxed text-justify"
-                />
-              </div>
-
-              <div className="space-y-4 border-t border-gray-50 pt-4">
-                <h5 className="text-[11px] font-black text-slate-800">📌 سه قانون عمومی طلایی (قابل استفاده با تگ‌های متنی Markdown / ستاره‌دار)</h5>
-                <div>
-                  <label className="block text-[10px] font-bold text-gray-500 mb-1">قانون طلایی شماره ۱ (قیمت‌های نهایی صادر شده)</label>
-                  <textarea 
-                    rows={2}
-                    value={parsedContents.privacy?.rule_1 || ''}
-                    onChange={(e) => handleFieldChange('privacy', 'rule_1', e.target.value)}
-                    className="w-full bg-gray-50 border border-gray-150 rounded-xl py-2 px-3 text-xs font-medium text-slate-800"
-                  />
-                </div>
-                <div>
-                  <label className="block text-[10px] font-bold text-gray-500 mb-1">قانون طلایی شماره ۲ (لغو نوبت رزرو شده)</label>
-                  <textarea 
-                    rows={2}
-                    value={parsedContents.privacy?.rule_2 || ''}
-                    onChange={(e) => handleFieldChange('privacy', 'rule_2', e.target.value)}
-                    className="w-full bg-gray-50 border border-gray-150 rounded-xl py-2 px-3 text-xs font-medium text-slate-800"
-                  />
-                </div>
-                <div>
-                  <label className="block text-[10px] font-bold text-gray-500 mb-1">قانون طلایی شماره ۳ (کالاهای گران‌قیمت خاص)</label>
-                  <textarea 
-                    rows={2}
-                    value={parsedContents.privacy?.rule_3 || ''}
-                    onChange={(e) => handleFieldChange('privacy', 'rule_3', e.target.value)}
-                    className="w-full bg-gray-50 border border-gray-150 rounded-xl py-2 px-3 text-xs font-medium text-slate-800"
-                  />
+              {/* ── SEO ── */}
+              <div className="space-y-4">
+                <p className="text-[11px] font-black text-slate-700 bg-slate-100 px-3 py-1.5 rounded-lg inline-block">🔍 تنظیمات SEO صفحه حریم خصوصی</p>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div>
+                    <label className="block text-[11px] font-bold text-gray-500 mb-1.5">SEO Title (عنوان مرورگر)</label>
+                    <input type="text" value={pages.privacy?.seo_title || ''} onChange={(e) => handleMetadataChange('privacy', 'seo_title', e.target.value)} className="w-full bg-gray-50 border border-gray-150 rounded-xl py-2.5 px-4 text-xs font-medium text-slate-800" placeholder="حریم خصوصی | اسپاب‌چی" />
+                  </div>
+                  <div>
+                    <label className="block text-[11px] font-bold text-gray-500 mb-1.5">Meta Description</label>
+                    <input type="text" value={pages.privacy?.seo_description || ''} onChange={(e) => handleMetadataChange('privacy', 'seo_description', e.target.value)} className="w-full bg-gray-50 border border-gray-150 rounded-xl py-2.5 px-4 text-xs font-medium text-slate-800" placeholder="توضیح کوتاه برای گوگل..." />
+                  </div>
+                  <div>
+                    <label className="block text-[11px] font-bold text-gray-500 mb-1.5">کلمات کلیدی (Keywords)</label>
+                    <input type="text" value={parsedContents.privacy?.seo_keywords || ''} onChange={(e) => handleFieldChange('privacy', 'seo_keywords', e.target.value)} className="w-full bg-gray-50 border border-gray-150 rounded-xl py-2.5 px-4 text-xs font-medium text-slate-800" placeholder="حریم خصوصی، قوانین اسباب‌کشی، ..." />
+                  </div>
+                  <div>
+                    <label className="block text-[11px] font-bold text-gray-500 mb-1.5">Canonical URL</label>
+                    <input type="text" dir="ltr" value={parsedContents.privacy?.canonical_url || ''} onChange={(e) => handleFieldChange('privacy', 'canonical_url', e.target.value)} className="w-full bg-gray-50 border border-gray-150 rounded-xl py-2.5 px-4 text-xs font-medium text-slate-800 text-left" placeholder="https://aspabchi.com/privacy" />
+                  </div>
+                  <div>
+                    <label className="block text-[11px] font-bold text-gray-500 mb-1.5">Robots Meta</label>
+                    <select value={parsedContents.privacy?.robots || 'index, follow'} onChange={(e) => handleFieldChange('privacy', 'robots', e.target.value)} className="w-full bg-gray-50 border border-gray-150 rounded-xl py-2.5 px-4 text-xs font-medium text-slate-800">
+                      <option value="index, follow">index, follow</option>
+                      <option value="noindex, nofollow">noindex, nofollow</option>
+                      <option value="noindex, follow">noindex, follow</option>
+                      <option value="index, nofollow">index, nofollow</option>
+                    </select>
+                  </div>
                 </div>
               </div>
+            </div>
+          )}
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 border-t border-gray-50 pt-4">
-                <div>
-                  <label className="block text-[11px] font-bold text-gray-500 mb-1.5">عنوان بخش دوم (تضمین خسارت بیمه)</label>
-                  <input 
-                    type="text"
-                    value={parsedContents.privacy?.insurance_heading || ''}
-                    onChange={(e) => handleFieldChange('privacy', 'insurance_heading', e.target.value)}
-                    className="w-full bg-gray-50 border border-gray-150 rounded-xl py-2.5 px-4 text-xs font-medium text-slate-800"
-                  />
-                </div>
-                <div>
-                  <label className="block text-[11px] font-bold text-gray-500 mb-1.5">عنوان بخش سوم (حفظ اطلاعات خصوصی)</label>
-                  <input 
-                    type="text"
-                    value={parsedContents.privacy?.privacy_heading || ''}
-                    onChange={(e) => handleFieldChange('privacy', 'privacy_heading', e.target.value)}
-                    className="w-full bg-gray-50 border border-gray-150 rounded-xl py-2.5 px-4 text-xs font-medium text-slate-800"
-                  />
-                </div>
-              </div>
+          {activePage === 'terms' && (
+            <div className="space-y-8">
+              <h4 className="text-xs font-black text-slate-800 border-r-2 border-purple-500 pr-2">📋 ویرایش کامل صفحه شرایط و ضوابط</h4>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div>
-                  <label className="block text-[11px] font-bold text-gray-500 mb-1.5">متن قرارداد بیمه‌نامه و غرامت</label>
-                  <textarea 
-                    rows={4}
-                    value={parsedContents.privacy?.insurance_text || ''}
-                    onChange={(e) => handleFieldChange('privacy', 'insurance_text', e.target.value)}
-                    className="w-full bg-gray-50 border border-gray-150 rounded-xl py-2.5 px-4 text-xs font-medium text-slate-800 leading-relaxed text-justify"
-                  />
+              {/* ── محتوا ── */}
+              <div className="space-y-4 pb-6 border-b border-gray-100">
+                <p className="text-[11px] font-black text-purple-700 bg-purple-50 px-3 py-1.5 rounded-lg inline-block">محتوای صفحه</p>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div>
+                    <label className="block text-[11px] font-bold text-gray-500 mb-1.5">عنوان صفحه</label>
+                    <input type="text" value={pages.terms?.title || ''} onChange={(e) => handleMetadataChange('terms', 'title', e.target.value)} className="w-full bg-gray-50 border border-gray-150 rounded-xl py-2.5 px-4 text-xs font-medium text-slate-800" placeholder="شرایط و ضوابط استفاده از خدمات اسپاب‌چی" />
+                  </div>
+                  <div>
+                    <label className="block text-[11px] font-bold text-gray-500 mb-1.5">زیرعنوان</label>
+                    <input type="text" value={parsedContents.terms?.subtitle || ''} onChange={(e) => handleFieldChange('terms', 'subtitle', e.target.value)} className="w-full bg-gray-50 border border-gray-150 rounded-xl py-2.5 px-4 text-xs font-medium text-slate-800" placeholder="لطفاً پیش از استفاده از خدمات این صفحه را مطالعه کنید." />
+                  </div>
                 </div>
                 <div>
-                  <label className="block text-[11px] font-bold text-gray-500 mb-1.5">متن قرارداد امنیت اطلاعات کاربر</label>
-                  <textarea 
-                    rows={4}
-                    value={parsedContents.privacy?.privacy_text || ''}
-                    onChange={(e) => handleFieldChange('privacy', 'privacy_text', e.target.value)}
-                    className="w-full bg-gray-50 border border-gray-150 rounded-xl py-2.5 px-4 text-xs font-medium text-slate-800 leading-relaxed text-justify"
-                  />
+                  <label className="block text-[11px] font-bold text-gray-500 mb-1.5">پاراگراف مقدمه</label>
+                  <textarea rows={3} value={parsedContents.terms?.intro || ''} onChange={(e) => handleFieldChange('terms', 'intro', e.target.value)} className="w-full bg-gray-50 border border-gray-150 rounded-xl py-2.5 px-4 text-xs font-medium text-slate-800 leading-relaxed text-justify" placeholder="با استفاده از خدمات اسپاب‌چی، کاربر تأیید می‌کند که..." />
+                </div>
+
+                {[
+                  { n: '1', label: 'بخش ۱ — تعریف خدمات' },
+                  { n: '2', label: 'بخش ۲ — پرداخت و هزینه‌ها' },
+                  { n: '3', label: 'بخش ۳ — مسئولیت‌ها و محدودیت‌ها' },
+                  { n: '4', label: 'بخش ۴ — لغو و تغییر سفارش' },
+                  { n: '5', label: 'بخش ۵ — حل اختلاف' },
+                ].map(({ n, label }) => (
+                  <div key={n} className="bg-slate-50 rounded-2xl p-4 border border-gray-100 space-y-2">
+                    <p className="text-[10px] font-black text-slate-600">{label}</p>
+                    <input type="text" value={parsedContents.terms?.[`section_${n}_heading`] || ''} onChange={(e) => handleFieldChange('terms', `section_${n}_heading`, e.target.value)} className="w-full bg-white border border-gray-200 rounded-xl py-2 px-3 text-xs font-medium text-slate-800" placeholder="عنوان بخش" />
+                    <textarea rows={3} value={parsedContents.terms?.[`section_${n}_text`] || ''} onChange={(e) => handleFieldChange('terms', `section_${n}_text`, e.target.value)} className="w-full bg-white border border-gray-200 rounded-xl py-2 px-3 text-xs font-medium text-slate-800 leading-relaxed text-justify" placeholder="متن بخش" />
+                  </div>
+                ))}
+
+                <div>
+                  <label className="block text-[11px] font-bold text-gray-500 mb-1.5">متن هشدار (کادر زرد)</label>
+                  <textarea rows={2} value={parsedContents.terms?.box_alert || ''} onChange={(e) => handleFieldChange('terms', 'box_alert', e.target.value)} className="w-full bg-gray-50 border border-gray-150 rounded-xl py-2.5 px-4 text-xs font-medium text-slate-800" />
                 </div>
               </div>
 
-              <div>
-                <label className="block text-[11px] font-bold text-gray-500 mb-1.5">متن هشدار کادر زرد رنگ بازرسی (Box Alert Warning)</label>
-                <textarea 
-                  rows={2}
-                  value={parsedContents.privacy?.box_alert || ''}
-                  onChange={(e) => handleFieldChange('privacy', 'box_alert', e.target.value)}
-                  className="w-full bg-gray-50 border border-gray-150 rounded-xl py-2.5 px-4 text-xs font-medium text-slate-800 leading-relaxed"
-                />
+              {/* ── SEO ── */}
+              <div className="space-y-4">
+                <p className="text-[11px] font-black text-slate-700 bg-slate-100 px-3 py-1.5 rounded-lg inline-block">🔍 تنظیمات SEO صفحه شرایط و ضوابط</p>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div>
+                    <label className="block text-[11px] font-bold text-gray-500 mb-1.5">SEO Title (عنوان مرورگر)</label>
+                    <input type="text" value={pages.terms?.seo_title || ''} onChange={(e) => handleMetadataChange('terms', 'seo_title', e.target.value)} className="w-full bg-gray-50 border border-gray-150 rounded-xl py-2.5 px-4 text-xs font-medium text-slate-800" placeholder="شرایط و ضوابط | اسپاب‌چی" />
+                  </div>
+                  <div>
+                    <label className="block text-[11px] font-bold text-gray-500 mb-1.5">Meta Description</label>
+                    <input type="text" value={pages.terms?.seo_description || ''} onChange={(e) => handleMetadataChange('terms', 'seo_description', e.target.value)} className="w-full bg-gray-50 border border-gray-150 rounded-xl py-2.5 px-4 text-xs font-medium text-slate-800" placeholder="توضیح کوتاه برای گوگل..." />
+                  </div>
+                  <div>
+                    <label className="block text-[11px] font-bold text-gray-500 mb-1.5">کلمات کلیدی (Keywords)</label>
+                    <input type="text" value={parsedContents.terms?.seo_keywords || ''} onChange={(e) => handleFieldChange('terms', 'seo_keywords', e.target.value)} className="w-full bg-gray-50 border border-gray-150 rounded-xl py-2.5 px-4 text-xs font-medium text-slate-800" placeholder="شرایط استفاده، قوانین اسباب‌کشی، ..." />
+                  </div>
+                  <div>
+                    <label className="block text-[11px] font-bold text-gray-500 mb-1.5">Canonical URL</label>
+                    <input type="text" dir="ltr" value={parsedContents.terms?.canonical_url || ''} onChange={(e) => handleFieldChange('terms', 'canonical_url', e.target.value)} className="w-full bg-gray-50 border border-gray-150 rounded-xl py-2.5 px-4 text-xs font-medium text-slate-800 text-left" placeholder="https://aspabchi.com/terms" />
+                  </div>
+                  <div>
+                    <label className="block text-[11px] font-bold text-gray-500 mb-1.5">Robots Meta</label>
+                    <select value={parsedContents.terms?.robots || 'index, follow'} onChange={(e) => handleFieldChange('terms', 'robots', e.target.value)} className="w-full bg-gray-50 border border-gray-150 rounded-xl py-2.5 px-4 text-xs font-medium text-slate-800">
+                      <option value="index, follow">index, follow</option>
+                      <option value="noindex, nofollow">noindex, nofollow</option>
+                      <option value="noindex, follow">noindex, follow</option>
+                      <option value="index, nofollow">index, nofollow</option>
+                    </select>
+                  </div>
+                </div>
               </div>
             </div>
           )}

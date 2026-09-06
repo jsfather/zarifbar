@@ -1,4 +1,4 @@
-﻿import React from 'react';
+import React, { useEffect } from 'react';
 import { ShieldCheck, HelpCircle, CheckCircle2 } from 'lucide-react';
 
 interface PrivacyPolicyViewProps {
@@ -16,11 +16,35 @@ interface PrivacyPolicyViewProps {
     privacy_heading?: string;
     privacy_text?: string;
     box_alert?: string;
+    seo_title?: string;
+    seo_description?: string;
+    seo_keywords?: string;
+    canonical_url?: string;
+    robots?: string;
   };
 }
 
 export default function PrivacyPolicyView({ onBackToHome, content }: PrivacyPolicyViewProps) {
   const p = content || {};
+
+  useEffect(() => {
+    // SEO meta injection
+    if (p.seo_title) document.title = p.seo_title;
+    const setMeta = (name: string, val: string) => {
+      let el = document.querySelector(`meta[name="${name}"]`) as HTMLMetaElement | null;
+      if (!el) { el = document.createElement('meta'); el.setAttribute('name', name); document.head.appendChild(el); }
+      el.setAttribute('content', val);
+    };
+    const setLink = (rel: string, val: string) => {
+      let el = document.querySelector(`link[rel="${rel}"]`) as HTMLLinkElement | null;
+      if (!el) { el = document.createElement('link'); el.setAttribute('rel', rel); document.head.appendChild(el); }
+      el.setAttribute('href', val);
+    };
+    if (p.seo_description) setMeta('description', p.seo_description);
+    if (p.seo_keywords) setMeta('keywords', p.seo_keywords);
+    if (p.robots) setMeta('robots', p.robots);
+    if (p.canonical_url) setLink('canonical', p.canonical_url);
+  }, [p.seo_title, p.seo_description, p.seo_keywords, p.robots, p.canonical_url]);
 
   return (
     <div className="pt-3 pb-12 md:pt-4 md:pb-16 max-w-4xl mx-auto px-4 leading-relaxed animate-in fade-in duration-200" dir="rtl">

@@ -8,6 +8,7 @@ import ContactView from './components/ContactView';
 import AdminPanel from './components/AdminPanel';
 import AreasView from './components/AreasView';
 import PrivacyPolicyView from './components/PrivacyPolicyView';
+import TermsView from './components/TermsView';
 import { Settings, Service, Post } from './types';
 import { 
   Truck, ShieldCheck, Clock, Award, CheckCircle2, Star, 
@@ -81,9 +82,10 @@ export default function App() {
       fetch('/api/pages/home', { cache: 'no-store' }).then(res => res.json()).catch(() => ({})),
       fetch('/api/pages/about', { cache: 'no-store' }).then(res => res.json()).catch(() => ({})),
       fetch('/api/pages/contact', { cache: 'no-store' }).then(res => res.json()).catch(() => ({})),
-      fetch('/api/pages/privacy', { cache: 'no-store' }).then(res => res.json()).catch(() => ({}))
+      fetch('/api/pages/privacy', { cache: 'no-store' }).then(res => res.json()).catch(() => ({})),
+      fetch('/api/pages/terms', { cache: 'no-store' }).then(res => res.json()).catch(() => ({}))
     ])
-      .then(([settingsData, servicesData, postsData, homePage, aboutPage, contactPage, privacyPage]) => {
+      .then(([settingsData, servicesData, postsData, homePage, aboutPage, contactPage, privacyPage, termsPage]) => {
         if (!settingsData.error) setSettings(settingsData);
         if (!servicesData.error) setServices(servicesData);
         if (!postsData.error) {
@@ -95,6 +97,7 @@ export default function App() {
         if (aboutPage && aboutPage.slug) pagesObj.about = aboutPage;
         if (contactPage && contactPage.slug) pagesObj.contact = contactPage;
         if (privacyPage && privacyPage.slug) pagesObj.privacy = privacyPage;
+        if (termsPage && termsPage.slug) pagesObj.terms = termsPage;
         setPages(pagesObj);
       })
       .catch((err) => console.error('Error fetching initial dynamic modules:', err));
@@ -146,7 +149,7 @@ export default function App() {
       description: parsed.description || "اسپاب‌چی خدمات حمل اثاثیه، بسته‌بندی، اعزام نیروی جابجایی، وانت بار و نیسان بار را در تهران ارائه می‌دهد. هزینه خدمات با توجه به مسیر، نوع خودرو، تعداد نیرو و خدمات موردنیاز محاسبه می‌شود.",
       quick_alert: parsed.quick_alert || "برای دریافت برآورد اولیه هزینه اسباب‌کشی، فرم محاسبه را تکمیل کنید.",
       video_url: parsed.video_url || "",
-      hero_image: parsed.hero_image || "https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?auto=format&fit=crop&q=80&w=800",
+      hero_image: parsed.hero_image || "",
       stat_1_num: parsed.stat_1_num || "",
       stat_1_lbl: parsed.stat_1_lbl || "بسته‌بندی تخصصی",
       stat_2_num: parsed.stat_2_num || "",
@@ -168,13 +171,66 @@ export default function App() {
       }
     }
     return {
+      // Basic
       title: pages.about?.title || 'درباره اسپاب‌چی',
-      image_url: pages.about?.image_url || 'https://images.unsplash.com/photo-1549401378-02484c349d21?auto=format&fit=crop&q=80&w=800',
+      image_url: pages.about?.image_url || '',
       subtitle: parsed.subtitle || 'خدمات حمل‌ونقل و اسباب‌کشی در تهران',
       heading: parsed.heading || 'اسپاب‌چی چه خدماتی ارائه می‌دهد؟',
       paragraph_1: parsed.paragraph_1 || 'اسپاب‌چی یک مجموعه خدمات حمل‌ونقل و اسباب‌کشی در تهران است که خدماتی مانند حمل اثاثیه منزل، بسته‌بندی، اعزام نیروی حمل، وانت بار و نیسان بار را ارائه می‌دهد. هدف مجموعه این است که مشتری پیش از ثبت نهایی سفارش، اطلاعات روشنی درباره نوع خدمت، عوامل مؤثر بر هزینه و نحوه اعزام دریافت کند.',
       paragraph_2: parsed.paragraph_2 || 'هزینه نهایی اسباب‌کشی بسته به عوامل مختلفی از جمله مسیر، نوع خودرو، تعداد نیروی کار، طبقه، وجود آسانسور، نوع و حجم اثاثیه و سرویس‌های اضافه تعیین می‌شود. مشتریان پس از ارائه اطلاعات سفارش، برآورد اولیه هزینه را دریافت کرده و قبل از شروع کار، قیمت نهایی تأیید می‌شود.',
-      video_url: parsed.video_url || ''
+      video_url: parsed.video_url || '',
+      // Section 2 – Services
+      services_section_title: parsed.services_section_title || 'خدماتی که اسپاب‌چی ارائه می‌دهد',
+      service_1_title: parsed.service_1_title || 'حمل اثاثیه منزل',
+      service_1_desc: parsed.service_1_desc || 'جابجایی کامل وسایل منزل با کامیونت، خاور یا وانت متناسب با حجم بار.',
+      service_2_title: parsed.service_2_title || 'بسته‌بندی اثاثیه',
+      service_2_desc: parsed.service_2_desc || 'بسته‌بندی با کارتن، پتو، نایلون حبابی و متریال محافظ برای کاهش آسیب در حمل.',
+      service_3_title: parsed.service_3_title || 'کارگر خالی اسباب‌کشی',
+      service_3_desc: parsed.service_3_desc || 'اعزام نیروی جابجایی برای تخلیه، بارگیری یا چیدمان بدون نیاز به خودرو.',
+      service_4_title: parsed.service_4_title || 'اجاره انبار',
+      service_4_desc: parsed.service_4_desc || 'انبارهای مسقف و روباز برای نگهداری موقت اثاثیه، جهیزیه یا کالاهای تجاری.',
+      // Section 3 – Process
+      process_section_title: parsed.process_section_title || 'نحوه ثبت و انجام سفارش',
+      step_1_title: parsed.step_1_title || 'تماس یا پر کردن فرم',
+      step_1_desc: parsed.step_1_desc || 'با شماره‌های اسپاب‌چی تماس بگیرید یا از فرم محاسبه آنلاین استفاده کنید.',
+      step_2_title: parsed.step_2_title || 'بررسی و برآورد اولیه',
+      step_2_desc: parsed.step_2_desc || 'کارشناس اطلاعات مسیر، حجم بار، طبقه و سرویس‌های مورد نیاز را دریافت می‌کند و برآورد اولیه هزینه را اعلام می‌کند.',
+      step_3_title: parsed.step_3_title || 'هماهنگی زمان اعزام',
+      step_3_desc: parsed.step_3_desc || 'زمان مناسب برای حضور تیم در محل مبدا هماهنگ می‌شود.',
+      step_4_title: parsed.step_4_title || 'اجرا و تحویل',
+      step_4_desc: parsed.step_4_desc || 'تیم اجرایی در محل حاضر می‌شود، قیمت نهایی تأیید می‌شود و کار شروع می‌گردد.',
+      // Section 4 – Pricing factors
+      pricing_section_title: parsed.pricing_section_title || 'عوامل مؤثر بر هزینه اسباب‌کشی',
+      pricing_section_desc: parsed.pricing_section_desc || 'هزینه نهایی پیش از شروع کار و با توافق طرفین تأیید می‌شود.',
+      pricing_factor_1: parsed.pricing_factor_1 || 'مسافت مبدا تا مقصد',
+      pricing_factor_2: parsed.pricing_factor_2 || 'نوع و تعداد خودرو',
+      pricing_factor_3: parsed.pricing_factor_3 || 'تعداد نیروی کار',
+      pricing_factor_4: parsed.pricing_factor_4 || 'طبقه و وجود آسانسور',
+      pricing_factor_5: parsed.pricing_factor_5 || 'حجم و نوع اثاثیه',
+      pricing_factor_6: parsed.pricing_factor_6 || 'سرویس‌های جانبی (بسته‌بندی، انبار)',
+      // Section 5 – Areas
+      areas_section_title: parsed.areas_section_title || 'محدوده خدمات در تهران',
+      area_1_zone: parsed.area_1_zone || 'شمال تهران',
+      area_1_areas: parsed.area_1_areas || 'نیاوران، الهیه، اقدسیه، تجریش، پاسداران، زعفرانیه، قیطریه، فرمانیه، کامرانیه، ولنجک',
+      area_2_zone: parsed.area_2_zone || 'مرکز تهران',
+      area_2_areas: parsed.area_2_areas || 'ملاصدرا، یوسف‌آباد، مطهری، امیرآباد، گاندی، آرژانتین، شریعتی، جردن، ونک',
+      area_3_zone: parsed.area_3_zone || 'غرب تهران',
+      area_3_areas: parsed.area_3_areas || 'سعادت‌آباد، شهرک غرب، پونک، جنت‌آباد، مرزداران، شهران، گیشا، ستارخان، صادقیه',
+      area_4_zone: parsed.area_4_zone || 'شرق و جنوب تهران',
+      area_4_areas: parsed.area_4_areas || 'تهرانپارس، نارمک، پیروزی، نواب، منیریه و سایر مناطق شهر تهران',
+      // Section 6 – Transparency
+      transparency_section_title: parsed.transparency_section_title || 'چرا مشتری پیش از شروع کار اطلاعات شفافی دریافت می‌کند؟',
+      transparency_1_title: parsed.transparency_1_title || 'جلوگیری از اختلاف در روز اسباب‌کشی',
+      transparency_1_desc: parsed.transparency_1_desc || 'وقتی قیمت و شرایط از قبل روشن باشد، در روز اجرا هیچ ابهامی وجود ندارد و کار سریع‌تر پیش می‌رود.',
+      transparency_2_title: parsed.transparency_2_title || 'امکان مقایسه و تصمیم‌گیری آگاهانه',
+      transparency_2_desc: parsed.transparency_2_desc || 'مشتری می‌تواند با برآورد اولیه، گزینه‌های مختلف را بسنجد و بر اساس نیاز واقعی خود تصمیم بگیرد.',
+      transparency_3_title: parsed.transparency_3_title || 'عدم دریافت هزینه‌های پنهان',
+      transparency_3_desc: parsed.transparency_3_desc || 'تمام آیتم‌های هزینه‌ساز (طبقه، آسانسور، بسته‌بندی) از ابتدا در برآورد لحاظ می‌شوند.',
+      // Section 7 – CTA
+      cta_title: parsed.cta_title || 'برای استعلام قیمت یا ثبت سفارش تماس بگیرید',
+      cta_desc: parsed.cta_desc || 'کارشناسان اسپاب‌چی در تمام ساعات شبانه‌روز آماده پاسخگویی و هماهنگی هستند.',
+      cta_btn_call: parsed.cta_btn_call || 'تماس',
+      cta_btn_calc: parsed.cta_btn_calc || 'محاسبه آنلاین قیمت',
     };
   };
 
@@ -214,7 +270,46 @@ export default function App() {
       insurance_text: parsed.insurance_text || "تمامی اثاثیه‌های حمل شده توسط ناوگان کامیونت‌های مسقف اسپاب چی، تحت پوشش بیمه تا سقف مشخص شده در فاکتور قرار می‌گیرند. در صورت بروز هرگونه آسیب به وسایلی که بسته‌بندی آنها توسط تیم حرفه‌ای و با تایید ناظر کادر اسپاب چی انجام شده باشد، شرکت موظف به پرداخت غرامت معادل قیمت روز کالا یا تعمیر تخصصی آن خواهد بود.",
       privacy_heading: parsed.privacy_heading || "سیاست حفظ حریم خصوصی کاربران",
       privacy_text: parsed.privacy_text || "مجموعه اسپاب چی نسبت به حفظ اطلاعات خصوصی مشتریان خود (مانند نام خانوادگی، شماره‌های همراه، آدرس‌های مبدا و مقصد) کاملاً متعهد است. تمامی اطلاعات وارد شده در وب‌سایت اسپاب چی در سرورهای امن نگهداری شده و فقط برای فرآیند اعزام خودرو، صدور بیمه نامه حمل بار و بهبود کیفیت خدمات مورد استفاده قرار می‌گیرند. ما هرگز داده‌های شما را در اختیار اشخاص ثالثِ تبلیغاتی قرار نخواههم داد.",
-      box_alert: parsed.box_alert || "در صورت بروز هرگونه تعارض نامتعارف با پرسنل صحنه جابجایی قبل از هرگونه پرداخت وجه با شماره بازرسی مرکزی اسپاب چی تماس حاصل فرمایید تا کارشناس شعبه فوراً مداخله کند."
+      box_alert: parsed.box_alert || "در صورت بروز هرگونه تعارض نامتعارف با پرسنل صحنه جابجایی قبل از هرگونه پرداخت وجه با شماره بازرسی مرکزی اسپاب چی تماس حاصل فرمایید تا کارشناس شعبه فوراً مداخله کند.",
+      // SEO
+      seo_title: pages.privacy?.seo_title || '',
+      seo_description: pages.privacy?.seo_description || '',
+      seo_keywords: parsed.seo_keywords || '',
+      canonical_url: parsed.canonical_url || '',
+      robots: parsed.robots || 'index, follow',
+    };
+  };
+
+  const getTermsContent = () => {
+    let parsed: any = {};
+    if (pages.terms && pages.terms.content_json) {
+      try {
+        parsed = JSON.parse(pages.terms.content_json);
+      } catch (e) {
+        parsed = {};
+      }
+    }
+    return {
+      title: pages.terms?.title || "شرایط و ضوابط استفاده از خدمات اسپاب‌چی",
+      subtitle: parsed.subtitle || "لطفاً پیش از استفاده از خدمات این صفحه را مطالعه کنید.",
+      intro: parsed.intro || "با استفاده از خدمات اسپاب‌چی، کاربر گرامی تأیید می‌کند که شرایط و ضوابط زیر را خوانده، درک کرده و با آن‌ها موافق است. این شرایط بر رابطه میان مشتری و مجموعه اسپاب‌چی حاکم است.",
+      section_1_heading: parsed.section_1_heading || "تعریف خدمات",
+      section_1_text: parsed.section_1_text || "اسپاب‌چی ارائه‌دهنده خدمات حمل اثاثیه، بسته‌بندی، اعزام نیروی جابجایی، وانت بار، نیسان بار و اجاره انبار در تهران است. کلیه خدمات پس از تأیید سفارش و اعلام قیمت نهایی به مشتری آغاز می‌شود.",
+      section_2_heading: parsed.section_2_heading || "پرداخت و هزینه‌ها",
+      section_2_text: parsed.section_2_text || "قیمت‌گذاری بر اساس فاکتور کتبی یا پیامکی صادر شده توسط کارشناسان اسپاب‌چی انجام می‌گیرد. هیچ مبلغ اضافه‌ای خارج از فاکتور تأییدشده از مشتری دریافت نمی‌شود.",
+      section_3_heading: parsed.section_3_heading || "مسئولیت‌ها و محدودیت‌ها",
+      section_3_text: parsed.section_3_text || "اسپاب‌چی مسئولیت آسیب به اثاثیه‌ای که توسط تیم بسته‌بندی حرفه‌ای آماده شده را می‌پذیرد. مسئولیت اقلام گران‌قیمت، اسناد، وجوه نقد و جواهرات که توسط خود مشتری جابجا نشده، پذیرفته نمی‌شود.",
+      section_4_heading: parsed.section_4_heading || "لغو و تغییر سفارش",
+      section_4_text: parsed.section_4_text || "مشتری می‌تواند تا ۲۴ ساعت پیش از زمان اعزام، سفارش را بدون هزینه لغو یا تغییر دهد. لغو در کمتر از ۲۴ ساعت ممکن است مشمول هزینه انصراف گردد.",
+      section_5_heading: parsed.section_5_heading || "حل اختلاف",
+      section_5_text: parsed.section_5_text || "در صورت بروز هرگونه اختلاف، مشتری باید پیش از اقدام حقوقی با تیم پشتیبانی اسپاب‌چی تماس بگیرد. اسپاب‌چی متعهد است ظرف ۴۸ ساعت پاسخگو باشد.",
+      box_alert: parsed.box_alert || "برای هرگونه سؤال یا اعتراض پیش از پرداخت وجه با پشتیبانی مرکزی اسپاب‌چی تماس بگیرید.",
+      // SEO
+      seo_title: pages.terms?.seo_title || '',
+      seo_description: pages.terms?.seo_description || '',
+      seo_keywords: parsed.seo_keywords || '',
+      canonical_url: parsed.canonical_url || '',
+      robots: parsed.robots || 'index, follow',
     };
   };
 
@@ -627,7 +722,7 @@ export default function App() {
                 >
                   <div className="h-44 overflow-hidden">
                     <img 
-                      src={post.image_url || 'https://images.unsplash.com/photo-1549401378-02484c349d21?auto=format&fit=crop&q=80&w=800'} 
+                      src={post.image_url || ''} 
                       alt={post.title} 
                       className="w-full h-full object-cover"
                       referrerPolicy="no-referrer"
@@ -681,86 +776,202 @@ export default function App() {
     if (path === '/about') {
       const about = getAboutContent();
       return (
-        <div className="max-w-4xl mx-auto px-4 pt-4 pb-12 space-y-8 text-right leading-relaxed animate-in fade-in duration-200" dir="rtl">
+        <div className="max-w-4xl mx-auto px-4 pt-4 pb-16 space-y-10 text-right leading-relaxed animate-in fade-in duration-200" dir="rtl">
+
+          {/* ── 1. معرفی اسپاب‌چی ── */}
           <div className="space-y-3">
+            <span className="inline-block bg-purple-100 text-purple-700 text-xs font-extrabold px-4 py-1.5 rounded-full">معرفی اسپاب‌چی</span>
             <h1 className="text-2xl md:text-3xl font-extrabold text-slate-900">{about.title}</h1>
             <p className="text-sm text-gray-500">{about.subtitle}</p>
           </div>
 
-          {/* Video Player or fallback Image at the top section */}
+          {/* Video or image */}
           {about.video_url ? (
             <div className="relative rounded-[32px] overflow-hidden shadow-xl border-4 border-slate-100 aspect-[16/9] w-full bg-slate-950 flex items-center justify-center">
               {about.video_url.toLowerCase().includes('aparat.com') ? (
-                <iframe 
-                  src={about.video_url.toLowerCase().includes('/v/') 
+                <iframe
+                  src={about.video_url.toLowerCase().includes('/v/')
                     ? `https://www.aparat.com/video/video/embed/videohash/${(about.video_url.match(/\/v\/([a-zA-Z0-9]+)/) || [])[1] || ''}/vt/frame`
-                    : about.video_url
-                  } 
-                  allowFullScreen 
-                  className="w-full h-full border-0 absolute inset-0" 
+                    : about.video_url}
+                  allowFullScreen
+                  className="w-full h-full border-0 absolute inset-0"
                   title="ویدیو معرفی درباره ما"
                 />
               ) : (about.video_url.toLowerCase().includes('youtube.com') || about.video_url.toLowerCase().includes('youtu.be')) ? (
-                <iframe 
-                  src={about.video_url.toLowerCase().includes('watch?v=') 
-                    ? about.video_url.replace('watch?v=', 'embed/') 
-                    : about.video_url.toLowerCase().includes('youtu.be/') 
+                <iframe
+                  src={about.video_url.toLowerCase().includes('watch?v=')
+                    ? about.video_url.replace('watch?v=', 'embed/')
+                    : about.video_url.toLowerCase().includes('youtu.be/')
                       ? `https://www.youtube.com/embed/${about.video_url.split('/').pop()}`
-                      : about.video_url
-                  } 
-                  allowFullScreen 
+                      : about.video_url}
+                  allowFullScreen
                   className="w-full h-full border-0 absolute inset-0"
                   title="ویدیو معرفی درباره ما"
                 />
               ) : (
-                <video 
-                  src={about.video_url} 
-                  controls 
-                  preload="metadata"
-                  className="w-full h-full object-cover"
-                  playsInline
-                />
+                <video src={about.video_url} controls preload="metadata" className="w-full h-full object-cover" playsInline />
               )}
             </div>
-          ) : (
+          ) : about.image_url ? (
             <div className="rounded-[32px] overflow-hidden shadow-md max-h-[360px]">
-              <img 
-                src={about.image_url} 
-                alt="تیم اسباب کشی اسپاب چی" 
-                className="w-full h-full object-cover"
-                referrerPolicy="no-referrer"
-              />
+              <img src={about.image_url} alt="تیم اسباب‌کشی اسپاب‌چی" className="w-full h-full object-cover" referrerPolicy="no-referrer" />
             </div>
-          )}
+          ) : null}
 
-          <div className="bg-white rounded-3xl p-6 md:p-8 border border-gray-100 shadow-sm space-y-6">
+          {/* Intro card */}
+          <div className="bg-white rounded-3xl p-6 md:p-8 border border-gray-100 shadow-sm space-y-4">
             <h2 className="text-lg font-black text-slate-900">{about.heading}</h2>
-            <p className="text-sm text-gray-650 text-justify leading-relaxed">
-              {about.paragraph_1}
-            </p>
-            <p className="text-sm text-gray-650 text-justify leading-relaxed">
-              {about.paragraph_2}
-            </p>
+            <p className="text-sm text-gray-600 text-justify leading-relaxed">{about.paragraph_1}</p>
+            <p className="text-sm text-gray-600 text-justify leading-relaxed">{about.paragraph_2}</p>
+          </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4 text-xs font-bold text-gray-750">
-              <div className="flex items-center gap-2">
-                <CheckCircle2 className="w-5 h-5 text-green-600 shrink-0" />
-                <span>ارائه خدمات حمل اثاثیه در تهران</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <CheckCircle2 className="w-5 h-5 text-green-600 shrink-0" />
-                <span>بسته‌بندی با متریال مناسب</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <CheckCircle2 className="w-5 h-5 text-green-600 shrink-0" />
-                <span>اعزام نیروی جابجایی</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <CheckCircle2 className="w-5 h-5 text-green-600 shrink-0" />
-                <span>وانت بار و نیسان بار</span>
-              </div>
+          {/* ── 2. خدماتی که ارائه می‌دهیم ── */}
+          <div className="space-y-5">
+            <div className="space-y-1">
+              <span className="inline-block bg-blue-100 text-blue-700 text-xs font-extrabold px-4 py-1.5 rounded-full">خدمات ما</span>
+              <h2 className="text-xl font-black text-slate-900">{about.services_section_title}</h2>
+            </div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              {[
+                { icon: <Truck className="w-5 h-5" />, title: about.service_1_title, desc: about.service_1_desc },
+                { icon: <Package className="w-5 h-5" />, title: about.service_2_title, desc: about.service_2_desc },
+                { icon: <Users className="w-5 h-5" />, title: about.service_3_title, desc: about.service_3_desc },
+                { icon: <Warehouse className="w-5 h-5" />, title: about.service_4_title, desc: about.service_4_desc },
+              ].map((item, i) => (
+                <div key={i} className="bg-white rounded-2xl border border-gray-100 p-5 shadow-xs flex gap-4 items-start">
+                  <div className="w-10 h-10 rounded-xl bg-purple-50 text-purple-600 flex items-center justify-center shrink-0">{item.icon}</div>
+                  <div>
+                    <h3 className="text-sm font-black text-slate-800 mb-1">{item.title}</h3>
+                    <p className="text-xs text-gray-500 leading-relaxed">{item.desc}</p>
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
+
+          {/* ── 3. نحوه ثبت و انجام سفارش ── */}
+          <div className="bg-slate-50 rounded-3xl p-6 md:p-8 border border-slate-100 space-y-5">
+            <div className="space-y-1">
+              <span className="inline-block bg-green-100 text-green-700 text-xs font-extrabold px-4 py-1.5 rounded-full">فرآیند سفارش</span>
+              <h2 className="text-xl font-black text-slate-900">{about.process_section_title}</h2>
+            </div>
+            <ol className="space-y-4">
+              {[
+                { n: '۱', title: about.step_1_title, desc: about.step_1_desc },
+                { n: '۲', title: about.step_2_title, desc: about.step_2_desc },
+                { n: '۳', title: about.step_3_title, desc: about.step_3_desc },
+                { n: '۴', title: about.step_4_title, desc: about.step_4_desc },
+              ].map((step) => (
+                <li key={step.n} className="flex gap-4 items-start">
+                  <span className="w-8 h-8 rounded-full bg-purple-600 text-white text-sm font-black flex items-center justify-center shrink-0">{step.n}</span>
+                  <div>
+                    <p className="text-sm font-black text-slate-800">{step.title}</p>
+                    <p className="text-xs text-gray-500 mt-0.5 leading-relaxed">{step.desc}</p>
+                  </div>
+                </li>
+              ))}
+            </ol>
+          </div>
+
+          {/* ── 4. عوامل مؤثر بر هزینه ── */}
+          <div className="space-y-5">
+            <div className="space-y-1">
+              <span className="inline-block bg-amber-100 text-amber-700 text-xs font-extrabold px-4 py-1.5 rounded-full">شفافیت قیمت</span>
+              <h2 className="text-xl font-black text-slate-900">{about.pricing_section_title}</h2>
+              <p className="text-xs text-gray-500">{about.pricing_section_desc}</p>
+            </div>
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
+              {[
+                about.pricing_factor_1,
+                about.pricing_factor_2,
+                about.pricing_factor_3,
+                about.pricing_factor_4,
+                about.pricing_factor_5,
+                about.pricing_factor_6,
+              ].filter(Boolean).map((item, i) => (
+                <div key={i} className="bg-white border border-gray-100 rounded-2xl px-4 py-3 flex items-center gap-2 shadow-xs">
+                  <CheckCircle2 className="w-4 h-4 text-purple-500 shrink-0" />
+                  <span className="text-xs font-semibold text-slate-700">{item}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* ── 5. محدوده خدمات در تهران ── */}
+          <div className="bg-white rounded-3xl border border-gray-100 shadow-sm p-6 md:p-8 space-y-5">
+            <div className="space-y-1">
+              <span className="inline-block bg-rose-100 text-rose-700 text-xs font-extrabold px-4 py-1.5 rounded-full">پوشش جغرافیایی</span>
+              <h2 className="text-xl font-black text-slate-900">{about.areas_section_title}</h2>
+            </div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              {[
+                { zone: about.area_1_zone, areas: about.area_1_areas },
+                { zone: about.area_2_zone, areas: about.area_2_areas },
+                { zone: about.area_3_zone, areas: about.area_3_areas },
+                { zone: about.area_4_zone, areas: about.area_4_areas },
+              ].map((z, i) => (
+                <div key={i} className="flex gap-3 items-start">
+                  <MapPin className="w-4 h-4 text-purple-500 shrink-0 mt-0.5" />
+                  <div>
+                    <p className="text-sm font-black text-slate-800">{z.zone}</p>
+                    <p className="text-xs text-gray-500 leading-relaxed mt-0.5">{z.areas}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* ── 6. چرا اطلاعات شفاف قبل از شروع کار ── */}
+          <div className="bg-slate-50 rounded-3xl border border-slate-100 p-6 md:p-8 space-y-5">
+            <div className="space-y-1">
+              <span className="inline-block bg-indigo-100 text-indigo-700 text-xs font-extrabold px-4 py-1.5 rounded-full">رویکرد ما</span>
+              <h2 className="text-xl font-black text-slate-900">{about.transparency_section_title}</h2>
+            </div>
+            <div className="space-y-4">
+              {[
+                { title: about.transparency_1_title, desc: about.transparency_1_desc },
+                { title: about.transparency_2_title, desc: about.transparency_2_desc },
+                { title: about.transparency_3_title, desc: about.transparency_3_desc },
+              ].map((item, i) => (
+                <div key={i} className="flex gap-3 items-start bg-white rounded-2xl p-4 border border-gray-100 shadow-xs">
+                  <ShieldCheck className="w-5 h-5 text-indigo-500 shrink-0 mt-0.5" />
+                  <div>
+                    <p className="text-sm font-black text-slate-800">{item.title}</p>
+                    <p className="text-xs text-gray-500 leading-relaxed mt-0.5">{item.desc}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* ── 7. CTA ── */}
+          <div className="bg-gradient-to-r from-blue-700 to-indigo-800 text-white rounded-[32px] p-8 md:p-10 text-center space-y-5 shadow-xl">
+            <h3 className="text-xl font-black">{about.cta_title}</h3>
+            <p className="text-sm text-blue-100 leading-relaxed">{about.cta_desc}</p>
+            <div className="flex flex-col sm:flex-row gap-3 justify-center pt-1">
+              <a
+                href={`tel:${settings.phone}`}
+                className="inline-flex items-center justify-center gap-2 bg-yellow-400 hover:bg-yellow-500 text-slate-950 font-black px-7 py-3.5 rounded-2xl shadow-md transition-colors text-sm"
+              >
+                <Phone className="w-4 h-4" />
+                {about.cta_btn_call}: {settings.phone}
+              </a>
+              <button
+                onClick={() => {
+                  navigate('/');
+                  setTimeout(() => {
+                    const el = document.getElementById('price-calc-anchor');
+                    if (el) el.scrollIntoView({ behavior: 'smooth' });
+                  }, 300);
+                }}
+                className="inline-flex items-center justify-center gap-2 bg-white/10 hover:bg-white/20 border border-white/30 text-white font-bold px-7 py-3.5 rounded-2xl transition-colors text-sm cursor-pointer"
+              >
+                {about.cta_btn_calc}
+                <ArrowLeft className="w-4 h-4" />
+              </button>
+            </div>
+          </div>
+
         </div>
       );
     }
@@ -864,9 +1075,15 @@ export default function App() {
       );
     }
 
-    if (path === '/terms' || path === '/privacy') {
+    if (path === '/privacy') {
       return (
-        <PrivacyPolicyView onBackToHome={() => navigate('/')} />
+        <PrivacyPolicyView onBackToHome={() => navigate('/')} content={getPrivacyContent()} />
+      );
+    }
+
+    if (path === '/terms') {
+      return (
+        <TermsView onBackToHome={() => navigate('/')} content={getTermsContent()} />
       );
     }
 

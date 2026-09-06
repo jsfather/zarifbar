@@ -228,7 +228,7 @@ export default function BlogView({ onNavigate, selectedPostSlug, onSelectPost }:
                 >
                   <div className="h-48 overflow-hidden relative">
                     <img 
-                      src={post.image_url || 'https://images.unsplash.com/photo-1549401378-02484c349d21?auto=format&fit=crop&q=80&w=800'} 
+                      src={post.image_url || ''} 
                       alt={post.title}
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                       referrerPolicy="no-referrer"
