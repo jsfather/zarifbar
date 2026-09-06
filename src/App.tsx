@@ -37,14 +37,14 @@ export default function App() {
 
   // Load state for settings
   const [settings, setSettings] = useState<Settings>({
-    site_title: 'اسپاب چی - اتوبار و حمل اثاثیه منزل مدرن',
-    site_description: 'برخط‌ترین سامانه حمل اثاثیه منزل، کارگران با تجربه و زبده، کارتن‌های ۵ لایه مسقف در غرب و شرق تهران.',
+    site_title: 'اسپاب‌چی | باربری، اسباب‌کشی، وانت و نیسان در تهران',
+    site_description: 'اسپاب‌چی خدمات حمل اثاثیه، بسته‌بندی، اعزام نیروی جابجایی، وانت بار و نیسان بار را در تهران ارائه می‌دهد.',
     phone: '02144177827',
     phone_alt: '02126117092',
-    email: 'info@zarifbar.ir',
-    address: 'تهران، میدان ونک، خیابان ملاصدرا، پلاک ۱۱۰',
-    seo_keywords: 'اسباب کشی, اسپاب چی, اتوبار تهران',
-    working_hours: '۷ روز هفته، ۲۴ ساعته شبانه‌روزی',
+    email: '',
+    address: '',
+    seo_keywords: 'اسباب‌کشی، اسپاب‌چی، اتوبار تهران، وانت بار، نیسان بار',
+    working_hours: '۷ روز هفته، ۲۴ ساعته در خدمت شما هستیم',
     pricing_base_truck: '1800000',
     pricing_per_worker: '450000',
     pricing_pack_service: '1200000'
@@ -54,7 +54,6 @@ export default function App() {
   const [recentPosts, setRecentPosts] = useState<Post[]>([]);
   const [activePostSlug, setActivePostSlug] = useState<string>('');
   const [pages, setPages] = useState<Record<string, any>>({});
-  const [isInitialLoading, setIsInitialLoading] = useState(true);
 
   // Toast confirmation
   const [toastMessage, setToastMessage] = useState('');
@@ -98,8 +97,7 @@ export default function App() {
         if (privacyPage && privacyPage.slug) pagesObj.privacy = privacyPage;
         setPages(pagesObj);
       })
-      .catch((err) => console.error('Error fetching initial dynamic modules:', err))
-      .finally(() => setIsInitialLoading(false));
+      .catch((err) => console.error('Error fetching initial dynamic modules:', err));
   }, []);
 
   // Update real titles from database
@@ -142,21 +140,21 @@ export default function App() {
       }
     }
     return {
-      badge: parsed.badge || "رتبه نخست جلب رضایت مشتری در صنف حمل‌وـنقل تهران سال ۱۴۰۴",
+      badge: parsed.badge || "خدمات اسباب‌کشی و حمل بار در تهران",
       title: parsed.title || "اسباب‌کشی آسان و بی‌دردسر",
       blue_title: parsed.blue_title || "بی‌دردسر",
-      description: parsed.description || "شرکت بزرگ ما با کادر مجرب، خودروهای مسقف ضربه‌گیر دار مجهز و نازل‌ترین قیمت مصوب صنف، آرامش خاطر را هنگام بارگیری، بسته‌بندی، حمل اقلام سنگین نظیر گاوصندوق و پیانو برای شما به ارمغان می‌آورد.",
-      quick_alert: parsed.quick_alert || "تخفیف ویژه ۱۵ درصدی رزرو آنلاین به همراه ۱۰۰ میلیون تومان بیمه مسئولیت مدنی کالا به صورت کاملاً رایگان!",
+      description: parsed.description || "اسپاب‌چی خدمات حمل اثاثیه، بسته‌بندی، اعزام نیروی جابجایی، وانت بار و نیسان بار را در تهران ارائه می‌دهد. هزینه خدمات با توجه به مسیر، نوع خودرو، تعداد نیرو و خدمات موردنیاز محاسبه می‌شود.",
+      quick_alert: parsed.quick_alert || "برای دریافت برآورد اولیه هزینه اسباب‌کشی، فرم محاسبه را تکمیل کنید.",
       video_url: parsed.video_url || "",
       hero_image: parsed.hero_image || "https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?auto=format&fit=crop&q=80&w=800",
-      stat_1_num: parsed.stat_1_num || "۱۰,۰۰۰+",
-      stat_1_lbl: parsed.stat_1_lbl || "پروژه موفق اسباب‌کشی در تهران",
-      stat_2_num: parsed.stat_2_num || "۱۵۰+",
-      stat_2_lbl: parsed.stat_2_lbl || "راننده و کارگر بسته‌بندی مجرب",
-      stat_3_num: parsed.stat_3_num || "۱۰۰٪",
-      stat_3_lbl: parsed.stat_3_lbl || "بیمه کامل بار با ضمانت بیمه ایران",
-      stat_4_num: parsed.stat_4_num || "۴ کلان‌شهر",
-      stat_4_lbl: parsed.stat_4_lbl || "پوشش سراسری بین شهری روزانه"
+      stat_1_num: parsed.stat_1_num || "",
+      stat_1_lbl: parsed.stat_1_lbl || "بسته‌بندی تخصصی",
+      stat_2_num: parsed.stat_2_num || "",
+      stat_2_lbl: parsed.stat_2_lbl || "وانت و نیسان بار",
+      stat_3_num: parsed.stat_3_num || "",
+      stat_3_lbl: parsed.stat_3_lbl || "اعزام نیروی جابجایی",
+      stat_4_num: parsed.stat_4_num || "",
+      stat_4_lbl: parsed.stat_4_lbl || "خدمات در تهران"
     };
   };
 
@@ -170,12 +168,12 @@ export default function App() {
       }
     }
     return {
-      title: pages.about?.title || 'درباره اتوبار و ترابری اسپاب چی',
+      title: pages.about?.title || 'درباره اسپاب‌چی',
       image_url: pages.about?.image_url || 'https://images.unsplash.com/photo-1549401378-02484c349d21?auto=format&fit=crop&q=80&w=800',
-      subtitle: parsed.subtitle || 'پنج دهه همراهی صادقانه و خدمت‌رسانی هوشمندانه به مردم شریف تهران',
-      heading: parsed.heading || 'آرمان ما کیفیت عالی و جلب اعتماد اسباب‌کشی لوکس است',
-      paragraph_1: parsed.paragraph_1 || 'شرکت بزرگ اسپاب چی از اوایل دهه ۷۰ شمسی فعالیت رسمی خود را در تهران بزرگ در حوزه ترابری درون‌شهری آغاز کرد. در طی نیم قرن این شرکت همواره در مسیر توسعه فناوری قدم برداشته و توانسته با ایجاد کلینیک کادری مجرب متشکل از ۱۰۰ راننده دوره دیده و ۲۰۰ کارگر ورزیده بسته‌بندی، بیش از چهل و پنج هزار خانوار تهرانی را بدون حتی یک خسارت فیزیکی یا رفتاری جابجا نماید.',
-      paragraph_2: parsed.paragraph_2 || 'تضاد اصلی کار ما با باربری‌های خرده‌پا در تعهد کامل مدنی و صدور سند پیش فاکتور قطعی نهفته است. در اسپاب چی هیچ راننده‌ای حق چانه‌زنی بعد از اتمام باربری را ندارد، تعهد تا تحویل کامل گلدان‌ها و بلورجات به پای تیم مجزای ناظر کادر فنی ثبت گردیده است.',
+      subtitle: parsed.subtitle || 'خدمات حمل‌ونقل و اسباب‌کشی در تهران',
+      heading: parsed.heading || 'اسپاب‌چی چه خدماتی ارائه می‌دهد؟',
+      paragraph_1: parsed.paragraph_1 || 'اسپاب‌چی یک مجموعه خدمات حمل‌ونقل و اسباب‌کشی در تهران است که خدماتی مانند حمل اثاثیه منزل، بسته‌بندی، اعزام نیروی حمل، وانت بار و نیسان بار را ارائه می‌دهد. هدف مجموعه این است که مشتری پیش از ثبت نهایی سفارش، اطلاعات روشنی درباره نوع خدمت، عوامل مؤثر بر هزینه و نحوه اعزام دریافت کند.',
+      paragraph_2: parsed.paragraph_2 || 'هزینه نهایی اسباب‌کشی بسته به عوامل مختلفی از جمله مسیر، نوع خودرو، تعداد نیروی کار، طبقه، وجود آسانسور، نوع و حجم اثاثیه و سرویس‌های اضافه تعیین می‌شود. مشتریان پس از ارائه اطلاعات سفارش، برآورد اولیه هزینه را دریافت کرده و قبل از شروع کار، قیمت نهایی تأیید می‌شود.',
       video_url: parsed.video_url || ''
     };
   };
@@ -190,8 +188,8 @@ export default function App() {
       }
     }
     return {
-      title: pages.contact?.title || 'تماس با اتوبار اسپاب چی',
-      subtitle: parsed.subtitle || 'پاسخگویی شبانه‌روزی و بدون تعطیلی جهت رفاه حال همشهریان محترم'
+      title: pages.contact?.title || 'تماس با اسپاب‌چی',
+      subtitle: parsed.subtitle || 'با اسپاب‌چی تماس بگیرید. آماده پاسخگویی هستیم.'
     };
   };
 
@@ -205,15 +203,15 @@ export default function App() {
       }
     }
     return {
-      title: pages.privacy?.title || "ضوابط، مقررات و حریم خصوصی اسپاب چی",
-      subtitle: parsed.subtitle || "آخرین بروزرسانی مقررات مدنی اسباب‌کشی: خرداد ماه ۱۴۰۵",
-      intro: parsed.intro || "کاربر گرامی، ورود به وب‌سایت اسپاب چی و استفاده از خدمات مشاوره، محاسبه‌گر هوشمند آنلاین، و رزرو نوبت تلفنی یا اینترنتی به معنای آگاهی کامل و پذیرش بی قید و شرط قوانین درج شده در این صفحه می‌باشد. هدف ما آسودگی خاطر کامل شما در طول اسباب‌کشی و حفظ امانت به مطمئن‌ترین شکل ممکن است.",
+      title: pages.privacy?.title || "قوانین، شرایط خدمات و حریم خصوصی | اسپاب‌چی",
+      subtitle: parsed.subtitle || "آخرین بروزرسانی: شهریور ماه ۱۴۰۴",
+      intro: parsed.intro || "کاربر گرامی، ورود به وب‌سایت اسپاب‌چی و استفاده از خدمات مشاوره، محاسبه‌گر هوشمند آنلاین، و رزرو نوبت تلفنی یا اینترنتی به معنای آگاهی کامل و پذیرش بی قید و شرط قوانین درج شده در این صفحه می‌باشد. هدف ما آسودگی خاطر کامل شما در طول اسباب‌کشی و حفظ امانت به مطمئن‌ترین شکل ممکن است.",
       rules_heading: parsed.rules_heading || "قوانین عمومی حمل‌ونقل و صدور فاکتور",
       rule_1: parsed.rule_1 || "قیمت‌های نهایی صادر شده: مبالغی که کارشناسان پشتیبانی پس از ثبت استعلام محاسبه‌گر هوشمند به صورت فاکتور کتبی یا پیامکی تایید می‌کنند، قطعی بوده و رانندگان به هیچ عنوان مجاز به دریافت مبالغ اضافه تحت عناوین انعام، سختی راه پله، پیاده‌روی طولانی نخواهند بود مگر با هماهنگی مدیریت.",
       rule_2: parsed.rule_2 || "لغو نوبت رزرو شده: مشتریان محترم در صورت نیاز به تغییر زمان اسباب‌کشی یا لغو نوبت، موظف هستند حداقل ۲۴ ساعت قبل از اعزام کادر جابجایی موضوع را به کارشناسان اسپاب چی اطلاع دهند.",
       rule_3: parsed.rule_3 || "کالاهای گران‌قیمت خاص: جابجایی اقلام بسیار گران‌قیمت اعم از وجوه نقد، جواهرات، اسناد ملکی گاوصندوق، لپ‌تاپ‌های شخصی و طلاجات باید توسط خود کارفرما انجام گیرد. کادر فنی به هیچ عنوان مسئولیت انتقال موارد شخصی درون کیف‌های مسافرتی را برعهده نمی‌گیرد.",
       insurance_heading: parsed.insurance_heading || "بیمه نامه و تضمین خسارت",
-      insurance_text: parsed.insurance_text || "تمامی اثاثیه‌های حمل شده توسط ناوگان کامیونت‌های مسقف اسپاب چی، تحت پوشش بیمه نامه معتبر البرز یا ایران تا سقف مشخص شده در فاکتور قرار می‌گیرند. در صورت بروز هرگونه آسیب به وسایلی که بسته‌بندی آنها توسط تیم حرفه‌ای و با تایید ناظر کادر اسپاب چی انجام شده باشد، شرکت موظف به پرداخت غرامت معادل قیمت روز کالا یا تعمیر تخصصی آن خواهد بود.",
+      insurance_text: parsed.insurance_text || "تمامی اثاثیه‌های حمل شده توسط ناوگان کامیونت‌های مسقف اسپاب چی، تحت پوشش بیمه تا سقف مشخص شده در فاکتور قرار می‌گیرند. در صورت بروز هرگونه آسیب به وسایلی که بسته‌بندی آنها توسط تیم حرفه‌ای و با تایید ناظر کادر اسپاب چی انجام شده باشد، شرکت موظف به پرداخت غرامت معادل قیمت روز کالا یا تعمیر تخصصی آن خواهد بود.",
       privacy_heading: parsed.privacy_heading || "سیاست حفظ حریم خصوصی کاربران",
       privacy_text: parsed.privacy_text || "مجموعه اسپاب چی نسبت به حفظ اطلاعات خصوصی مشتریان خود (مانند نام خانوادگی، شماره‌های همراه، آدرس‌های مبدا و مقصد) کاملاً متعهد است. تمامی اطلاعات وارد شده در وب‌سایت اسپاب چی در سرورهای امن نگهداری شده و فقط برای فرآیند اعزام خودرو، صدور بیمه نامه حمل بار و بهبود کیفیت خدمات مورد استفاده قرار می‌گیرند. ما هرگز داده‌های شما را در اختیار اشخاص ثالثِ تبلیغاتی قرار نخواههم داد.",
       box_alert: parsed.box_alert || "در صورت بروز هرگونه تعارض نامتعارف با پرسنل صحنه جابجایی قبل از هرگونه پرداخت وجه با شماره بازرسی مرکزی اسپاب چی تماس حاصل فرمایید تا کارشناس شعبه فوراً مداخله کند."
@@ -294,8 +292,8 @@ export default function App() {
                 <span className="text-[10px] text-gray-400 font-bold">پاسخگویی و اعزام</span>
               </div>
               <div className="border-r border-gray-150 dark:border-slate-805">
-                <strong className="block text-xl font-black text-slate-800 dark:text-slate-105 font-sans">۱۰۰٪</strong>
-                <span className="text-[10px] text-gray-400 font-bold">ضمانت سلامت بار</span>
+                <strong className="block text-xl font-black text-slate-800 dark:text-slate-105 font-sans">📦</strong>
+                <span className="text-[10px] text-gray-400 font-bold">بسته‌بندی تخصصی</span>
               </div>
               <div className="border-r border-gray-150 dark:border-slate-805">
                 <strong className="block text-xl font-black text-slate-800 dark:text-slate-105 font-sans">۱۵ دقیقه</strong>
@@ -369,7 +367,8 @@ export default function App() {
 
           </section>
 
-        {/* STATS OVERVIEW SECTION */}
+        {/* SERVICES OVERVIEW SECTION */}
+        {(homeContent.stat_1_num || homeContent.stat_2_num || homeContent.stat_3_num || homeContent.stat_4_num) ? (
         <section className="bg-slate-900 text-white py-12">
           <div className="max-w-7xl mx-auto px-4 md:px-8 grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
             <div className="space-y-1">
@@ -390,6 +389,24 @@ export default function App() {
             </div>
           </div>
         </section>
+        ) : (
+        <section className="bg-slate-900 text-white py-12">
+          <div className="max-w-7xl mx-auto px-4 md:px-8 grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+            <div className="space-y-2">
+              <span className="text-sm text-slate-300 font-semibold">{homeContent.stat_1_lbl}</span>
+            </div>
+            <div className="space-y-2">
+              <span className="text-sm text-slate-300 font-semibold">{homeContent.stat_2_lbl}</span>
+            </div>
+            <div className="space-y-2">
+              <span className="text-sm text-slate-300 font-semibold">{homeContent.stat_3_lbl}</span>
+            </div>
+            <div className="space-y-2">
+              <span className="text-sm text-slate-300 font-semibold">{homeContent.stat_4_lbl}</span>
+            </div>
+          </div>
+        </section>
+        )}
 
         {/* 4 PROFESSIONAL LANDING SERVICES (Sub menus) */}
         <section className="max-w-7xl mx-auto px-4 md:px-8 space-y-10">
@@ -512,7 +529,7 @@ export default function App() {
                 پیش فاکتور دقیق با پوشش ضمانت‌نامه تا سقف دلخواه!
               </h2>
               <p className="text-xs md:text-sm text-slate-500 dark:text-slate-400 font-medium leading-relaxed text-justify">
-                سامانه هوشمند اسپاب چی با تحلیل لحظه‌ای طبقات، فاصله مبدا و مقصد شما، نیاز به کادر مجزای بسته‌بندی یا کارگر تخلیه باربری، دقیق‌ترین برآورد مطابق با نرخ مصوب اتحادیه را محاسبه را برای شما نمایش می‌دهد. بدون حتی یک ریال پرداخت بیهوده یا افزایش مجدد در زمان اتمام کار!
+                با وارد کردن اطلاعات اسباب‌کشی خود، برآورد اولیه هزینه را دریافت کنید. هزینه نهایی پس از بررسی اطلاعات سفارش توسط کارشناسان اسپاب‌چی به شما اعلام می‌شود.
               </p>
 
               <div className="space-y-4 pt-2">
@@ -557,9 +574,9 @@ export default function App() {
               <div className="w-10 h-10 rounded-xl bg-purple-50 dark:bg-blue-950/40 text-purple-600 dark:text-purple-400 flex items-center justify-center">
                 <ShieldCheck className="w-5 h-5" />
               </div>
-              <h4 className="text-sm font-black text-slate-900 dark:text-white">مجوز رسمی با شماره ثبت ۱۰۰۲</h4>
+              <h4 className="text-sm font-black text-slate-900 dark:text-white">اطلاعات شفاف قبل از انجام کار</h4>
               <p className="text-xs text-gray-500 dark:text-slate-300 leading-relaxed text-justify">
-                اسپاب چی به عنوان باسابقه‌ترین اتوبار شهر تهران، تایید صلاحیت همه‌جانبه اعضای خود را از پلیس اماکن و سازمان تعزیرات حکومتی به ثبت رسانده است.
+                پیش از ثبت سفارش، اطلاعات کاملی درباره نوع خدمت، عوامل مؤثر بر هزینه و نحوه اعزام به شما داده می‌شود.
               </p>
             </div>
 
@@ -577,9 +594,9 @@ export default function App() {
               <div className="w-10 h-10 rounded-xl bg-purple-50 dark:bg-purple-950/40 text-purple-600 dark:text-purple-400 flex items-center justify-center">
                 <MessagesSquare className="w-5 h-5" />
               </div>
-              <h4 className="text-sm font-black text-slate-900 dark:text-white">واحد نظافت و بازرسی داخلی مستقل</h4>
+              <h4 className="text-sm font-black text-slate-900 dark:text-white">پشتیبانی و پیگیری سفارش</h4>
               <p className="text-xs text-gray-500 dark:text-slate-300 leading-relaxed text-justify">
-                پر تکرارترین شکایت یعنی انعام اجباری در این شرکت جایی ندارد. در صورت نارضایتی از هریک از اعضا پشتیبان ما فاکتور پرداختی شما را تعدیل خواهد کرد.
+                در صورت هرگونه سؤال یا مشکل، تیم پشتیبانی اسپاب‌چی آماده پاسخگویی و پیگیری است.
               </p>
             </div>
           </div>
@@ -728,19 +745,19 @@ export default function App() {
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4 text-xs font-bold text-gray-750">
               <div className="flex items-center gap-2">
                 <CheckCircle2 className="w-5 h-5 text-green-600 shrink-0" />
-                <span>عضویت معتبر رسمی در اتحادیه حمل بار تهران (شماره پروانه ۳۴۰۰)</span>
+                <span>ارائه خدمات حمل اثاثیه در تهران</span>
               </div>
               <div className="flex items-center gap-2">
                 <CheckCircle2 className="w-5 h-5 text-green-600 shrink-0" />
-                <span>تحت پوشش کامل حقوقی شرکت بیمه دولتی ایران</span>
+                <span>بسته‌بندی با متریال مناسب</span>
               </div>
               <div className="flex items-center gap-2">
                 <CheckCircle2 className="w-5 h-5 text-green-600 shrink-0" />
-                <span>دارای بزرگترین و تمیزترین ناوگان خاور موکت‌کاری تهران</span>
+                <span>اعزام نیروی جابجایی</span>
               </div>
               <div className="flex items-center gap-2">
                 <CheckCircle2 className="w-5 h-5 text-green-600 shrink-0" />
-                <span>سیستم بازرسی مستقل و پاسخگو با خط تلفنی ۱۵۰۰</span>
+                <span>وانت بار و نیسان بار</span>
               </div>
             </div>
           </div>
@@ -884,18 +901,6 @@ export default function App() {
   };
 
   const isPlainAdminView = path === '/admin';
-
-  // Do not briefly render bundled fallback content while the latest CMS data is loading.
-  if (isInitialLoading && !isPlainAdminView) {
-    return (
-      <div className="min-h-screen bg-slate-50 dark:bg-slate-950 flex items-center justify-center" dir="rtl">
-        <div className="flex flex-col items-center gap-4 text-slate-600 dark:text-slate-300">
-          <div className="w-10 h-10 rounded-full border-4 border-purple-100 border-t-purple-600 animate-spin" />
-          <span className="text-sm font-bold">در حال دریافت آخرین اطلاعات اسپاب چی...</span>
-        </div>
-      </div>
-    );
-  }
 
   return (
     <div className="min-h-screen bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-100 flex flex-col justify-between font-sans selection:bg-blue-100 selection:text-blue-900 overflow-x-hidden transition-colors duration-300">

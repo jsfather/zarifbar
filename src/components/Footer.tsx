@@ -1,5 +1,5 @@
 ﻿import React from 'react';
-import { Phone, Mail, MapPin, Instagram, Paperclip, ShieldAlert, CheckCircle2 } from 'lucide-react';
+import { Phone, Mail, MapPin, CheckCircle2 } from 'lucide-react';
 
 interface FooterProps {
   onNavigate: (path: string) => void;
@@ -23,18 +23,12 @@ export default function Footer({ onNavigate, phone, phone_alt, email, address, a
             <div className="w-8 h-8 rounded-lg bg-purple-600 flex items-center justify-center text-white">
               <CheckCircle2 className="w-5 h-5" />
             </div>
-            <span className="text-xl font-bold tracking-tight text-white">اسپاب چی</span>
+            <span className="text-xl font-bold tracking-tight text-white">اسپاب‌چی</span>
           </div>
           <p className="text-slate-400 text-sm leading-relaxed text-justify">
-            {aboutText || 'سامانه حمل اثاثیه و ترابری اسپاب چی، برترین ارائه‌دهنده خدمات لوکس و مطمئن اسباب‌کشی منزل، جابجایی کالای اداری، حمل با نیسان و وانت مجهز به همراه مدرن‌ترین متد بسته‌بندی در شهر تهران و سراسر کشور.'}
+            {aboutText || 'اسپاب‌چی ارائه‌دهنده خدمات حمل اثاثیه، بسته‌بندی، اعزام نیروی حمل، وانت و نیسان در تهران است.'}
           </p>
-          <div className="pt-2 flex items-center gap-4 text-slate-400">
-            <a href="https://instagram.com/zarifbar" target="_blank" rel="noreferrer" className="hover:text-amber-500 transition-colors">
-              <Instagram className="w-5 h-5" />
-            </a>
-            <span className="text-slate-700">|</span>
-            <span className="text-xs bg-slate-800 px-3 py-1 rounded-full text-slate-300">سئو بهینه‌سازی شده</span>
-          </div>
+
         </div>
 
         {/* Quick Links */}
@@ -51,7 +45,7 @@ export default function Footer({ onNavigate, phone, phone_alt, email, address, a
               <button onClick={() => onNavigate('/blog')} className="hover:text-purple-400 transition-colors cursor-pointer text-right">مطالب وبلاگ و دانستنی‌ها</button>
             </li>
             <li>
-              <button onClick={() => onNavigate('/about')} className="hover:text-purple-400 transition-colors cursor-pointer text-right">درباره اتوبار اسپاب چی</button>
+              <button onClick={() => onNavigate('/about')} className="hover:text-purple-400 transition-colors cursor-pointer text-right">درباره اسپاب‌چی</button>
             </li>
             <li>
               <button onClick={() => onNavigate('/contact')} className="hover:text-purple-400 transition-colors cursor-pointer text-right">تماس با پشتیبانی</button>
@@ -96,11 +90,20 @@ export default function Footer({ onNavigate, phone, phone_alt, email, address, a
                 <a href={`tel:${phone_alt}`} className="hover:text-white transition-colors" dir="ltr">{phone_alt}</a>
               </div>
             </li>
+            {email && (
+            <li className="flex items-center gap-3">
+              <Mail className="w-5 h-5 text-blue-400 shrink-0" />
+              <div>
+                <span className="block text-xs text-slate-500 font-medium">ایمیل:</span>
+                <a href={`mailto:${email}`} className="hover:text-white font-bold transition-colors text-sm">{email}</a>
+              </div>
+            </li>
+            )}
             <li className="flex items-center gap-3">
               <MapPin className="w-5 h-5 text-amber-500 shrink-0" />
               <div>
-                <span className="block text-xs text-slate-500">دفتر مرکزی تهران:</span>
-                <span className="text-xs leading-relaxed block text-slate-300">{address}</span>
+                <span className="block text-xs text-slate-500">محدوده خدمات:</span>
+                <span className="text-xs leading-relaxed block text-slate-300">{address || 'تهران'}</span>
               </div>
             </li>
           </ul>
@@ -110,10 +113,11 @@ export default function Footer({ onNavigate, phone, phone_alt, email, address, a
 
       <div className="max-w-7xl mx-auto px-4 md:px-8 pt-8 border-t border-slate-900 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-slate-500">
         <p className="text-center md:text-right">
-          تمامی حقوق برای اسپاب چی محفوظ می باشد | طراحی و توسعه: <a href="https://farinohub.com" target="_blank" rel="noreferrer" className="text-blue-500 hover:text-purple-400 font-medium transition-colors">آژانس دیجیجتال مارکتینگ فارینو</a>
+          تمامی حقوق برای اسپاب چی محفوظ می باشد | طراحی و توسعه: <a href="https://farinohub.com" target="_blank" rel="noreferrer" className="text-blue-500 hover:text-purple-400 font-medium transition-colors">آژانس دیجیتال مارکتینگ فارینو</a>
         </p>
         <div className="flex gap-4 items-center">
-          <button onClick={() => onNavigate('/privacy')} className="hover:text-slate-300 transition-colors text-slate-400 font-medium">ضوابط و حریم خصوصی</button>
+          <button onClick={() => onNavigate('/privacy')} className="hover:text-slate-300 transition-colors text-slate-400 font-medium">حریم خصوصی</button>
+          <button onClick={() => onNavigate('/terms')} className="hover:text-slate-300 transition-colors text-slate-400 font-medium">شرایط خدمات</button>
         </div>
       </div>
     </footer>

@@ -1,6 +1,6 @@
 {
-  "name": "Zarif Bar",
-  "description": "Corporate website for Zarif Bar, focusing on home moving and logistics, with a CMS-enabled blog, request system, and dynamic service landing pages.",
+  "name": "Aspabchi",
+  "description": "Aspabchi is a moving and transportation service platform providing home moving, packing, moving workers, van and Nissan transportation services in Tehran.",
   "requestFramePermissions": [],
   "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
 }

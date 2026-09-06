@@ -65,7 +65,7 @@ export default function ContactView({ phone, phoneAlt, email, address, workingHo
           پشتیبانی سراسری و فوری
         </span>
         <h1 className="text-3xl md:text-4xl font-extrabold text-slate-900 tracking-tight">
-          {title || 'تماس با واحد پشتیبانی اسپاب چی'}
+          {title || 'تماس با اسپاب‌چی'}
         </h1>
         <p className="text-sm text-gray-500 font-medium">
           {subtitle || 'هر گونه سوال، انتقاد، پیشنهاد یا مغایرت فاکتور دارید؟ تیم بازرسی ما ۲۴ ساعته همواره آماده شنیدن نظرات پرارزش شماست.'}
@@ -78,9 +78,9 @@ export default function ContactView({ phone, phoneAlt, email, address, workingHo
         <div className="lg:col-span-5 bg-gradient-to-br from-blue-900 to-slate-950 text-white rounded-3xl p-6 md:p-10 flex flex-col justify-between shadow-xl space-y-10">
           
           <div className="space-y-6">
-            <h2 className="text-xl font-bold text-yellow-300">راه‌های ارتباطی مستقیم با اسپاب چی</h2>
+            <h2 className="text-xl font-bold text-yellow-300">راه‌های ارتباطی با اسپاب‌چی</h2>
             <p className="text-xs text-slate-300 leading-relaxed">
-              اسپاب چی با توسعه خط ویژه شبکه‌ای، فرآیند مشاوره را تسریع کرده است. بدون نیاز به پیش‌شماره در تهران، با شماره ۴ رقمی تماس بگیرید.
+              برای دریافت اطلاعات درباره خدمات، برآورد هزینه یا ثبت سفارش، با شماره‌های زیر تماس بگیرید.
             </p>
 
             <div className="space-y-6 pt-4">
@@ -89,7 +89,7 @@ export default function ContactView({ phone, phoneAlt, email, address, workingHo
                   <Phone className="w-5 h-5 text-yellow-300" />
                 </div>
                 <div>
-                  <span className="block text-[10px] text-slate-400">تلفن شبانه‌روزی (بدون پیش‌شماره)</span>
+                  <span className="block text-[10px] text-slate-400">شماره تماس و پشتیبانی</span>
                   <a href={`tel:${phone}`} className="text-lg font-black tracking-wider hover:text-yellow-400 text-white" dir="ltr">{phone}</a>
                 </div>
               </div>
@@ -104,23 +104,25 @@ export default function ContactView({ phone, phoneAlt, email, address, workingHo
                 </div>
               </div>
 
+              {email && (
               <div className="flex items-center gap-4">
                 <div className="w-11 h-11 rounded-2xl bg-white/10 flex items-center justify-center shrink-0">
                   <Mail className="w-5 h-5 text-blue-300" />
                 </div>
                 <div>
-                  <span className="block text-[10px] text-slate-400">پست الکترونیکی مرکزی</span>
-                  <span className="text-xs font-semibold text-slate-200">{email}</span>
+                  <span className="block text-[10px] text-slate-400">پست الکترونیکی</span>
+                  <a href={`mailto:${email}`} className="text-xs font-semibold text-slate-200 hover:text-white">{email}</a>
                 </div>
               </div>
+              )}
 
               <div className="flex items-center gap-4">
                 <div className="w-11 h-11 rounded-2xl bg-white/10 flex items-center justify-center shrink-0">
                   <MapPin className="w-5 h-5 text-amber-300" />
                 </div>
                 <div>
-                  <span className="block text-[10px] text-slate-400">آدرس دفتر مرکزی و پشتیبانی مشتریان</span>
-                  <span className="text-xs text-slate-200 leading-relaxed block">{address}</span>
+                  <span className="block text-[10px] text-slate-400">محدوده ارائه خدمات</span>
+                  <span className="text-xs text-slate-200 leading-relaxed block">{address || 'تهران'}</span>
                 </div>
               </div>
 
